@@ -10,7 +10,12 @@ import SwiftUI
 struct HomeScreenView: View {
     
     var body: some View {
-        Text("Home Screen")
+        ZStack {
+            Color.customColors.backgroundColor
+                .ignoresSafeArea()
+            Text("Home Screen")
+                .foregroundColor(.customColors.accentColor)
+        }
     }
 }
 

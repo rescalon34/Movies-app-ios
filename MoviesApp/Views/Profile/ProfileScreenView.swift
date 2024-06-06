@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ProfileScreenView: View {
     var body: some View {
-        Text("Profile Screen")
+        ZStack {
+            Color.customColors.backgroundColor
+                .ignoresSafeArea()
+            Text("Profile Screen")
+                .foregroundColor(.customColors.secondaryTextColor)
+        }
     }
 }
 

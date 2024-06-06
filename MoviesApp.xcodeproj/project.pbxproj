@@ -20,6 +20,8 @@
 		254CECB72C11659600706852 /* ProfileScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECB62C11659600706852 /* ProfileScreenView.swift */; };
 		254CECBA2C11664300706852 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECB92C11664300706852 /* MainTabView.swift */; };
 		254CECBC2C1166A000706852 /* MainTabViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECBB2C1166A000706852 /* MainTabViewOptions.swift */; };
+		254CECC12C1175D400706852 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECC02C1175D400706852 /* Color.swift */; };
+		254CECC32C1175E700706852 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECC22C1175E700706852 /* CustomColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		254CECB62C11659600706852 /* ProfileScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenView.swift; sourceTree = "<group>"; };
 		254CECB92C11664300706852 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		254CECBB2C1166A000706852 /* MainTabViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewOptions.swift; sourceTree = "<group>"; };
+		254CECC02C1175D400706852 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		254CECC22C1175E700706852 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 		254CEC7F2C115B8900706852 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				254CECBF2C11758E00706852 /* Theme */,
 				254CECB02C11634800706852 /* Views */,
 				254CECAD2C1162CF00706852 /* Model */,
 				254CECAA2C11605D00706852 /* Extensions */,
@@ -199,6 +204,15 @@
 				254CECBB2C1166A000706852 /* MainTabViewOptions.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		254CECBF2C11758E00706852 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				254CECC02C1175D400706852 /* Color.swift */,
+				254CECC22C1175E700706852 /* CustomColors.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +353,8 @@
 				254CECB72C11659600706852 /* ProfileScreenView.swift in Sources */,
 				254CECBC2C1166A000706852 /* MainTabViewOptions.swift in Sources */,
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
+				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
+				254CECC12C1175D400706852 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +535,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.escalondev.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -550,6 +569,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.escalondev.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
