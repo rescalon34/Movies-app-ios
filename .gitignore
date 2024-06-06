@@ -88,3 +88,74 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Additional items
+
+# Xcode
+.idea/
+*.xcuserstate
+
+# Swift Package Manager
+Packages
+Package.pins
+Package.resolved
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+
+# CocoaPods
+Podfile.lock
+
+# AppIcon & LaunchImage
+AppIcon.appiconset/Icon-*.png
+AppIcon.appiconset/[email protected]
+AppIcon.appiconset/[email protected]
+AppIcon.appiconset/[email protected]
+
+# Asset Catalog
+*.xcassets
+
+# SwiftUI Previews
+.swiftpm/xcode/preview/Previews
+
+# Misc
+*.ds_store
+*.env
+*.lock
+*.swp
+*.xcuserdatad/
+*.*~
+*.orig
+
+# Certificates
+*.key
+*.mobileprovision
+*.cer
+*.xcconfig
+
+# Provisioning profiles
+*.mobileprovision
+*.provisionprofile
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+._.Trashes
+.fseventsd
+
+# Certificates
+*.p12
+*.pfx
+
+# Xcode Server
+integration/
