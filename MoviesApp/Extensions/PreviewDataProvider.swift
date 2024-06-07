@@ -16,4 +16,6 @@ class PreviewDataProvider {
     private init() { }
     
     let movie = Movie(id: 1, title: "Ape Planet")
+    
+    let selectedCategory = "Comedy"
 }

@@ -15,10 +15,12 @@ struct BaseScreenView<Content: View>: View {
     let content: () -> Content
     
     var body: some View {
-        ZStack {
-            Color.customColors.backgroundColor
-                .ignoresSafeArea()
-            content()
+        NavigationStack {
+            ZStack {
+                Color.customColors.backgroundColor
+                    .ignoresSafeArea()
+                content()
+            }
         }
     }
 }
