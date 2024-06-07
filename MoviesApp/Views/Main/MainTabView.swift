@@ -12,8 +12,14 @@ import SwiftUI
  */
 struct MainTabView: View {
     
+    // MARK: - Properties
     @State private var selectedTab : MainTabViewOptions = .Home
     
+    init() {
+        setTabBarBlurEffect()
+    }
+    
+    // MARK: - Body
     var body: some View {
         TabView(selection: $selectedTab) {
             HomeScreenView()
@@ -28,6 +34,15 @@ struct MainTabView: View {
                 }
                 .tag(MainTabViewOptions.Profile)
         }
+    }
+    
+    // MARK: - Functions
+    private func setTabBarBlurEffect() {
+        // set a clear blur effect on the TabView.
+        let standardAppearance = UITabBarAppearance()
+        standardAppearance.configureWithTransparentBackground()
+        standardAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        UITabBar.appearance().standardAppearance = standardAppearance
     }
 }
 

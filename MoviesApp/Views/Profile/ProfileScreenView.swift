@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ProfileScreenView: View {
+    
     var body: some View {
-        ZStack {
-            Color.customColors.backgroundColor
-                .ignoresSafeArea()
+        BaseScreenView {
             Text("Profile Screen")
                 .foregroundColor(.customColors.secondaryTextColor)
         }

@@ -22,6 +22,7 @@
 		254CECBC2C1166A000706852 /* MainTabViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECBB2C1166A000706852 /* MainTabViewOptions.swift */; };
 		254CECC12C1175D400706852 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECC02C1175D400706852 /* Color.swift */; };
 		254CECC32C1175E700706852 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECC22C1175E700706852 /* CustomColors.swift */; };
+		254CECC52C117D9E00706852 /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECC42C117D9E00706852 /* BaseScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		254CECBB2C1166A000706852 /* MainTabViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewOptions.swift; sourceTree = "<group>"; };
 		254CECC02C1175D400706852 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		254CECC22C1175E700706852 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		254CECC42C117D9E00706852 /* BaseScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		254CEC7F2C115B8900706852 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				254CECC62C11844600706852 /* uiComponent */,
 				254CECBF2C11758E00706852 /* Theme */,
 				254CECB02C11634800706852 /* Views */,
 				254CECAD2C1162CF00706852 /* Model */,
@@ -202,6 +205,7 @@
 				254CEC822C115B8900706852 /* ContentView.swift */,
 				254CECB92C11664300706852 /* MainTabView.swift */,
 				254CECBB2C1166A000706852 /* MainTabViewOptions.swift */,
+				254CECC42C117D9E00706852 /* BaseScreenView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -213,6 +217,13 @@
 				254CECC22C1175E700706852 /* CustomColors.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		254CECC62C11844600706852 /* uiComponent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = uiComponent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +359,7 @@
 				254CEC832C115B8900706852 /* ContentView.swift in Sources */,
 				254CECAC2C11606900706852 /* PreviewDataProvider.swift in Sources */,
 				254CECB42C11637E00706852 /* HomeScreenView.swift in Sources */,
+				254CECC52C117D9E00706852 /* BaseScreenView.swift in Sources */,
 				254CECAF2C1162DA00706852 /* Movie.swift in Sources */,
 				254CECBA2C11664300706852 /* MainTabView.swift in Sources */,
 				254CECB72C11659600706852 /* ProfileScreenView.swift in Sources */,
