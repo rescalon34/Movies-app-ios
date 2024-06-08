@@ -17,23 +17,20 @@ struct FeaturedMoviesView: View {
     
     // MARK: - Body
     var body: some View {
-        featuredMoviesContent
+        ScrollView {
+            VStack(spacing: 20) {
+                featuredMoviesContent
+            }
+            .padding(.horizontal)
+        }
     }
     
     // MARK: - Views
     var featuredMoviesContent: some View {
-        List {
-            // TODO, should be iterated by category.
+        // TODO, should be iterated by category.
+        ForEach(0..<6) { item in
             HorizontalItemsContainerView(title: "Recently Added", items: movies)
-            HorizontalItemsContainerView(title: "Comedy", items: movies)
-            HorizontalItemsContainerView(title: "Action and Adventure", items: movies)
-            HorizontalItemsContainerView(title: "Sport", items: movies)
-            HorizontalItemsContainerView(title: "Horror", items: movies)
-            HorizontalItemsContainerView(title: "Drama", items: movies)
         }
-        .listStyle(.inset)
-        .background(Color.customColors.backgroundColor)
-        .listStyle(.inset)
     }
 }
 

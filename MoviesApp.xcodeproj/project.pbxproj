@@ -29,6 +29,7 @@
 		254CECD02C140FAA00706852 /* HorizontalItemsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECCF2C140FAA00706852 /* HorizontalItemsContainerView.swift */; };
 		254CECD22C14126D00706852 /* FeaturedMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECD12C14126D00706852 /* FeaturedMoviesView.swift */; };
 		254CECD42C14138400706852 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECD32C14138400706852 /* HomeViewModel.swift */; };
+		254CECD62C141A0300706852 /* GridMoviesByCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECD52C141A0300706852 /* GridMoviesByCategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		254CECCF2C140FAA00706852 /* HorizontalItemsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalItemsContainerView.swift; sourceTree = "<group>"; };
 		254CECD12C14126D00706852 /* FeaturedMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedMoviesView.swift; sourceTree = "<group>"; };
 		254CECD32C14138400706852 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		254CECD52C141A0300706852 /* GridMoviesByCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridMoviesByCategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				254CECB32C11637E00706852 /* HomeScreenView.swift */,
 				254CECD12C14126D00706852 /* FeaturedMoviesView.swift */,
 				254CECD32C14138400706852 /* HomeViewModel.swift */,
+				254CECD52C141A0300706852 /* GridMoviesByCategoryView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				254CECCE2C140C5900706852 /* MovieItemView.swift in Sources */,
 				254CECCA2C12BF2A00706852 /* CategoryToolbarView.swift in Sources */,
 				254CECBC2C1166A000706852 /* MainTabViewOptions.swift in Sources */,
+				254CECD62C141A0300706852 /* GridMoviesByCategoryView.swift in Sources */,
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
 				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
 				254CECC12C1175D400706852 /* Color.swift in Sources */,

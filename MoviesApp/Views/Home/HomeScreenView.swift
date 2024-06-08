@@ -19,8 +19,15 @@ struct HomeScreenView: View {
             VStack {
                 homeToolbar
                 
-                // TODO, show a different UI when other category gets selected.
-                FeaturedMoviesView(movies: viewModel.movies)
+                // TODO, get category from enum.
+                if selectedCategory == "Featured" {
+                    FeaturedMoviesView(movies: viewModel.movies)
+                } else {
+                    GridMoviesByCategoryView(
+                        category: selectedCategory,
+                        movies: viewModel.movies
+                    )
+                }
             }
         }
     }
@@ -32,7 +39,7 @@ struct HomeScreenView: View {
             selectedCategory: selectedCategory,
             onCategoryClick: { category in
                 print("clicked category: \(category)")
-                withAnimation(.spring) {
+                withAnimation(.smooth) {
                     selectedCategory = category
                 }
             }

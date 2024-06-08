@@ -55,7 +55,13 @@ struct CategoryCapsuleView: View {
             radius: 2
         )
         .onTapGesture {
-            onCategoryClick("Action")
+            
+            // if condition for testing purposes, this sould return the right selected category.
+            if selectedCategory == "Comedy" {
+                onCategoryClick("Featured")
+            } else {
+                onCategoryClick("Comedy")
+            }
         }
     }
 }

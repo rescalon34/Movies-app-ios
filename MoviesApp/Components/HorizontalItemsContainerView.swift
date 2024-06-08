@@ -23,7 +23,7 @@ struct HorizontalItemsContainerView: View {
             Text(title)
                 .bold()
             ScrollView(.horizontal) {
-                HStack(spacing: 8) {
+                HStack(spacing: 10) {
                     ForEach(items) { item in
                         MovieItemView(imageUrl: item.imageUrl)
                     }
