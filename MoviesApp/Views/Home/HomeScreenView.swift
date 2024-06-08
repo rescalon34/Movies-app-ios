@@ -9,19 +9,19 @@ import SwiftUI
 
 struct HomeScreenView: View {
     
+    // MARK: - Properties
     @State var selectedCategory: String = "Comedy"
+    var viewModel: HomeViewModel = HomeViewModel()
     
     // MARK: - Body
     var body: some View {
         BaseScreenView {
             VStack {
                 homeToolbar
-                Spacer()
-                Text("Home Screen")
-                    .foregroundColor(.customColors.accentColor)
-                Spacer()
+                
+                // TODO, show a different UI when other category gets selected.
+                FeaturedMoviesView(movies: viewModel.movies)
             }
-            
         }
     }
     
@@ -32,7 +32,9 @@ struct HomeScreenView: View {
             selectedCategory: selectedCategory,
             onCategoryClick: { category in
                 print("clicked category: \(category)")
-                selectedCategory = category
+                withAnimation(.spring) {
+                    selectedCategory = category
+                }
             }
         )
         .toolbar {
@@ -49,6 +51,9 @@ struct HomeScreenView: View {
 
 #Preview {
     NavigationStack {
-        HomeScreenView(selectedCategory: PreviewDataProvider.instance.selectedCategory)
+        HomeScreenView(
+            selectedCategory: "Comedy",
+            viewModel: HomeViewModel()
+        )
     }
 }

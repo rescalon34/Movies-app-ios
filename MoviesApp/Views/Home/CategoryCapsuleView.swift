@@ -46,7 +46,14 @@ struct CategoryCapsuleView: View {
         .foregroundColor(.white)
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .background(Capsule().fill(Color.customColors.categoryCapsuleColor))
+        .background(
+            Capsule()
+                .fill(Color.customColors.categoryCapsuleColor)
+        )
+        .shadow(
+            color: .customColors.categoryCapsuleColor,
+            radius: 2
+        )
         .onTapGesture {
             onCategoryClick("Action")
         }
