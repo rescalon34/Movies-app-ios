@@ -12,22 +12,22 @@ struct GridMoviesByCategoryView: View {
     // MARK: - Properties
     let category: String
     let movies: [Movie]
+    
+    // MARK: - LazyVGrid properties
     private let flexible = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
     ]
     
     // MARK: - Body
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text(category)
-                    .bold()
-                gridMoviesContent
-            }
-            .padding(.horizontal)
+        VStack(alignment: .leading) {
+            Text(category)
+                .bold()
+            gridMoviesContent
         }
+        .padding(.horizontal)
     }
     
     // MARK: - Views
@@ -41,8 +41,10 @@ struct GridMoviesByCategoryView: View {
 }
 
 #Preview {
-    GridMoviesByCategoryView(
-        category: "Horror",
-        movies: PreviewDataProvider.instance.movies
-    )
+    BaseScreenView {
+        GridMoviesByCategoryView(
+            category: "Horror",
+            movies: PreviewDataProvider.instance.movies
+        )
+    }
 }

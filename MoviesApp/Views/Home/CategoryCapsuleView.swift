@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-/*
- Reusable Category Capsule View.
- 
- This view displays a category label inside a capsule-shaped background
- with a chevron icon to indicate a dropdown or selection.
- It uses a closure to handle tap gestures, allowing the parent view
- to respond to category selection changes.
- */
+/// Reusable Category Capsule View.
+///
+/// This view displays a category label inside a capsule-shaped background
+/// with a chevron icon to indicate a dropdown or selection.
+/// It uses a closure to handle tap gestures, allowing the parent view
+/// to respond to category selection changes.
 struct CategoryCapsuleView: View {
     
     // MARK: - Properties
@@ -49,10 +47,6 @@ struct CategoryCapsuleView: View {
         .background(
             Capsule()
                 .fill(Color.customColors.categoryCapsuleColor)
-        )
-        .shadow(
-            color: .customColors.categoryCapsuleColor,
-            radius: 2
         )
         .onTapGesture {
             
