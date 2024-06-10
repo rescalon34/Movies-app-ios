@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-/*
- This view hosts all bottom tabView options.
- */
+/// This view hosts all bottom tabView options.
 struct MainTabView: View {
     
     // MARK: - Properties

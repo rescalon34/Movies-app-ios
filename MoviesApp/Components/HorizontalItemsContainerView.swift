@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-/**
- This view is inteneded to be reused on those screen that display scrollable items horizontally
- within a given category.
- */
+
+/// This view is inteneded to be reused on those screen that display scrollable
+/// items horizontally within a given category.
 struct HorizontalItemsContainerView: View {
     
     // MARK: - Properties

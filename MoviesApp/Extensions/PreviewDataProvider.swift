@@ -8,9 +8,7 @@
 import Foundation
 import SwiftUI
 
-/*
- This class will be hosting all preview complex data objects with dummy data.
- */
+/// This class will be hosting all preview complex data objects with dummy data.
 class PreviewDataProvider {
     static let instance = PreviewDataProvider()
     private init() { }

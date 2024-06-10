@@ -8,9 +8,7 @@
 import Foundation
 import SwiftUI
 
-/*
- Map each custom color, it supports dark/ligth color themes.
- */
+/// Map each custom color, it supports dark/ligth color themes.
 struct CustomColors {
     
     let accentColor = Color("AccentColor")

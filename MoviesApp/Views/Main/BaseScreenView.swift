@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-/*
- This screen is intended to contain reusable content like the background color for all screens.
- */
+/// This screen is intended to contain reusable content like the
+/// background color for all screens.
 struct BaseScreenView<Content: View>: View {
     
     let content: () -> Content

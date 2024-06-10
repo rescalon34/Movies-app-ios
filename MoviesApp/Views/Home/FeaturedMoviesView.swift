@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-/**
- Featured movies screen content.
- */
+/// Featured movies screen content.
 struct FeaturedMoviesView: View {
     
     // MARK: - Properties
