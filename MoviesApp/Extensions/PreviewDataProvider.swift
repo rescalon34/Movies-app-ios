@@ -13,6 +13,24 @@ class PreviewDataProvider {
     static let instance = PreviewDataProvider()
     private init() { }
     
+    let movieFilters = [
+        "Featured",
+        "Recently Released",
+        "All Movies",
+        "Science Fiction",
+        "Action and Adventure",
+        "Biographies",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Documentaries",
+        "30 of 30",
+        "Horror",
+        "Thriller",
+        "Music",
+        "Romance"
+    ]
+    
     let movie = Movie(id: 1, title: "Kindom of the Planet of the Apes", imageUrl: "https://media.themoviedb.org/t/p/w220_and_h330_face/gKkl37BQuKTanygYQG1pyYgLVgf.jpg")
     
     let movies : [Movie] = [

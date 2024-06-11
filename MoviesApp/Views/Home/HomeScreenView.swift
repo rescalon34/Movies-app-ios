@@ -16,6 +16,7 @@ struct HomeScreenView: View {
     @State var selectedCategory: String = "Comedy"
     @State private var showCategoryToolbarItem = false
     @State private var contentOffset: CGFloat = 0
+    @State private var isPresented = false
     
     // MARK: - Body
     var body: some View {
@@ -29,6 +30,9 @@ struct HomeScreenView: View {
             .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { homeToolbarContent }
+            .fullScreenCover(isPresented: $isPresented) {
+                MovieFilterFullScreenView(selectedCategory: $selectedCategory)
+            }
         }
     }
     
@@ -37,11 +41,9 @@ struct HomeScreenView: View {
         CategoryAppBarView(
             toolbarTitle: "Movies",
             selectedCategory: selectedCategory,
-            onCategoryClick: { category in
-                print("clicked category: \(category)")
-                withAnimation(.smooth) {
-                    selectedCategory = category
-                }
+            onCategoryClick: {
+                print("selected category: \(selectedCategory)")
+                isPresented.toggle()
             }
         )
     }
@@ -51,11 +53,9 @@ struct HomeScreenView: View {
         ToolbarItem(placement: .principal) {
             CategoryCapsuleView(
                 selectedCategory: selectedCategory,
-                onCategoryClick: { category in
-                    print("clicked category: \(category)")
-                    withAnimation(.smooth) {
-                        selectedCategory = category
-                    }
+                onCategoryClick: {
+                    print("selected category: \(selectedCategory)")
+                    isPresented.toggle()
                 }
             )
             .opacity(showCategoryToolbarItem ? 1 : 0)

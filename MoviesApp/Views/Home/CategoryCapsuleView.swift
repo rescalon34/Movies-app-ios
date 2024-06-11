@@ -28,7 +28,7 @@ struct CategoryCapsuleView: View {
     
     /// - `@Binding var selectedCategory: String`
     let selectedCategory: String
-    let onCategoryClick: (String) -> ()
+    let onCategoryClick: () -> ()
     
     // MARK: - Body
     var body: some View {
@@ -49,13 +49,7 @@ struct CategoryCapsuleView: View {
                 .fill(Color.customColors.categoryCapsuleColor)
         )
         .onTapGesture {
-            
-            // if condition for testing purposes, this sould return the right selected category.
-            if selectedCategory == "Comedy" {
-                onCategoryClick("Featured")
-            } else {
-                onCategoryClick("Comedy")
-            }
+            onCategoryClick()
         }
     }
 }
@@ -64,7 +58,7 @@ struct CategoryCapsuleView: View {
 #Preview(traits: .sizeThatFitsLayout) {
     CategoryCapsuleView(
         selectedCategory: PreviewDataProvider.instance.selectedCategory,
-        onCategoryClick: { _ in }
+        onCategoryClick: { }
     )
     .previewLayout(.sizeThatFits)
 }

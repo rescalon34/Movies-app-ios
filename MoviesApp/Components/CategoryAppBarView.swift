@@ -18,7 +18,7 @@ struct CategoryAppBarView: View {
     // MARK: - Properties
     let toolbarTitle : String
     let selectedCategory: String
-    let onCategoryClick: (String) -> ()
+    let onCategoryClick: () -> ()
     
     // MARK: - Body
     var body: some View {
@@ -44,5 +44,5 @@ struct CategoryAppBarView: View {
     CategoryAppBarView(
         toolbarTitle: "Movies",
         selectedCategory: "Comedies"
-    ) { _ in }
+    ) { }
 }
