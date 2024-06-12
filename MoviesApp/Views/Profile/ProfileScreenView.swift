@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ProfileScreenView: View {
+    
     var body: some View {
-        Text("Profile Screen")
+        BaseScreenView {
+            Text("Profile Screen")
+                .foregroundColor(.customColors.secondaryTextColor)
+        }
     }
 }
 
