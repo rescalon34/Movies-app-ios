@@ -15,7 +15,7 @@ struct FeaturedMoviesView: View {
     
     // MARK: - Body
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 featuredMoviesContent
             }

@@ -23,7 +23,7 @@ struct ObservableScrollView<Content: View>: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             content
                 .background {
                     GeometryReader { geometry in

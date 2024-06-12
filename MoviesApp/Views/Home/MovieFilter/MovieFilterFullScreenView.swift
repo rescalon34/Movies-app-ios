@@ -19,7 +19,7 @@ struct MovieFilterFullScreenView: View {
     var body: some View {
         VStack {
             categoriesContent
-            xMarkCircularView
+            dismissScreenIcon
         }
         .frame(maxWidth: .infinity)
         .background(
@@ -33,29 +33,47 @@ struct MovieFilterFullScreenView: View {
     
     // MARK: - Views
     private var categoriesContent: some View {
-        ScrollView {
-            VStack(spacing: 32) {
-                addEmptySpacer(heigth: 100)
-                ForEach(viewModel.movieFilters, id: \.self) { category in
-                    categoryItem(category: category)
+        ScrollView(showsIndicators: false) {
+            ScrollViewReader { proxy in
+                VStack(spacing: 40) {
+                    extraScrollSpacer()
+                    ForEach(viewModel.movieFilters, id: \.self) { category in
+                        categoryItem(category: category)
+                            .onAppear {
+                                scrollToSelectedCategory(proxy: proxy)
+                            }
+                    }
+                    extraScrollSpacer()
                 }
-                addEmptySpacer(heigth: 200)
             }
         }
+        .fadedScrollViewMask()
     }
     
-    // MARK: Functions
+    // MARK: View Functions
+    @ViewBuilder
     private func categoryItem(category: String) -> some View {
+        let isSelectedCategory = selectedCategory == category
+        
         Text(category)
+            .id(category)
             .frame(maxWidth: .infinity)
-            .font(.subheadline)
+            .foregroundColor(isSelectedCategory ? .primary : .customColors.secondaryTextColor)
+            .font(isSelectedCategory ? .headline : .subheadline)
+            .bold(isSelectedCategory)
             .onTapGesture {
                 selectedCategory = category
                 onDismiss()
             }
     }
     
-    private var xMarkCircularView: some View {
+    /// This extra spacer gives a nice scrolling effect at the top and bottom
+    /// of the ScrollView while scrolling categories.
+    private func extraScrollSpacer() -> some View {
+        Spacer().frame(height: 120)
+    }
+    
+    private var dismissScreenIcon: some View {
         CircleIconView(iconName: "xmark")
             .onTapGesture {
                 onDismiss()
@@ -64,22 +82,23 @@ struct MovieFilterFullScreenView: View {
             .padding(.vertical, 32)
     }
     
+    private func onDismiss() {
+        animateXMarkIcon(degrees: Constants.ZERO_DEGREES)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    // MARK: Animation Functions
     private func animateXMarkIcon(degrees: CGFloat) {
-        withAnimation(.easeInOut.delay(0.2)) {
+        withAnimation(.easeInOut.delay(0.1)) {
             rotationDegrees = degrees
         }
     }
     
-    private func addEmptySpacer(heigth: CGFloat) -> some View {
-        Rectangle()
-            .fill(Color.clear)
-            .frame(height: heigth)
-    }
-    
-    private func onDismiss() {
-        animateXMarkIcon(degrees: Constants.ZERO_DEGREES)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            presentationMode.wrappedValue.dismiss()
+    private func scrollToSelectedCategory(proxy: ScrollViewProxy) {
+        withAnimation(.easeInOut) {
+            proxy.scrollTo(selectedCategory, anchor: .center)
         }
     }
 }

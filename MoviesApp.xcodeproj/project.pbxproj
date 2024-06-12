@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2535B83D2C18CE7C005BBA39 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */; };
 		254CEC812C115B8900706852 /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CEC802C115B8900706852 /* MoviesApp.swift */; };
 		254CEC832C115B8900706852 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CEC822C115B8900706852 /* ContentView.swift */; };
 		254CEC852C115B8A00706852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 254CEC842C115B8A00706852 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		254CEC7D2C115B8900706852 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		254CEC802C115B8900706852 /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
 		254CEC822C115B8900706852 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				254CECAB2C11606900706852 /* PreviewDataProvider.swift */,
+				2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				254CECCA2C12BF2A00706852 /* CategoryAppBarView.swift in Sources */,
 				254CECBC2C1166A000706852 /* MainTabViewOptions.swift in Sources */,
 				254CECD62C141A0300706852 /* GridMoviesByCategoryView.swift in Sources */,
+				2535B83D2C18CE7C005BBA39 /* View+Extensions.swift in Sources */,
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
 				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
 				254CECC12C1175D400706852 /* Color.swift in Sources */,
