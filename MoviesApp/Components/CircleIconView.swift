@@ -14,7 +14,8 @@ struct CircleIconView: View {
     var body: some View {
         Image(systemName: iconName)
             .frame(width: 60, height: 60)
-            .background(Circle().fill(Color.gray.opacity(0.7)))
+            .foregroundColor(.white)
+            .background(Circle().fill(Color.customColors.dismissViewIconColor))
     }
 }
 

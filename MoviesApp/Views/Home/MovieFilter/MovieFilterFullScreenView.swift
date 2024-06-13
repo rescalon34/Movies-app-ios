@@ -58,9 +58,9 @@ struct MovieFilterFullScreenView: View {
         Text(category)
             .id(category)
             .frame(maxWidth: .infinity)
-            .foregroundColor(isSelectedCategory ? .primary : .customColors.secondaryTextColor)
+            .foregroundColor(.white)
             .font(isSelectedCategory ? .headline : .subheadline)
-            .bold(isSelectedCategory)
+            .fontWeight(isSelectedCategory ? .bold : .light)
             .onTapGesture {
                 selectedCategory = category
                 onDismiss()

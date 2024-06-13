@@ -10,7 +10,7 @@ import SwiftUI
 /// Custom Background BlurView
 struct BackgroundBlurView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterialDark))
         DispatchQueue.main.async {
             view.superview?.superview?.backgroundColor = .clear
         }
