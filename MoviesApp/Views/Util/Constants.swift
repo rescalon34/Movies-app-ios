@@ -16,4 +16,6 @@ struct Constants {
     static let FORTY_FIVE_DEGREES: CGFloat = 45
     static let ZERO_DEGREES: CGFloat = 0
     static let MINUS_NINETY_DEGREES: CGFloat = -90
+    static let THREE : CGFloat = 3
+    static let FIVE : CGFloat = 5
 }

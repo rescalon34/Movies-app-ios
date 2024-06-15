@@ -25,4 +25,26 @@ extension View {
             )
         )
     }
+    
+    /// Load a regular resizable AsyncImage by providing imageUrl and size.
+    func loadAsyncImage(
+        imageUrl: String,
+        width: CGFloat,
+        height: CGFloat
+    ) -> some View {
+        AsyncImage(url: URL(string: imageUrl)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: width, height: height)
+                .frame(maxWidth: width, maxHeight: height)
+                .clipped()
+        } placeholder: {
+            Rectangle()
+                .fill(Color.customColors.backgroundColor)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width, height: height)
+                .clipped()
+        }
+    }
 }

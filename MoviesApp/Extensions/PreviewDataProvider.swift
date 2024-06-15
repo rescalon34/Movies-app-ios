@@ -47,4 +47,6 @@ class PreviewDataProvider {
     ]
     
     let selectedCategory = "Comedy"
+    
+    let profileImage = "https://i.pinimg.com/originals/fe/7e/33/fe7e3350a9834b31d6b6138ae3f9e712.png"
 }
