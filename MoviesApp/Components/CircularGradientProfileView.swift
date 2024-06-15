@@ -15,18 +15,14 @@ struct CircularGradientProfileView: View {
     let size: CGSize
     var strokeWidth: CGFloat = Constants.FIVE
     let isSelected: Bool
+    let colors: [Color]?
     
     // MARK: - Body
     var body: some View {
         ZStack {
             stroke.opacity(isSelected ? 1 : 0)
             gradientContent
-            loadAsyncImage(
-                imageUrl: imageUrl,
-                width: size.width,
-                height: size.height
-            )
-            .clipShape(Circle())
+            circleImageContent
         }
     }
     
@@ -39,20 +35,44 @@ struct CircularGradientProfileView: View {
             )
     }
     
+    @ViewBuilder
     private var gradientContent: some View {
-        LinearGradient(colors: [.yellow.opacity(0.7), .orange.opacity(0.7), .black.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
-            .frame(width: size.width, height: size.height)
-            .blur(radius: Constants.THREE)
+        if let colors {
+            LinearGradient(colors: colors.map { $0.opacity(0.7) }, startPoint: .topLeading, endPoint: .bottomTrailing)
+                .frame(width: size.width, height: size.height)
+                .blur(radius: Constants.THREE)
+                .clipShape(Circle())
+        }
+    }
+    
+    @ViewBuilder
+    private var circleImageContent: some View {
+        if !imageUrl.isEmpty {
+            loadAsyncImage(
+                imageUrl: imageUrl,
+                width: size.width,
+                height: size.height
+            )
             .clipShape(Circle())
+        } else {
+            Circle()
+                .fill(Color.customColors.dismissViewIconColor)
+                .frame(width: size.width, height: size.height)
+                .overlay {
+                    CircleIconView(iconName: "xmark")
+                        .rotationEffect(.degrees(45))
+                }
+        }
     }
 }
 
 #Preview {
     BaseScreenView {
         CircularGradientProfileView(
-            imageUrl: PreviewDataProvider.instance.profileImage,
+            imageUrl: PreviewDataProvider.instance.profiles[1].imageUrl ?? "",
             size: CGSize(width: 80, height: 80),
-            isSelected: true
+            isSelected: false,
+            colors: PreviewDataProvider.instance.profiles[1].colors
         )
     }
 }

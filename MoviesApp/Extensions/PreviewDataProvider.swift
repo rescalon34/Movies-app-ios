@@ -49,4 +49,21 @@ class PreviewDataProvider {
     let selectedCategory = "Comedy"
     
     let profileImage = "https://i.pinimg.com/originals/fe/7e/33/fe7e3350a9834b31d6b6138ae3f9e712.png"
+    
+    let profiles: [Profile] = [
+        .init(
+            id: 1,
+            name: "Robert",
+            imageUrl: "https://i.pinimg.com/originals/fe/7e/33/fe7e3350a9834b31d6b6138ae3f9e712.png",
+            isSelected: true,
+            colors: [.yellow, .orange, .black]
+        ),
+        .init(
+            id: 2,
+            name: "Yeti",
+            imageUrl: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8c498b2b-fcd8-4558-9a63-d96873c7274a/dg0fbbw-cd3c8776-e6b8-4432-a32c-3d52a7d0ca98.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzhjNDk4YjJiLWZjZDgtNDU1OC05YTYzLWQ5Njg3M2M3Mjc0YVwvZGcwZmJidy1jZDNjODc3Ni1lNmI4LTQ0MzItYTMyYy0zZDUyYTdkMGNhOTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.bFn5v-qzdkchbWQkxGJbg7ac1bJrHHBlGeB39-ZgQs0",
+            isSelected: false,
+            colors: [.yellow, .blue.opacity(0.5), .black]
+        )
+    ]
 }

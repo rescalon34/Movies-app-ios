@@ -82,7 +82,8 @@ struct MainTabView: View {
                     CircularGradientProfileView(
                         imageUrl: PreviewDataProvider.instance.profileImage,
                         size: CGSize(width: 40, height: 40),
-                        isSelected: selectedTab == .Profile
+                        isSelected: selectedTab == .Profile,
+                        colors: PreviewDataProvider.instance.profiles[0].colors // TODO: must come from the selected profile.
                     )
                 ),
                 tag: .Profile

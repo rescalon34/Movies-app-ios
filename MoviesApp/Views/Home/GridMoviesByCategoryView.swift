@@ -35,6 +35,9 @@ struct GridMoviesByCategoryView: View {
         LazyVGrid(columns: flexible, spacing: 10) {
             ForEach(movies) { movie in
                 MovieItemView(imageUrl: movie.imageUrl)
+                    .onTapGesture {
+                        print("Navigate to movie details screen")
+                    }
             }
         }
     }
