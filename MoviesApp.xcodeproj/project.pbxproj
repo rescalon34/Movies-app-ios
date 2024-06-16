@@ -160,12 +160,9 @@
 		254CEC7F2C115B8900706852 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
-				256E9FD32C1D49F60009C625 /* Navigation */,
-				254CECBF2C11758E00706852 /* Theme */,
+				255C40072C1E820200FB6674 /* Util */,
+				255C40052C1E819500FB6674 /* Core */,
 				254CECB02C11634800706852 /* Views */,
-				254CECAD2C1162CF00706852 /* Model */,
-				254CECC62C11844600706852 /* Components */,
-				254CECAA2C11605D00706852 /* Extensions */,
 				254CEC842C115B8A00706852 /* Assets.xcassets */,
 				254CEC802C115B8900706852 /* MoviesApp.swift */,
 				254CEC862C115B8A00706852 /* Preview Content */,
@@ -198,16 +195,6 @@
 			path = MoviesAppUITests;
 			sourceTree = "<group>";
 		};
-		254CECAA2C11605D00706852 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				254CECAB2C11606900706852 /* PreviewDataProvider.swift */,
-				2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */,
-				255C40032C1E701A00FB6674 /* Binding.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		254CECAD2C1162CF00706852 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +207,7 @@
 		254CECB02C11634800706852 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				254CECC62C11844600706852 /* Components */,
 				256E9FC72C1BE0D10009C625 /* Search */,
 				254CECDD2C1695DE00706852 /* Util */,
 				254CECB82C11661C00706852 /* Main */,
@@ -313,6 +301,34 @@
 				254CECE82C17F59000706852 /* MovieFilterViewModel.swift */,
 			);
 			path = MovieFilter;
+			sourceTree = "<group>";
+		};
+		255C40052C1E819500FB6674 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				256E9FD32C1D49F60009C625 /* Navigation */,
+				254CECBF2C11758E00706852 /* Theme */,
+				254CECAD2C1162CF00706852 /* Model */,
+				255C40062C1E81C200FB6674 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		255C40062C1E81C200FB6674 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */,
+				255C40032C1E701A00FB6674 /* Binding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		255C40072C1E820200FB6674 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				254CECAB2C11606900706852 /* PreviewDataProvider.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		256E9FC72C1BE0D10009C625 /* Search */ = {
