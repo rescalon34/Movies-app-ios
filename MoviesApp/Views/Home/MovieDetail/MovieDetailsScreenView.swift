@@ -139,8 +139,8 @@ struct MovieDetailsScreenView: View {
                 .font(.callout)
                 .padding(.top, 4)
                 .lineSpacing(5)
-                .foregroundColor(Color.customColors.primaryClearTextColor)
         }
+        .foregroundColor(Color.customColors.primaryClearTextColor)
         .padding()
     }
 }
