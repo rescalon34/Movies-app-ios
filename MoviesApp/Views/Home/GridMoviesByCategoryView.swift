@@ -12,6 +12,7 @@ struct GridMoviesByCategoryView: View {
     // MARK: - Properties
     let category: String
     let movies: [Movie]
+    let onMovieClicked: (Movie) -> Void
     
     // MARK: - LazyVGrid properties
     private let flexible = [
@@ -36,7 +37,7 @@ struct GridMoviesByCategoryView: View {
             ForEach(movies) { movie in
                 MovieItemView(imageUrl: movie.imageUrl)
                     .onTapGesture {
-                        print("Navigate to movie details screen")
+                        onMovieClicked(movie)
                     }
             }
         }
@@ -47,7 +48,8 @@ struct GridMoviesByCategoryView: View {
     BaseScreenView {
         GridMoviesByCategoryView(
             category: "Horror",
-            movies: PreviewDataProvider.instance.movies
+            movies: PreviewDataProvider.instance.movies,
+            onMovieClicked: { movie in }
         )
     }
 }

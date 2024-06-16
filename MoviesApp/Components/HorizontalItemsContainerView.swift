@@ -15,6 +15,7 @@ struct HorizontalItemsContainerView: View {
     // MARK: - Properties
     let title: String
     let items: [Movie]
+    let onMovieClicked: (Movie) -> ()
     
     // MARK: - Body
     var body: some View {
@@ -25,6 +26,9 @@ struct HorizontalItemsContainerView: View {
                 HStack(spacing: 10) {
                     ForEach(items) { item in
                         MovieItemView(imageUrl: item.imageUrl)
+                            .onTapGesture {
+                                onMovieClicked(item)
+                            }
                     }
                 }
             }
@@ -35,6 +39,7 @@ struct HorizontalItemsContainerView: View {
 #Preview {
     HorizontalItemsContainerView(
         title: "Featured",
-        items: PreviewDataProvider.instance.movies
-    )
+        items: PreviewDataProvider.instance.movies) { Movie in
+            
+        }
 }

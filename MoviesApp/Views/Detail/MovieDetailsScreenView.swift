@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MovieDetailsScreenView: View {
     
-    let movie: Movie
+    let movie: Movie?
     
     var body: some View {
         BaseScreenView {
-            Text("Movie: \(movie.title)")
+            Text("Movie: \(movie?.title ?? "")")
         }
     }
 }

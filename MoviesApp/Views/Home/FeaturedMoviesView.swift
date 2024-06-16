@@ -12,6 +12,7 @@ struct FeaturedMoviesView: View {
     
     // MARK: - Properties
     let movies: [Movie]
+    let onMovieClicked: (Movie) -> ()
     
     // MARK: - Body
     var body: some View {
@@ -27,11 +28,18 @@ struct FeaturedMoviesView: View {
     var featuredMoviesContent: some View {
         // TODO, should be iterated by category.
         ForEach(0..<6) { item in
-            HorizontalItemsContainerView(title: "Recently Added", items: movies)
+            HorizontalItemsContainerView(
+                title: "Recently Added",
+                items: movies,
+                onMovieClicked: onMovieClicked
+            )
         }
     }
 }
 
 #Preview {
-    FeaturedMoviesView(movies: PreviewDataProvider.instance.movies)
+    FeaturedMoviesView(
+        movies: PreviewDataProvider.instance.movies,
+        onMovieClicked: { movie in }
+    )
 }
