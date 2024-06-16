@@ -13,6 +13,9 @@ struct CustomColors {
     
     let accentColor = Color("AccentColor")
     let backgroundColor = Color("BackgroundColor")
+    let secondaryBackgroundColor = Color("SecondaryBackgroundColor")
+    let primaryTextColor = Color("PrimaryTextColor")
+    let primaryClearTextColor = Color("PrimaryClearTextColor")
     let secondaryTextColor = Color("SecondaryTextColor")
     let categoryCapsuleColor = Color("CategoryCapsuleColor")
     let dismissViewIconColor = Color("DismissViewIconColor")

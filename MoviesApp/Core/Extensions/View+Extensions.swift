@@ -10,8 +10,11 @@ import SwiftUI
 
 extension View {
     
-    /// function to add a clear view at the top and bottom of ScrollView
-    /// to add a fade effect while scrolling through items.
+    /// A View modifier that applies a translucent effect while scrolling through items.
+    ///
+    /// This function creates a mask effect of an `opaque scrolled item at the top and bottom`
+    /// of the ScrollView while vertically scrolling items.
+    ///
     func fadedScrollViewMask() -> some View {
         mask(
             LinearGradient(
@@ -26,16 +29,45 @@ extension View {
         )
     }
     
+    /// A View modifier that applies a translucent gradient mask to a view.
+    ///
+    /// This function creates a mask using a linear gradient with a list of black
+    /// colors and a clear color at the end providing a translucent effect.
+    ///
+    /// - Parameters:
+    ///   - repeating: The number of times the black color should be repeated in the gradient.
+    ///     Default value is `3`.
+    ///   - startPoint: The starting point of the gradient. Default value is `.top`.
+    ///   - endPoint: The ending point of the gradient. Default value is `.bottom`.
+    ///
+    func translucentGradientMask(
+        repeating: Int = Int(Constants.THREE),
+        startPoint: UnitPoint = .top,
+        endPoint: UnitPoint = .bottom
+    ) -> some View {
+        let blackColors = Array(repeating: Color.black, count: repeating)
+        let gradientColors = blackColors + [Color.clear]
+        
+        return mask(
+            LinearGradient(
+                gradient: Gradient(colors: gradientColors),
+                startPoint: startPoint, endPoint: endPoint
+            )
+        )
+    }
+    
     /// Load a regular resizable AsyncImage by providing imageUrl and size.
     func loadAsyncImage(
         imageUrl: String,
-        width: CGFloat,
-        height: CGFloat
+        contentMode: ContentMode = .fit,
+        width: CGFloat = .infinity,
+        height: CGFloat = .infinity
     ) -> some View {
         AsyncImage(url: URL(string: imageUrl)) { image in
             image
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .ignoresSafeArea(edges: .top)
+                .aspectRatio(contentMode: contentMode)
                 .frame(width: width, height: height)
                 .frame(maxWidth: width, maxHeight: height)
                 .clipped()

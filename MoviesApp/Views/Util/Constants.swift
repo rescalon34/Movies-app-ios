@@ -18,4 +18,5 @@ struct Constants {
     static let MINUS_NINETY_DEGREES: CGFloat = -90
     static let THREE : CGFloat = 3
     static let FIVE : CGFloat = 5
+    static let EIGTH : Int = 8
 }
