@@ -69,7 +69,7 @@ struct CircularGradientProfileView: View {
 #Preview {
     BaseScreenView {
         CircularGradientProfileView(
-            imageUrl: PreviewDataProvider.instance.profiles[1].imageUrl ?? "",
+            imageUrl: PreviewDataProvider.instance.profiles[1].imageUrl,
             size: CGSize(width: 80, height: 80),
             isSelected: false,
             colors: PreviewDataProvider.instance.profiles[1].colors

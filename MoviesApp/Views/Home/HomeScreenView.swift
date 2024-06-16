@@ -34,17 +34,7 @@ struct HomeScreenView: View {
             .fullScreenCover(isPresented: $isPresented) {
                 MovieFilterFullScreenView(selectedCategory: $selectedCategory)
             }
-            .navigationDestination(
-                isPresented: Binding(
-                    get: { selectedMovie != nil },
-                    set: { isPresented in
-                        // clear the selected movie value when navigation is dismissed.
-                        if !isPresented {
-                            selectedMovie = nil
-                        }
-                    }
-                )
-            ) {
+            .navigationDestination(isPresented: $selectedMovie.toBinding()) {
                 MovieDetailsScreenView(movie: selectedMovie)
             }
         }
