@@ -11,11 +11,19 @@ struct MovieDetailsScreenView: View {
     
     // MARK: - Properties
     let movie: Movie?
+    var movieTitle: String = ""
+    @State private var contentOffset: CGFloat = 0
+    @State private var showNavigationTitle = false
+    
+    init(movie: Movie?) {
+        self.movie = movie
+        movieTitle = movie?.title ?? ""
+    }
     
     // MARK: - Body
     var body: some View {
         BaseScreenView {
-            ScrollView(showsIndicators: false) {
+            ObservableScrollView(contentOffset: $contentOffset) {
                 VStack {
                     movieDetailsHeader
                     playMovieButton
@@ -29,7 +37,11 @@ struct MovieDetailsScreenView: View {
                 startPoint: .bottom,
                 endPoint: .top
             )
+            .navigationTitle(showNavigationTitle ? movieTitle : "")
+            .navigationBarTitleDisplayMode(.inline)
+            .showToolbarBackground(isVisible: showNavigationTitle)
             .toolbar { movieDetailsToolbarContent }
+            .onChange(of: contentOffset, perform: onMinHeaderAppBarOffsetReached)
             .background(Color.customColors.secondaryBackgroundColor)
             .edgesIgnoringSafeArea(.top)
         }
@@ -40,7 +52,7 @@ struct MovieDetailsScreenView: View {
     var movieDetailsToolbarContent: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                // todo
+                // TODO
             } label: {
                 Image(systemName: "tv.badge.wifi")
                     .foregroundColor(.white)
@@ -48,7 +60,7 @@ struct MovieDetailsScreenView: View {
         }
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                // todo
+                // TODO
             } label: {
                 Image(systemName: "square.and.arrow.up")
                     .foregroundColor(.white)
@@ -70,7 +82,7 @@ struct MovieDetailsScreenView: View {
         .translucentGradientMask()
         
         VStack(spacing: 0) {
-            Text(movie?.title.uppercased() ?? "")
+            Text(movieTitle.uppercased())
                 .foregroundColor(.white)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
@@ -130,7 +142,7 @@ struct MovieDetailsScreenView: View {
             Divider()
                 .background(Color.customColors.dismissViewIconColor)
             
-            Text(movie?.title ?? "")
+            Text(movieTitle)
                 .font(.title3)
                 .padding(.top)
                 .bold()
@@ -142,6 +154,15 @@ struct MovieDetailsScreenView: View {
         }
         .foregroundColor(Color.customColors.primaryClearTextColor)
         .padding()
+    }
+    
+    // Functions
+    /// Show the navigationTitle background when the scrolling passes the
+    /// image heigth.
+    private func onMinHeaderAppBarOffsetReached(value: CGFloat) {
+        withAnimation(.easeInOut) {
+            showNavigationTitle = value < Constants.MIN_APP_BAR_DETAILS_OFFSET
+        }
     }
 }
 

@@ -29,6 +29,11 @@ extension View {
         )
     }
     
+    @ViewBuilder
+    func showToolbarBackground(isVisible: Bool) -> some View {
+        toolbarBackground(isVisible ? .visible : .hidden, for: .navigationBar)
+    }
+    
     /// A View modifier that applies a translucent gradient mask to a view.
     ///
     /// This function creates a mask using a linear gradient with a list of black

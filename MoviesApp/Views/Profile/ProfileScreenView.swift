@@ -14,12 +14,14 @@ struct ProfileScreenView: View {
     
     // MARK: - Body
     var body: some View {
-        BaseScreenView {
-            VStack {
-                headerProfileContent
-                makeProfileOptions
+        NavigationStack {
+            BaseScreenView {
+                VStack {
+                    headerProfileContent
+                    makeProfileOptions
+                }
+                .padding(.vertical, 24)
             }
-            .padding(.vertical, 24)
         }
     }
     

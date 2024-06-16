@@ -21,21 +21,23 @@ struct HomeScreenView: View {
     
     // MARK: - Body
     var body: some View {
-        BaseScreenView {
-            ObservableScrollView(contentOffset: $contentOffset) {
-                VStack {
-                    homeAppBar
-                    homeContent
+        NavigationStack {
+            BaseScreenView {
+                ObservableScrollView(contentOffset: $contentOffset) {
+                    VStack {
+                        homeAppBar
+                        homeContent
+                    }
                 }
-            }
-            .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { homeToolbarContent }
-            .fullScreenCover(isPresented: $isPresented) {
-                MovieFilterFullScreenView(selectedCategory: $selectedCategory)
-            }
-            .navigationDestination(isPresented: $selectedMovie.toBinding()) {
-                MovieDetailsScreenView(movie: selectedMovie)
+                .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar { homeToolbarContent }
+                .fullScreenCover(isPresented: $isPresented) {
+                    MovieFilterFullScreenView(selectedCategory: $selectedCategory)
+                }
+                .navigationDestination(isPresented: $selectedMovie.toBinding()) {
+                    MovieDetailsScreenView(movie: selectedMovie)
+                }
             }
         }
     }
