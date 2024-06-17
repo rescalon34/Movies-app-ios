@@ -86,6 +86,7 @@ struct MovieDetailsScreenView: View {
                 .foregroundColor(.white)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
+                .multilineTextAlignment(.center)
             
             Text("2023 - 2h 22m - Science Fiction, Comedy")
                 .font(.footnote)
@@ -125,11 +126,12 @@ struct MovieDetailsScreenView: View {
             )
         }
         
-        Text("An original musical about the joy and pain of pursuing dreams in a city known for crushing them.")
+        Text(movie?.overview ?? "")
             .font(.callout)
             .frame(maxWidth: .infinity,alignment: .leading)
-            .padding(.leading)
-            .lineSpacing(8)
+            .padding(.horizontal)
+            .lineSpacing(4)
+            .lineLimit(Int(Constants.THREE))
             .foregroundColor(Color.customColors.primaryClearTextColor)
     }
     
@@ -146,6 +148,11 @@ struct MovieDetailsScreenView: View {
                 .font(.title3)
                 .padding(.top)
                 .bold()
+            
+            Text(movie?.overview ?? "")
+                .font(.callout)
+                .padding(.top, 4)
+                .lineSpacing(5)
             
             Text(PreviewDataProvider.instance.mockMovieDescription)
                 .font(.callout)
