@@ -12,4 +12,5 @@ struct Movie: Identifiable, Codable {
     let title: String
     let imageUrl: String
     let overview: String
+    let videoUrl: String
 }

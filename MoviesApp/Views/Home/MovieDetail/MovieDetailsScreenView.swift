@@ -14,6 +14,7 @@ struct MovieDetailsScreenView: View {
     var movieTitle: String = ""
     @State private var contentOffset: CGFloat = 0
     @State private var showNavigationTitle = false
+    @State private var isPlayerPresented = false
     
     init(movie: Movie?) {
         self.movie = movie
@@ -44,6 +45,12 @@ struct MovieDetailsScreenView: View {
             .onChange(of: contentOffset, perform: onMinHeaderAppBarOffsetReached)
             .background(Color.customColors.secondaryBackgroundColor)
             .edgesIgnoringSafeArea(.top)
+            .sheet(isPresented: $isPlayerPresented) {
+                YouTubePlayerView(
+                    title: movieTitle,
+                    movieUrl: movie?.videoUrl
+                )
+            }
         }
     }
     
@@ -108,6 +115,9 @@ struct MovieDetailsScreenView: View {
             .clipShape(RoundedRectangle(cornerRadius: 6))
             .padding(.horizontal)
             .padding(.top)
+            .onTapGesture {
+                isPlayerPresented.toggle()
+            }
     }
     
     // This view hosts the Horizontal action buttons and movie overview.

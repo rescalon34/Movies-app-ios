@@ -42,6 +42,8 @@
 		255C40002C1D605300FB6674 /* MovieDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C3FFF2C1D605300FB6674 /* MovieDetailsScreenView.swift */; };
 		255C40042C1E701A00FB6674 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40032C1E701A00FB6674 /* Binding.swift */; };
 		255C400E2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C400D2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift */; };
+		255C40112C1FBD8000FB6674 /* YouTubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */; };
+		255C40142C1FC2BA00FB6674 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40132C1FC2BA00FB6674 /* WebView.swift */; };
 		256E9FC92C1BE0E40009C625 /* SearchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E9FC82C1BE0E40009C625 /* SearchScreenView.swift */; };
 		256E9FCB2C1BEF7E0009C625 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E9FCA2C1BEF7E0009C625 /* TabBarItem.swift */; };
 		256E9FCE2C1BF1940009C625 /* CustomTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E9FCD2C1BF1940009C625 /* CustomTabItemView.swift */; };
@@ -106,6 +108,8 @@
 		255C3FFF2C1D605300FB6674 /* MovieDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsScreenView.swift; sourceTree = "<group>"; };
 		255C40032C1E701A00FB6674 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		255C400D2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalButtonWithTextView.swift; sourceTree = "<group>"; };
+		255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerView.swift; sourceTree = "<group>"; };
+		255C40132C1FC2BA00FB6674 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		256E9FC82C1BE0E40009C625 /* SearchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenView.swift; sourceTree = "<group>"; };
 		256E9FCA2C1BEF7E0009C625 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		256E9FCD2C1BF1940009C625 /* CustomTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItemView.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 		254CECB02C11634800706852 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				255C400F2C1FBD6000FB6674 /* Player */,
 				254CECC62C11844600706852 /* Components */,
 				256E9FC72C1BE0D10009C625 /* Search */,
 				254CECDD2C1695DE00706852 /* Util */,
@@ -293,6 +298,7 @@
 				254CECDE2C1695EB00706852 /* ObservableScrollView.swift */,
 				254CECE02C16A52800706852 /* ContentOffsetKey.swift */,
 				254CECE22C16AFA500706852 /* Constants.swift */,
+				255C40132C1FC2BA00FB6674 /* WebView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -332,6 +338,14 @@
 				254CECAB2C11606900706852 /* PreviewDataProvider.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		255C400F2C1FBD6000FB6674 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 		256E9FC72C1BE0D10009C625 /* Search */ = {
@@ -498,7 +512,9 @@
 				254CECAC2C11606900706852 /* PreviewDataProvider.swift in Sources */,
 				254CECB42C11637E00706852 /* HomeScreenView.swift in Sources */,
 				255C40002C1D605300FB6674 /* MovieDetailsScreenView.swift in Sources */,
+				255C40112C1FBD8000FB6674 /* YouTubePlayerView.swift in Sources */,
 				254CECDF2C1695EB00706852 /* ObservableScrollView.swift in Sources */,
+				255C40142C1FC2BA00FB6674 /* WebView.swift in Sources */,
 				254CECC52C117D9E00706852 /* BaseScreenView.swift in Sources */,
 				254CECE52C17F54A00706852 /* MovieFilterFullScreenView.swift in Sources */,
 				256E9FD02C1D3B460009C625 /* ProfileViewModel.swift in Sources */,
