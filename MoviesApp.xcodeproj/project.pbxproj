@@ -44,6 +44,9 @@
 		255C400E2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C400D2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift */; };
 		255C40112C1FBD8000FB6674 /* YouTubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */; };
 		255C40142C1FC2BA00FB6674 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40132C1FC2BA00FB6674 /* WebView.swift */; };
+		255C40172C20D73200FB6674 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 255C40162C20D73200FB6674 /* CombineMoya */; };
+		255C40192C20D73200FB6674 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 255C40182C20D73200FB6674 /* Moya */; };
+		255C401C2C20D82100FB6674 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C401B2C20D82100FB6674 /* API.swift */; };
 		256E9FC92C1BE0E40009C625 /* SearchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E9FC82C1BE0E40009C625 /* SearchScreenView.swift */; };
 		256E9FCB2C1BEF7E0009C625 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E9FCA2C1BEF7E0009C625 /* TabBarItem.swift */; };
 		256E9FCE2C1BF1940009C625 /* CustomTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E9FCD2C1BF1940009C625 /* CustomTabItemView.swift */; };
@@ -110,6 +113,7 @@
 		255C400D2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalButtonWithTextView.swift; sourceTree = "<group>"; };
 		255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerView.swift; sourceTree = "<group>"; };
 		255C40132C1FC2BA00FB6674 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		255C401B2C20D82100FB6674 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		256E9FC82C1BE0E40009C625 /* SearchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenView.swift; sourceTree = "<group>"; };
 		256E9FCA2C1BEF7E0009C625 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		256E9FCD2C1BF1940009C625 /* CustomTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItemView.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255C40192C20D73200FB6674 /* Moya in Frameworks */,
+				255C40172C20D73200FB6674 /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +321,7 @@
 		255C40052C1E819500FB6674 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				255C401A2C20D80800FB6674 /* Networking */,
 				256E9FD32C1D49F60009C625 /* Navigation */,
 				254CECBF2C11758E00706852 /* Theme */,
 				254CECAD2C1162CF00706852 /* Model */,
@@ -346,6 +353,14 @@
 				255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		255C401A2C20D80800FB6674 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				255C401B2C20D82100FB6674 /* API.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		256E9FC72C1BE0D10009C625 /* Search */ = {
@@ -387,6 +402,10 @@
 			dependencies = (
 			);
 			name = MoviesApp;
+			packageProductDependencies = (
+				255C40162C20D73200FB6674 /* CombineMoya */,
+				255C40182C20D73200FB6674 /* Moya */,
+			);
 			productName = MoviesApp;
 			productReference = 254CEC7D2C115B8900706852 /* MoviesApp.app */;
 			productType = "com.apple.product-type.application";
@@ -459,6 +478,9 @@
 				Base,
 			);
 			mainGroup = 254CEC742C115B8900706852;
+			packageReferences = (
+				255C40152C20D73200FB6674 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 254CEC7E2C115B8900706852 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -535,6 +557,7 @@
 				256E9FD22C1D3B850009C625 /* Profile.swift in Sources */,
 				256E9FCB2C1BEF7E0009C625 /* TabBarItem.swift in Sources */,
 				2535B83D2C18CE7C005BBA39 /* View+Extensions.swift in Sources */,
+				255C401C2C20D82100FB6674 /* API.swift in Sources */,
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
 				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
 				256E9FC92C1BE0E40009C625 /* SearchScreenView.swift in Sources */,
@@ -878,6 +901,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		255C40152C20D73200FB6674 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		255C40162C20D73200FB6674 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 255C40152C20D73200FB6674 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		255C40182C20D73200FB6674 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 255C40152C20D73200FB6674 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 254CEC752C115B8900706852 /* Project object */;
 }
