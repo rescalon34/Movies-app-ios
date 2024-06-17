@@ -69,13 +69,12 @@ struct MainTabView: View {
         }
         .ignoresSafeArea(edges: .all)
     }
-    
     // MARK: - Functions
     private mutating func setupTabBarItems() {
         self.tabItems = [
             TabBarItem(icon: AnyView(getTabBarIconImage(systemName: "house.fill")), tag: .Home),
             TabBarItem(icon: AnyView(getTabBarIconImage(systemName: "magnifyingglass")), tag: .Search),
-            TabBarItem(icon: AnyView(getTabBarIconImage(systemName: "star.fill")), tag: .Watchlist),
+            TabBarItem(icon: AnyView(getTabBarIconImage(systemName: "plus.circle")), tag: .Watchlist),
             TabBarItem(icon: AnyView(getTabBarIconImage(systemName: "arrow.down.to.line.compact")), tag: .Downloads),
             TabBarItem(
                 icon: AnyView(

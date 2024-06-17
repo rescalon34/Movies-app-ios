@@ -18,7 +18,7 @@ struct CustomTabItemView: View {
     // MARK: - Boby
     var body: some View {
         
-        let selectedItemColor = isSelected ? Color.customColors.accentColor : .customColors.secondaryTextColor
+        let selectedItemColor = isSelected ? Color.customColors.accentColor : .customColors.secondaryTextColor.opacity(0.6)
         VStack {
             // Show a custom image for the profile tabBar item.
             if tag == .Profile {
