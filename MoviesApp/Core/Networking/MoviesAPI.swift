@@ -51,6 +51,6 @@ extension MoviesAPI: TargetType {
     
     // All headers required by the endpoint.
     var headers: [String : String]? {
-        nil
+        ["Content-type": "application/json"]
     }
 }
