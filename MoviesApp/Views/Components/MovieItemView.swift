@@ -11,6 +11,7 @@ struct MovieItemView: View {
     
     // MARK: - Properties
     let imageUrl: String
+//    let baseImageUrl = "https://image.tmdb.org/t/p/w185/"
     
     // MARK: Body
     var body: some View {
@@ -20,7 +21,7 @@ struct MovieItemView: View {
     // MARK: - Views
     var imageContainer : some View {
         VStack {
-            AsyncImage(url: URL(string: imageUrl)) { image in
+            AsyncImage(url: URL(string: imageUrl.getImagePosterPath())) { image in
                 image
                     .resizable()
                     .scaledToFill()

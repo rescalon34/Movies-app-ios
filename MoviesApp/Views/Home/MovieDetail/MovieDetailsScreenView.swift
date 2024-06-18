@@ -80,7 +80,7 @@ struct MovieDetailsScreenView: View {
     @ViewBuilder
     private var movieDetailsHeader: some View {
         loadAsyncImage(
-            imageUrl: movie?.imageUrl ?? "",
+            imageUrl: movie?.imageUrl.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ?? "",
             contentMode: .fill,
             width: .infinity,
             height: 380

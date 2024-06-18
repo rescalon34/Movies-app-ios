@@ -13,4 +13,12 @@ struct Movie: Identifiable, Codable {
     let imageUrl: String
     let overview: String
     let videoUrl: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case imageUrl = "poster_path"
+        case overview
+        case videoUrl = "backdrop_path" // for testing
+    }
 }
