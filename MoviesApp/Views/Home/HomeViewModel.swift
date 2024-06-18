@@ -10,24 +10,25 @@ import Combine
 
 class HomeViewModel : ObservableObject {
     
-    private let networkManager = NetworkManager()
+    // MARK: Networking properties
+    private var moviesRepository: MoviesRepositoryProtocol
     private var cancellable = Set<AnyCancellable>()
     
-    
-    // TODO, load data from API.
-    //    @Published var movies = PreviewDataProvider.instance.movies
+    // MARK: - Published properties
     @Published var movies: [Movie] = []
     
-    init() {
-        getMovies()
+    // MARK: - Initializer
+    init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
+        self.moviesRepository = moviesRepository
     }
-
-    private func getMovies() {
-        networkManager.getMovies(type: "popular")
-            .sink { [weak self] result in
+    
+    // MARK: - Functions
+    func getMovies(type: String) {
+        moviesRepository.getMovies(type: type)
+            .sink { [weak self] (result: Result<MovieResponse, Error>) in
                 switch result {
-                case .success(let response):
-                    self?.movies = response.results
+                case .success(let movieData):
+                    self?.movies = movieData.results
                 case .failure(let error):
                     print("error: \(error)")
                 }

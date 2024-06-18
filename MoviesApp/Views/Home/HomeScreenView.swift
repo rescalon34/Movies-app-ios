@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeScreenView: View {
     
     // MARK: - ViewModel
-    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
+    @StateObject var viewModel: HomeViewModel = .init()
     
     // MARK: - Properties
     @State var selectedCategory: String = "Comedy"
@@ -38,6 +38,9 @@ struct HomeScreenView: View {
                 .navigationDestination(isPresented: $selectedMovie.toBinding()) {
                     MovieDetailsScreenView(movie: selectedMovie)
                 }
+            }
+            .onAppear {
+                viewModel.getMovies(type: "popular")
             }
         }
     }
