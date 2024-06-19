@@ -19,7 +19,11 @@ class MoviesRepository: MoviesRepositoryProtocol {
         self.networkManager = networkManager
     }
     
-    func getMovies(type: String) -> AnyPublisher<Result<MovieResponse, Error>, Never> {
+    func getMovies(type: String) -> AnyPublisher<Result<MovieDataResponse, Error>, Never> {
         networkManager.requestPublisher(target: MoviesAPI.getMovies(type: type))
+    }
+    
+    func getMovieDetails(movieId: Int) -> AnyPublisher<Result<MovieDetailResponse, Error>, Never> {
+        networkManager.requestPublisher(target: MoviesAPI.getMovieDetails(movieId: movieId))
     }
 }

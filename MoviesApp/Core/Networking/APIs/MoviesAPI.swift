@@ -15,6 +15,7 @@ import Moya
 enum MoviesAPI: TargetType {
     // Endpoints
     case getMovies(type: String)
+    case getMovieDetails(movieId: Int)
 }
 
 extension MoviesAPI {
@@ -30,13 +31,15 @@ extension MoviesAPI {
         switch self {
         case .getMovies(type: let type):
             return "movie/\(type)"
+        case .getMovieDetails(movieId: let movieId):
+            return "movie/\(movieId)"
         }
     }
     
     // group all api calls by its HTTP method (get, put, post, delete, etc).
     var method: Moya.Method {
         switch self {
-        case .getMovies:
+        case .getMovies, .getMovieDetails:
             return .get
         }
     }
@@ -49,6 +52,14 @@ extension MoviesAPI {
                 parameters: [API_KEY: API_KEY_VALUE],
                 encoding: URLEncoding.queryString
             )
+        case .getMovieDetails:
+            return .requestParameters(
+                parameters: [
+                    API_KEY: API_KEY_VALUE,
+                    "append_to_response": "videos",
+                    "language": "en-US"
+                ],
+                encoding: URLEncoding.queryString)
         }
     }
     

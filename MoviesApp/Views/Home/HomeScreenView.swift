@@ -36,7 +36,7 @@ struct HomeScreenView: View {
                     MovieFilterFullScreenView(selectedCategory: $selectedCategory)
                 }
                 .navigationDestination(isPresented: $selectedMovie.toBinding()) {
-                    MovieDetailsScreenView(movie: selectedMovie)
+                    MovieDetailsScreenView(movieId: selectedMovie?.id)
                 }
             }
             .onAppear {

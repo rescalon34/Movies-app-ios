@@ -25,10 +25,10 @@ class HomeViewModel : ObservableObject {
     // MARK: - Functions
     func getMovies(type: String) {
         moviesRepository.getMovies(type: type)
-            .sink { [weak self] (result: Result<MovieResponse, Error>) in
+            .sink { [weak self] (result: Result<MovieDataResponse, Error>) in
                 switch result {
                 case .success(let movieData):
-                    self?.movies = movieData.results
+                    self?.movies = movieData.results.map { $0.toDomain() }
                 case .failure(let error):
                     print("error: \(error)")
                 }

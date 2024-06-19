@@ -8,9 +8,13 @@
 import Foundation
 
 extension String {
-
+    
     /// Construct image poster URL.
     func getImagePosterPath(_ width: String = DEFAULT_POSTER_WIDTH) -> String {
         BASE_IMAGE_URL + width + self
+    }
+    
+    func getYoutubeVideoUrl() -> String {
+        return BASE_YOUTUBE_URL + self
     }
 }

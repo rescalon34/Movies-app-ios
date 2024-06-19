@@ -7,18 +7,28 @@
 
 import Foundation
 
-struct Movie: Identifiable, Codable {
+struct MovieResponse: Identifiable, Codable {
     let id: Int
     let title: String
     let imageUrl: String
     let overview: String
-    let videoUrl: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case title
         case imageUrl = "poster_path"
         case overview
-        case videoUrl = "backdrop_path" // for testing
+    }
+}
+
+extension MovieResponse {
+    func toDomain() -> Movie {
+        Movie(
+            id: self.id,
+            title: self.title,
+            imageUrl: self.imageUrl,
+            overview: self.overview,
+            videos: nil
+        )
     }
 }

@@ -13,7 +13,7 @@ struct YouTubePlayerView: View {
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
     let title: String
-    let movieUrl: String?
+    let videoKey: String?
     
     // MARK: - Body
     var body: some View {
@@ -40,7 +40,7 @@ struct YouTubePlayerView: View {
     
     // MARK: - Views
     var videoPlayerContent: some View {
-        let url = URL(string: movieUrl ?? "")
+        let url = URL(string: videoKey?.getYoutubeVideoUrl() ?? "")
         
         guard let url = url else {
             // TODO: Show a proper view for content unavailable.
@@ -54,6 +54,7 @@ struct YouTubePlayerView: View {
     NavigationStack {
         YouTubePlayerView(
             title: "Movie",
-            movieUrl: PreviewDataProvider.instance.movie.videoUrl)
+            videoKey: PreviewDataProvider.instance.movie.videos?.first?.key
+        )
     }
 }
