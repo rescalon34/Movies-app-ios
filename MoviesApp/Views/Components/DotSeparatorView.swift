@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Custom UI to append a mid size dot between a Text
 struct DotSeparatorView: View {
     var body: some View {
         Text("●")

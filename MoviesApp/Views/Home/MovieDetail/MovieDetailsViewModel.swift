@@ -54,4 +54,9 @@ class MovieDetailsViewModel: ObservableObject {
             video.type == VideoType.Trailer.rawValue
         })?.key ?? ""
     }
+    
+    func getMovieGenres() -> String {
+        guard let genres = movie?.genres, !genres.isEmpty else { return "" }
+        return genres.map { $0.name }.joined(separator: ", ")
+    }
 }

@@ -30,6 +30,7 @@ extension MovieResponse {
             releaseDate: nil,
             runtime: nil,
             overview: self.overview,
+            genres: nil,
             videos: nil
         )
     }

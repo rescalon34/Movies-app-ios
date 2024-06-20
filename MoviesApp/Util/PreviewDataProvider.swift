@@ -38,6 +38,7 @@ class PreviewDataProvider {
         releaseDate: "2023",
         runtime: 115,
         overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+        genres: [Genre(id: 0, name: "Action")],
         videos: [
             Video(key: "LEjhY15eCx0", type: "")
         ]
@@ -53,6 +54,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "Kdr5oedn7q8", type: "")]
         ),
         Movie(
@@ -62,6 +64,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "In the near future, a group of war journalists attempt to survive while reporting the truth as the United States stands on the brink of civil war.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "c2G18nIVpNE", type: "")]
         ),
         Movie(
@@ -71,6 +74,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Following their explosive showdown, Godzilla and Kong must reunite against a colossal undiscovered threat hidden within our world, challenging their very existence – and our own.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "XeDbyVODQ5M", type: "")]
         ),
         Movie(
@@ -80,6 +84,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "XNTEjJm4WXg", type: "")]
         ),
         Movie(
@@ -89,6 +94,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "When a group of friends recklessly violate the sacred rule of Tarot readings, they unknowingly unleash an unspeakable evil trapped within the cursed cards. One by one, they come face to face with fate and end up in a race against death.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "Jokpt_LJpbw", type: "")]
         ),
         Movie(
@@ -99,6 +105,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Fresh off an almost career-ending accident, stuntman Colt Seavers has to track down a missing movie star, solve a conspiracy and try to win back the love of his life while still doing his day job.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "EySdVK0NK1Y", type: "")]
         ),
         Movie(
@@ -108,6 +115,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "uWLNl_KQCAU", type: "")]
         ),
         Movie(
@@ -117,6 +125,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "When a young American woman is sent to Rome to begin a life of service to the church, she encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy that hopes to bring about the birth of evil incarnate.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "6GMiIRitv5s", type: "")]
         ),
         Movie(
@@ -126,6 +135,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "In postwar Japan, Godzilla brings new devastation to an already scorched landscape. With no military intervention or government help in sight, the survivors must join together in the face of despair and fight back against an unrelenting horror.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "nAYKaslCXPc", type: "")]
         ),
         Movie(
@@ -135,6 +145,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+            genres: [Genre(id: 0, name: "Action")],
             videos: [Video(key: "L4DrolmDxmw", type: "")]
         ),
     ]

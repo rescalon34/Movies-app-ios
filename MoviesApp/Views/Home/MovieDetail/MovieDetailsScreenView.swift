@@ -120,6 +120,7 @@ struct MovieDetailsScreenView: View {
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal)
             
             // Movie ReleaseDate and Runtime
             HStack(spacing: 4) {
@@ -127,14 +128,14 @@ struct MovieDetailsScreenView: View {
                 DotSeparatorView()
                 Text(movie.runtime?.formatRuntime() ?? "")
                 DotSeparatorView()
-                Text("Science Fiction, Comedy") // TODO: get this genres from the API.
+                Text(viewModel.getMovieGenres())
             }
             .padding(.top, 4)
+            .padding(.horizontal)
             .lineLimit(1)
             .font(.footnote)
             .foregroundColor(Color.customColors.secondaryTextColor)
         }
-        .padding(.horizontal)
     }
     
     private var playMovieButton: some View {
@@ -214,5 +215,5 @@ struct MovieDetailsScreenView: View {
 
 // MARK: - Preview
 #Preview {
-    MovieDetailsScreenView(movieId: 573435)
+    MovieDetailsScreenView(movieId: 1022789)
 }

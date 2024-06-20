@@ -68,6 +68,8 @@
 		25EB56BC2C23D0E600DA06E9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */; };
 		25EB56BE2C23DC8E00DA06E9 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */; };
 		25EB56C02C23DE1600DA06E9 /* DotSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BF2C23DE1600DA06E9 /* DotSeparatorView.swift */; };
+		25EB56C22C23E18C00DA06E9 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C12C23E18C00DA06E9 /* Genre.swift */; };
+		25EB56C42C23E1F700DA06E9 /* GenreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C32C23E1F700DA06E9 /* GenreResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +152,8 @@
 		25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		25EB56BF2C23DE1600DA06E9 /* DotSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotSeparatorView.swift; sourceTree = "<group>"; };
+		25EB56C12C23E18C00DA06E9 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		25EB56C32C23E1F700DA06E9 /* GenreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +445,7 @@
 			children = (
 				255C40342C22803600FB6674 /* Movie.swift */,
 				255C40372C2283F700FB6674 /* Video.swift */,
+				25EB56C12C23E18C00DA06E9 /* Genre.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				255C402D2C22610B00FB6674 /* VideoResponse.swift */,
 				255C40212C20FF4B00FB6674 /* MovieDataResponse.swift */,
 				254CECAE2C1162DA00706852 /* MovieResponse.swift */,
+				25EB56C32C23E1F700DA06E9 /* GenreResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -638,10 +644,12 @@
 				255C40242C210A7700FB6674 /* String+Extensions.swift in Sources */,
 				255C40202C20F6A500FB6674 /* NetworkManager.swift in Sources */,
 				254CECAF2C1162DA00706852 /* MovieResponse.swift in Sources */,
+				25EB56C42C23E1F700DA06E9 /* GenreResponse.swift in Sources */,
 				254CECE32C16AFA500706852 /* Constants.swift in Sources */,
 				256E9FCE2C1BF1940009C625 /* CustomTabItemView.swift in Sources */,
 				25EB56C02C23DE1600DA06E9 /* DotSeparatorView.swift in Sources */,
 				255C40222C20FF4B00FB6674 /* MovieDataResponse.swift in Sources */,
+				25EB56C22C23E18C00DA06E9 /* Genre.swift in Sources */,
 				254CECED2C1810F100706852 /* BackgroundBlurView.swift in Sources */,
 				254CECE92C17F59000706852 /* MovieFilterViewModel.swift in Sources */,
 				254CECBA2C11664300706852 /* MainTabView.swift in Sources */,
