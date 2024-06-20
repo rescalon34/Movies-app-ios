@@ -18,10 +18,6 @@ extension String {
         return BASE_YOUTUBE_URL + self
     }
     
-    func toUnicode() -> String {
-        String(self)
-    }
-    
     /// Converting releaseDate to a year format. E.g. 2024
     func formatReleaseDate() -> String {
         let dateFormatter = DateFormatter()
