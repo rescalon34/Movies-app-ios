@@ -11,6 +11,8 @@ struct Movie: Identifiable {
     let id: Int
     let title: String
     let imageUrl: String
+    let releaseDate: String?
+    let runtime: Int?
     let overview: String
     let videos: [Video]?
     
@@ -18,6 +20,8 @@ struct Movie: Identifiable {
         id: 0,
         title: "",
         imageUrl: "",
+        releaseDate: "",
+        runtime: 0,
         overview: "",
         videos: []
     )

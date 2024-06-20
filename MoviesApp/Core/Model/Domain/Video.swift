@@ -9,4 +9,5 @@ import Foundation
 
 struct Video {
     let key: String
+    let type: String
 }

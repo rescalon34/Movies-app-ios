@@ -12,12 +12,16 @@ struct MovieDetailResponse: Identifiable, Codable {
     let title: String
     let imageUrl: String
     let overview: String
+    let releaseDate: String
+    let runtime: Int
     let videos: VideoDataResponse
     
     enum CodingKeys: String, CodingKey {
         case id
         case title
         case imageUrl = "poster_path"
+        case releaseDate = "release_date"
+        case runtime
         case overview
         case videos = "videos"
     }
@@ -29,6 +33,8 @@ extension MovieDetailResponse {
             id: self.id,
             title: self.title,
             imageUrl: self.imageUrl,
+            releaseDate: self.releaseDate,
+            runtime: self.runtime,
             overview: self.overview,
             videos: self.videos.results.isEmpty ? nil : self.videos.results.map { video in
                 video.toDomain()

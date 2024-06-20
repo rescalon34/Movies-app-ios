@@ -17,4 +17,21 @@ extension String {
     func getYoutubeVideoUrl() -> String {
         return BASE_YOUTUBE_URL + self
     }
+    
+    func toUnicode() -> String {
+        String(self)
+    }
+    
+    /// Converting releaseDate to a year format. E.g. 2024
+    func formatReleaseDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = YEAR_MONTH_DAY_FORMAT
+        
+        guard let date = dateFormatter.date(from: self) else { return "" }
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        
+        return "\(year)"
+    }
 }

@@ -15,12 +15,13 @@ class MovieDetailsViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     // MARK: - Published properties
-    @Published var movie: Movie = .default
+    @Published var movie: Movie? = .default
     @Published var isLoading: Bool = false
     @Published var errorMessage: String = ""
     
     init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
         self.moviesRepository = moviesRepository
+        self.movie = movie
     }
     
     func getMovieDetails(movieId: Int) {
@@ -30,7 +31,7 @@ class MovieDetailsViewModel: ObservableObject {
                 switch result {
                 case .success(let movieDetails):
                     // TODO: Remove this async, adding it now just to see the loading view.
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         self?.movie = movieDetails.toDomain()
                         self?.isLoading = false
                     }
@@ -42,5 +43,15 @@ class MovieDetailsViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellable)
+    }
+    
+    func getMovieTitle() -> String {
+        return movie?.title ?? ""
+    }
+    
+    func getOfficialTrailerVideoKey() -> String {
+        return movie?.videos?.first(where: { video in
+            video.type == VideoType.Trailer.rawValue
+        })?.key ?? ""
     }
 }

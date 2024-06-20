@@ -13,10 +13,11 @@ struct VideoDataResponse: Codable {
 
 struct VideoResponse: Codable {
     let key: String
+    let type: String
 }
 
 extension VideoResponse {
     func toDomain() -> Video {
-        return Video(key: self.key)
+        return Video(key: self.key, type: self.type)
     }
 }

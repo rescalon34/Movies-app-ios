@@ -27,6 +27,8 @@ extension MovieResponse {
             id: self.id,
             title: self.title,
             imageUrl: self.imageUrl,
+            releaseDate: nil,
+            runtime: nil,
             overview: self.overview,
             videos: nil
         )

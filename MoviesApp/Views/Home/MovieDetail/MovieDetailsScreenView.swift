@@ -22,59 +22,24 @@ struct MovieDetailsScreenView: View {
     var body: some View {
         BaseScreenView {
             VStack {
-                movieDetailsContent
+                movieDetailsContent(movie: viewModel.movie)
             }
         }
-        .navigationTitle(showNavigationTitle ? viewModel.movie.title : "")
+        .navigationTitle(showNavigationTitle ? viewModel.getMovieTitle() : "")
         .navigationBarTitleDisplayMode(.inline)
         .showToolbarBackground(isVisible: showNavigationTitle)
         .toolbar { movieDetailsToolbarContent }
         .onChange(of: contentOffset, perform: onMinHeaderAppBarOffsetReached)
         .sheet(isPresented: $isPlayerPresented) {
-            if let videoKey = viewModel.movie.videos?.first?.key {
-                YouTubePlayerView(
-                    title: viewModel.movie.title,
-                    videoKey: videoKey
-                )
-            }
+            YouTubePlayerView(
+                title: viewModel.getMovieTitle(),
+                videoKey: viewModel.getOfficialTrailerVideoKey()
+            )
         }
         .onAppear {
             guard let id = movieId else { return }
             viewModel.getMovieDetails(movieId: id)
         }
-    }
-    
-    // MARK: - Views
-    /// Based on the view status, show the proper content.
-    @ViewBuilder
-    private var movieDetailsContent: some View {
-        if viewModel.isLoading {
-            ProgressView()
-        } else if !viewModel.errorMessage.isEmpty {
-            Text(viewModel.errorMessage) // TODO: show custom UI to handle errors.
-        } else {
-            scrollContent
-        }
-    }
-    
-    // This is the whole details scrollable content
-    private var scrollContent: some View {
-        ObservableScrollView(contentOffset: $contentOffset) {
-            VStack {
-                movieDetailsHeader
-                playMovieButton
-                movieDetailsOverview
-                movieDetails
-            }
-            .padding(.bottom, 50)
-        }
-        .translucentGradientMask(
-            repeating: Constants.EIGTH,
-            startPoint: .bottom,
-            endPoint: .top
-        )
-        .background(Color.customColors.secondaryBackgroundColor)
-        .edgesIgnoringSafeArea(.top)
     }
     
     // MARK: Toolbar
@@ -99,11 +64,48 @@ struct MovieDetailsScreenView: View {
     }
     
     // MARK: - Views
+    @ViewBuilder
+    private func movieDetailsContent(movie: Movie?) -> some View {
+        // Show the proper content depending on the status.
+        if viewModel.isLoading {
+            ProgressView()
+        } else {
+            if let movie = movie,
+               viewModel.errorMessage.isEmpty {
+                scrollableDetailsContent(movie: movie)
+            } else {
+                // TODO: show proper error UI.
+                Text(viewModel.errorMessage)
+            }
+        }
+    }
+    
+    // This view represents the whole movie details scrollable content.
+    private func scrollableDetailsContent(movie: Movie) -> some View {
+        ObservableScrollView(contentOffset: $contentOffset) {
+            VStack {
+                movieDetailsHeader(movie: movie)
+                playMovieButton
+                movieDetailsOverview(movie: movie)
+                movieDetails(movie: movie)
+            }
+            .padding(.bottom, 50)
+        }
+        .translucentGradientMask(
+            repeating: Constants.EIGTH,
+            startPoint: .bottom,
+            endPoint: .top
+        )
+        .background(Color.customColors.secondaryBackgroundColor)
+        .edgesIgnoringSafeArea(.top)
+    }
+    
+    // MARK: - Views
     // Header Image, title and small overview.
     @ViewBuilder
-    private var movieDetailsHeader: some View {
+    private func movieDetailsHeader(movie: Movie) -> some View {
         loadAsyncImage(
-            imageUrl: viewModel.movie.imageUrl.getImagePosterPath(ORIGINAL_POSTER_WIDTH),
+            imageUrl: movie.imageUrl.getImagePosterPath(ORIGINAL_POSTER_WIDTH),
             contentMode: .fill,
             width: .infinity,
             height: 380
@@ -111,18 +113,26 @@ struct MovieDetailsScreenView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .translucentGradientMask()
         
+        // Movie title
         VStack(spacing: 0) {
-            Text(viewModel.movie.title.uppercased())
+            Text(movie.title.uppercased())
                 .foregroundColor(.white)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
             
-            Text("2023 - 2h 22m - Science Fiction, Comedy")
-                .font(.footnote)
-                .padding(.top, 4)
-                .lineLimit(1)
-                .foregroundColor(Color.customColors.secondaryTextColor)
+            // Movie ReleaseDate and Runtime
+            HStack(spacing: 4) {
+                Text(movie.releaseDate?.formatReleaseDate() ?? "")
+                DotSeparatorView()
+                Text(movie.runtime?.formatRuntime() ?? "")
+                DotSeparatorView()
+                Text("Science Fiction, Comedy") // TODO: get this genres from the API.
+            }
+            .padding(.top, 4)
+            .lineLimit(1)
+            .font(.footnote)
+            .foregroundColor(Color.customColors.secondaryTextColor)
         }
         .padding(.horizontal)
     }
@@ -145,7 +155,7 @@ struct MovieDetailsScreenView: View {
     
     // This view hosts the Horizontal action buttons and movie overview.
     @ViewBuilder
-    private var movieDetailsOverview: some View {
+    private func movieDetailsOverview(movie: Movie) -> some View {
         HStack(spacing: 0) {
             VerticalButtonWithTextView(
                 icon: "plus.circle",
@@ -159,7 +169,7 @@ struct MovieDetailsScreenView: View {
             )
         }
         
-        Text(viewModel.movie.overview)
+        Text(movie.overview)
             .font(.callout)
             .frame(maxWidth: .infinity,alignment: .leading)
             .padding(.horizontal)
@@ -169,7 +179,7 @@ struct MovieDetailsScreenView: View {
     }
     
     /// View containing all details content,
-    private var movieDetails: some View {
+    private func movieDetails(movie: Movie) -> some View {
         VStack(alignment: .leading) {
             Text("DETAILS")
                 .bold()
@@ -177,12 +187,12 @@ struct MovieDetailsScreenView: View {
             Divider()
                 .background(Color.customColors.dismissViewIconColor)
             
-            Text(viewModel.movie.title)
+            Text(movie.title)
                 .font(.title3)
                 .padding(.top)
                 .bold()
             
-            Text(viewModel.movie.overview)
+            Text(movie.overview)
                 .font(.callout)
                 .padding(.top, 4)
                 .lineSpacing(5)
@@ -191,7 +201,8 @@ struct MovieDetailsScreenView: View {
         .padding()
     }
     
-    // Functions
+    // MARK: - Functions
+    
     /// Show the navigationTitle background when the scrolling passes the
     /// image heigth.
     private func onMinHeaderAppBarOffsetReached(value: CGFloat) {
@@ -203,5 +214,5 @@ struct MovieDetailsScreenView: View {
 
 // MARK: - Preview
 #Preview {
-    MovieDetailsScreenView(movieId: PreviewDataProvider.instance.movie.id)
+    MovieDetailsScreenView(movieId: 573435)
 }
