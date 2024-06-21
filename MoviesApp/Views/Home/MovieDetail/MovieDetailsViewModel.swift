@@ -30,11 +30,8 @@ class MovieDetailsViewModel: ObservableObject {
             .sink { [weak self] (result: Result<MovieDetailResponse, Error>) in
                 switch result {
                 case .success(let movieDetails):
-                    // TODO: Remove this async, adding it now just to see the loading view.
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self?.movie = movieDetails.toDomain()
-                        self?.isLoading = false
-                    }
+                    self?.movie = movieDetails.toDomain()
+                    self?.isLoading = false
                     print("Movie details: \(movieDetails)")
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
@@ -55,8 +52,22 @@ class MovieDetailsViewModel: ObservableObject {
         })?.key ?? ""
     }
     
+    func getReleaseDate() -> String {
+        guard let releaseDate = movie?.releaseDate?.formatReleaseDate() else { return "" }
+        return releaseDate
+    }
+    
+    func getDurationTime() -> String {
+        guard let durationTime = movie?.runtime?.formatRuntime() else { return "" }
+        return durationTime
+    }
+    
     func getMovieGenres() -> String {
         guard let genres = movie?.genres, !genres.isEmpty else { return "" }
         return genres.map { $0.name }.joined(separator: ", ")
+    }
+    
+    func getMovieSummary() -> String {
+        return getReleaseDate() + "-" + getDurationTime() + "-" + getMovieGenres()
     }
 }

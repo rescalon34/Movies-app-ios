@@ -11,7 +11,6 @@ struct MovieItemView: View {
     
     // MARK: - Properties
     let imageUrl: String
-//    let baseImageUrl = "https://image.tmdb.org/t/p/w185/"
     
     // MARK: Body
     var body: some View {

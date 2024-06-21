@@ -35,10 +35,10 @@ class PreviewDataProvider {
         id: 1022789,
         title: "Inside Out 2",
         imageUrl: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg",
-        releaseDate: "2023",
+        releaseDate: "2024-06-11",
         runtime: 115,
         overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
-        genres: [Genre(id: 0, name: "Action")],
+        genres: [Genre(id: 0, name: "Action"), Genre(id: 1, name: "Comedy")],
         videos: [
             Video(key: "LEjhY15eCx0", type: "")
         ]

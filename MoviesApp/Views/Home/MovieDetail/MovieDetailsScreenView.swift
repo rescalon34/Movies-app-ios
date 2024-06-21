@@ -122,20 +122,18 @@ struct MovieDetailsScreenView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            // Movie ReleaseDate and Runtime
-            HStack(spacing: 4) {
-                Text(movie.releaseDate?.formatReleaseDate() ?? "")
-                DotSeparatorView()
-                Text(movie.runtime?.formatRuntime() ?? "")
-                DotSeparatorView()
-                Text(viewModel.getMovieGenres())
-            }
-            .padding(.top, 4)
-            .padding(.horizontal)
-            .lineLimit(1)
-            .font(.footnote)
-            .foregroundColor(Color.customColors.secondaryTextColor)
+            movieSummary
         }
+    }
+    
+    /// Movie Summary: releaseDate, runtime and genres.
+    private var movieSummary: some View {
+        TextWithDotSeparatorView(text: viewModel.getMovieSummary())
+        .padding(.top, 4)
+        .multilineTextAlignment(.center)
+        .lineLimit(2)
+        .font(.footnote)
+        .foregroundColor(Color.customColors.secondaryTextColor)
     }
     
     private var playMovieButton: some View {
@@ -197,9 +195,21 @@ struct MovieDetailsScreenView: View {
                 .font(.callout)
                 .padding(.top, 4)
                 .lineSpacing(5)
+            
+            detailFooter(movie: movie)
         }
         .foregroundColor(Color.customColors.primaryClearTextColor)
         .padding()
+    }
+    
+
+    private func detailFooter(movie: Movie) -> some View {
+        VStack(alignment: .leading, spacing: 16) {
+            VerticalLabelWithTextView(label: "Duration:", text: viewModel.getDurationTime())
+            VerticalLabelWithTextView(label: "Release Date:", text: viewModel.getReleaseDate())
+            VerticalLabelWithTextView(label: "Genre:", text: viewModel.getMovieGenres())
+        }
+        .padding(.top)
     }
     
     // MARK: - Functions
