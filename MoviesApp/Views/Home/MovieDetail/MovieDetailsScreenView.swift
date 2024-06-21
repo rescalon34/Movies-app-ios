@@ -14,9 +14,12 @@ struct MovieDetailsScreenView: View {
     
     // MARK: - Properties
     let movieId: Int?
+    
+    // MARK: - State properties
     @State private var contentOffset: CGFloat = 0
     @State private var showNavigationTitle = false
     @State private var isPlayerPresented = false
+    @State private var selectedSegment: String = MovieDetailSegmentOptions.Detail.option
     
     // MARK: - Body
     var body: some View {
@@ -87,7 +90,7 @@ struct MovieDetailsScreenView: View {
                 movieDetailsHeader(movie: movie)
                 playMovieButton
                 movieDetailsOverview(movie: movie)
-                movieDetails(movie: movie)
+                segmentedDetailsFooterContent(movie: movie)
             }
             .padding(.bottom, 50)
         }
@@ -129,11 +132,11 @@ struct MovieDetailsScreenView: View {
     /// Movie Summary: releaseDate, runtime and genres.
     private var movieSummary: some View {
         TextWithDotSeparatorView(text: viewModel.getMovieSummary())
-        .padding(.top, 4)
-        .multilineTextAlignment(.center)
-        .lineLimit(2)
-        .font(.footnote)
-        .foregroundColor(Color.customColors.secondaryTextColor)
+            .padding(.top, 4)
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .font(.footnote)
+            .foregroundColor(Color.customColors.secondaryTextColor)
     }
     
     private var playMovieButton: some View {
@@ -177,39 +180,38 @@ struct MovieDetailsScreenView: View {
             .foregroundColor(Color.customColors.primaryClearTextColor)
     }
     
-    /// View containing all details content,
-    private func movieDetails(movie: Movie) -> some View {
-        VStack(alignment: .leading) {
-            Text("DETAILS")
-                .bold()
+    /// Show the proper details footer content depending on the selected picker content.
+    private func segmentedDetailsFooterContent(movie: Movie) -> some View {
+        VStack {
+            // Segmented Picker content
+            Picker("", selection: $selectedSegment) {
+                ForEach(viewModel.getAllSegmentOptions(), id: \.self) { segmentedOption in
+                    Text(segmentedOption.uppercased())
+                        .tag(segmentedOption)
+                }
+            }
+            .pickerStyle(.segmented)
             
-            Divider()
-                .background(Color.customColors.dismissViewIconColor)
+            // Line divider
+            Divider().background(Color.customColors.dismissViewIconColor)
             
-            Text(movie.title)
-                .font(.title3)
-                .padding(.top)
-                .bold()
-            
-            Text(movie.overview)
-                .font(.callout)
-                .padding(.top, 4)
-                .lineSpacing(5)
-            
-            detailFooter(movie: movie)
+            // selected segmented content.
+            switch selectedSegment {
+            case MovieDetailSegmentOptions.Detail.option:
+                MovieDetailsTabViewContentView(
+                    movie: movie,
+                    durationTime: viewModel.getDurationTime(),
+                    releaseDate: viewModel.getReleaseDate(),
+                    genres: viewModel.getMovieGenres()
+                )
+                
+            case MovieDetailSegmentOptions.Clip.option:
+                MovieClipsSegmentContentView()
+            default:
+                Text("No content available yet")
+            }
         }
-        .foregroundColor(Color.customColors.primaryClearTextColor)
         .padding()
-    }
-    
-
-    private func detailFooter(movie: Movie) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VerticalLabelWithTextView(label: "Duration:", text: viewModel.getDurationTime())
-            VerticalLabelWithTextView(label: "Release Date:", text: viewModel.getReleaseDate())
-            VerticalLabelWithTextView(label: "Genre:", text: viewModel.getMovieGenres())
-        }
-        .padding(.top)
     }
     
     // MARK: - Functions

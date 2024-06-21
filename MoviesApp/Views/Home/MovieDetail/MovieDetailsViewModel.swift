@@ -19,11 +19,13 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String = ""
     
+    // MARK: - Initializer
     init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
         self.moviesRepository = moviesRepository
         self.movie = movie
     }
     
+    // MARK: API call functions
     func getMovieDetails(movieId: Int) {
         isLoading = true
         moviesRepository.getMovieDetails(movieId: movieId)
@@ -42,6 +44,7 @@ class MovieDetailsViewModel: ObservableObject {
             .store(in: &cancellable)
     }
     
+    // MARK: - Functions
     func getMovieTitle() -> String {
         return movie?.title ?? ""
     }
@@ -69,5 +72,9 @@ class MovieDetailsViewModel: ObservableObject {
     
     func getMovieSummary() -> String {
         return getReleaseDate() + "-" + getDurationTime() + "-" + getMovieGenres()
+    }
+    
+    func getAllSegmentOptions() -> [String] {
+        return MovieDetailSegmentOptions.allCases.map { $0.option }
     }
 }

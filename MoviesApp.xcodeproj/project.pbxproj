@@ -71,6 +71,9 @@
 		25EB56C22C23E18C00DA06E9 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C12C23E18C00DA06E9 /* Genre.swift */; };
 		25EB56C42C23E1F700DA06E9 /* GenreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C32C23E1F700DA06E9 /* GenreResponse.swift */; };
 		25EB56C62C251D0400DA06E9 /* VerticalLabelWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C52C251D0400DA06E9 /* VerticalLabelWithTextView.swift */; };
+		25EB56C82C2528DC00DA06E9 /* MovieDetailsSegmentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C72C2528DC00DA06E9 /* MovieDetailsSegmentContentView.swift */; };
+		25EB56CA2C252C7900DA06E9 /* MovieDetailSegmentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56C92C252C7900DA06E9 /* MovieDetailSegmentOptions.swift */; };
+		25EB56CC2C252DEF00DA06E9 /* MovieClipsSegmentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56CB2C252DEF00DA06E9 /* MovieClipsSegmentContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +159,9 @@
 		25EB56C12C23E18C00DA06E9 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		25EB56C32C23E1F700DA06E9 /* GenreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponse.swift; sourceTree = "<group>"; };
 		25EB56C52C251D0400DA06E9 /* VerticalLabelWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelWithTextView.swift; sourceTree = "<group>"; };
+		25EB56C72C2528DC00DA06E9 /* MovieDetailsSegmentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsSegmentContentView.swift; sourceTree = "<group>"; };
+		25EB56C92C252C7900DA06E9 /* MovieDetailSegmentOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailSegmentOptions.swift; sourceTree = "<group>"; };
+		25EB56CB2C252DEF00DA06E9 /* MovieClipsSegmentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieClipsSegmentContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +291,8 @@
 			children = (
 				255C3FFF2C1D605300FB6674 /* MovieDetailsScreenView.swift */,
 				255C402F2C2262FF00FB6674 /* MovieDetailsViewModel.swift */,
+				25EB56C72C2528DC00DA06E9 /* MovieDetailsSegmentContentView.swift */,
+				25EB56CB2C252DEF00DA06E9 /* MovieClipsSegmentContentView.swift */,
 			);
 			path = MovieDetail;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 				254CECAB2C11606900706852 /* PreviewDataProvider.swift */,
 				25EB56B92C23C93100DA06E9 /* VideoType.swift */,
 				25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */,
+				25EB56C92C252C7900DA06E9 /* MovieDetailSegmentOptions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -649,6 +658,7 @@
 				254CECAF2C1162DA00706852 /* MovieResponse.swift in Sources */,
 				25EB56C62C251D0400DA06E9 /* VerticalLabelWithTextView.swift in Sources */,
 				25EB56C42C23E1F700DA06E9 /* GenreResponse.swift in Sources */,
+				25EB56CA2C252C7900DA06E9 /* MovieDetailSegmentOptions.swift in Sources */,
 				254CECE32C16AFA500706852 /* Constants.swift in Sources */,
 				256E9FCE2C1BF1940009C625 /* CustomTabItemView.swift in Sources */,
 				25EB56C02C23DE1600DA06E9 /* TextWithDotSeparatorView.swift in Sources */,
@@ -679,7 +689,9 @@
 				255C401C2C20D82100FB6674 /* MoviesAPI.swift in Sources */,
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
 				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
+				25EB56C82C2528DC00DA06E9 /* MovieDetailsSegmentContentView.swift in Sources */,
 				256E9FC92C1BE0E40009C625 /* SearchScreenView.swift in Sources */,
+				25EB56CC2C252DEF00DA06E9 /* MovieClipsSegmentContentView.swift in Sources */,
 				254CECC12C1175D400706852 /* Color.swift in Sources */,
 				255C40382C2283F700FB6674 /* Video.swift in Sources */,
 			);
