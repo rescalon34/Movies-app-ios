@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeScreenView: View {
     
     // MARK: - ViewModel
-    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
+    @StateObject var viewModel: HomeViewModel = .init()
     
     // MARK: - Properties
     @State var selectedCategory: String = "Comedy"
@@ -36,8 +36,11 @@ struct HomeScreenView: View {
                     MovieFilterFullScreenView(selectedCategory: $selectedCategory)
                 }
                 .navigationDestination(isPresented: $selectedMovie.toBinding()) {
-                    MovieDetailsScreenView(movie: selectedMovie)
+                    MovieDetailsScreenView(movieId: selectedMovie?.id)
                 }
+            }
+            .onAppear {
+                viewModel.getMovies(type: "popular")
             }
         }
     }
