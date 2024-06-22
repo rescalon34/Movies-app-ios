@@ -24,7 +24,6 @@ struct MovieDetailsTabViewContentView: View {
         VStack(alignment: .leading) {
             Text(movie.title)
                 .font(.title3)
-                .padding(.top)
                 .bold()
             
             Text(movie.overview)

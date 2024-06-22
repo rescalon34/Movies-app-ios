@@ -193,7 +193,11 @@ struct MovieDetailsScreenView: View {
             .pickerStyle(.segmented)
             
             // Line divider
-            Divider().background(Color.customColors.dismissViewIconColor)
+            Divider()
+                .background(Color.customColors.dismissViewIconColor)
+                .padding(.top, 4)
+                .padding(.bottom)
+            
             
             // selected segmented content.
             switch selectedSegment {
@@ -206,7 +210,7 @@ struct MovieDetailsScreenView: View {
                 )
                 
             case MovieDetailSegmentOptions.Clip.option:
-                MovieClipsSegmentContentView()
+                MovieClipsSegmentContentView(videos: movie.videos)
             default:
                 Text("No content available yet")
             }

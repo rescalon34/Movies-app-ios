@@ -33,10 +33,10 @@ struct TextWithDotSeparatorView: View {
         }
         
         Text(attributedTextWithDotSeparator)
-            .multilineTextAlignment(.center)
     }
 }
 
 #Preview {
     TextWithDotSeparatorView(text: "2024 - 1h 22m - Action, Adventure, Crime, Triller, Comedy")
+        .multilineTextAlignment(.center)
 }

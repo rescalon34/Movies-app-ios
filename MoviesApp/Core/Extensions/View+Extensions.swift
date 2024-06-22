@@ -64,6 +64,7 @@ extension View {
     /// Load a regular resizable AsyncImage by providing imageUrl and size.
     func loadAsyncImage(
         imageUrl: String,
+        aspectRatio: CGFloat? = nil,
         contentMode: ContentMode = .fit,
         width: CGFloat = .infinity,
         height: CGFloat = .infinity
@@ -71,15 +72,15 @@ extension View {
         AsyncImage(url: URL(string: imageUrl)) { image in
             image
                 .resizable()
-                .ignoresSafeArea(edges: .top)
-                .aspectRatio(contentMode: contentMode)
+                .scaledToFill()
+                .aspectRatio(aspectRatio, contentMode: contentMode)
                 .frame(width: width, height: height)
                 .frame(maxWidth: width, maxHeight: height)
                 .clipped()
         } placeholder: {
             Rectangle()
                 .fill(Color.customColors.backgroundColor)
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(aspectRatio, contentMode: .fill)
                 .frame(width: width, height: height)
                 .clipped()
         }

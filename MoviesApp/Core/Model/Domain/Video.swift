@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Video {
+struct Video: Identifiable {
+    let id: String
+    let name: String
     let key: String
     let type: String
+    let language: String
+    let countryCode: String
+    let publishedAt: String
 }

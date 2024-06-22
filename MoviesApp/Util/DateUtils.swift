@@ -8,3 +8,6 @@
 import Foundation
 
 let YEAR_MONTH_DAY_FORMAT = "yyyy-MM-dd"
+let ISO_8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+let FULL_DATE_FORMAT = "EEEE, MMMM d, yyyy"
+let DASH = "-"
