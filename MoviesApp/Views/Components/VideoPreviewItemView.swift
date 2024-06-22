@@ -8,13 +8,15 @@
 import SwiftUI
 
 /// Reusable VideoPreview Cell, it receives an image, title and overview as string values.
-/// 
+/// - Parameter onItemClick: a callback closure to be invoked whenever a video thumbnail gets clicked.
+///
 struct VideoPreviewItemView: View {
     
     // MARK: - Properties
     let imageUrl: String
     let title: String
     let overview: String
+    let onItemClick: () -> ()
     
     // MARK: - Body
     var body: some View {
@@ -32,7 +34,13 @@ struct VideoPreviewItemView: View {
                     width: 125,
                     height: 70
                 )
+                .overlay(alignment: .bottomLeading) {
+                    playOverlayIcon
+                }
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .onTapGesture {
+                    onItemClick()
+                }
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(title)
@@ -52,6 +60,17 @@ struct VideoPreviewItemView: View {
         }
         .padding(.bottom, 5)
     }
+    
+    private var playOverlayIcon: some View {
+        Image(systemName: "play.fill")
+            .font(.caption)
+            .padding()
+            .background(
+                Circle()
+                    .fill(Color.black.opacity(0.8))
+                    .frame(width: 26)
+            )
+    }
 }
 
 // MARK: - Preview
@@ -62,6 +81,7 @@ struct VideoPreviewItemView: View {
     return VideoPreviewItemView(
         imageUrl: imageUrl,
         title: "Inside Out",
-        overview: overview
-    )
+        overview: overview) {
+            
+        }
 }

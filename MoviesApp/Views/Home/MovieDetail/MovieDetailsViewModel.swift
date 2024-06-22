@@ -18,6 +18,7 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var movie: Movie? = .default
     @Published var isLoading: Bool = false
     @Published var errorMessage: String = ""
+    @Published private var selectedVideo: Video?
     
     // MARK: - Initializer
     init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
@@ -50,9 +51,27 @@ class MovieDetailsViewModel: ObservableObject {
     }
     
     func getOfficialTrailerVideoKey() -> String {
-        return movie?.videos?.first(where: { video in
-            video.type == VideoType.Trailer.rawValue
-        })?.key ?? ""
+        return selectedVideo?.key ?? ""
+    }
+    
+    /// Set the value for `selectedVideo` property.
+    /// - Parameter video: The video to set as the new `selectedVideo`. If it's nil, it will default to the first
+    /// trailer video from the movie list.
+    ///
+    /// Mostly, this function will be invoked from two places: from the PlayButton on the details screen and
+    /// from the `video clips` segmented view list gets selected.
+    ///
+    /// If it's called from the PlayButton, we don't need to pass a video param and it will enter in the if condition.
+    /// Otherwise, set the selected clip video from the list.
+    ///
+    func setSelectedVideo(video: Video? = nil) {
+        if video == nil {
+            selectedVideo = movie?.videos?.first(where: { video in
+                video.type == VideoType.Trailer.rawValue
+            })
+        } else {
+            selectedVideo = video
+        }
     }
     
     func getReleaseDate() -> String {

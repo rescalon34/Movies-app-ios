@@ -11,6 +11,7 @@ struct MovieClipsSegmentContentView: View {
     
     // MARK: - Properties
     let videos: [Video]?
+    let onItemClick: (Video) -> ()
     
     // MARK: - Body
     var body: some View {
@@ -25,7 +26,8 @@ struct MovieClipsSegmentContentView: View {
                 VideoPreviewItemView(
                     imageUrl: video.key.getYoutubeVideoPreviewUrl(),
                     title: video.name,
-                    overview: getVideoOverview(video: video)
+                    overview: getVideoOverview(video: video),
+                    onItemClick: { onItemClick(video) }
                 )
             }
         }
@@ -45,5 +47,8 @@ struct MovieClipsSegmentContentView: View {
 
 // MARK: Preview
 #Preview {
-    MovieClipsSegmentContentView(videos: PreviewDataProvider.instance.movie.videos ?? [])
+    MovieClipsSegmentContentView(
+        videos: PreviewDataProvider.instance.movie.videos ?? [],
+        onItemClick: { _ in }
+    )
 }

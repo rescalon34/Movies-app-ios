@@ -40,7 +40,7 @@
 		254CECEB2C18103F00706852 /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECEA2C18103F00706852 /* CircleIconView.swift */; };
 		254CECED2C1810F100706852 /* BackgroundBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CECEC2C1810F100706852 /* BackgroundBlurView.swift */; };
 		255C40002C1D605300FB6674 /* MovieDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C3FFF2C1D605300FB6674 /* MovieDetailsScreenView.swift */; };
-		255C40042C1E701A00FB6674 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40032C1E701A00FB6674 /* Binding.swift */; };
+		255C40042C1E701A00FB6674 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40032C1E701A00FB6674 /* Binding+Extensions.swift */; };
 		255C400E2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C400D2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift */; };
 		255C40112C1FBD8000FB6674 /* YouTubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */; };
 		255C40142C1FC2BA00FB6674 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C40132C1FC2BA00FB6674 /* WebView.swift */; };
@@ -131,7 +131,7 @@
 		254CECEA2C18103F00706852 /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		254CECEC2C1810F100706852 /* BackgroundBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBlurView.swift; sourceTree = "<group>"; };
 		255C3FFF2C1D605300FB6674 /* MovieDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsScreenView.swift; sourceTree = "<group>"; };
-		255C40032C1E701A00FB6674 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		255C40032C1E701A00FB6674 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		255C400D2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalButtonWithTextView.swift; sourceTree = "<group>"; };
 		255C40102C1FBD8000FB6674 /* YouTubePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerView.swift; sourceTree = "<group>"; };
 		255C40132C1FC2BA00FB6674 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */,
-				255C40032C1E701A00FB6674 /* Binding.swift */,
+				255C40032C1E701A00FB6674 /* Binding+Extensions.swift */,
 				255C40232C210A7700FB6674 /* String+Extensions.swift */,
 				25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */,
 			);
@@ -675,7 +675,7 @@
 				25EB56BC2C23D0E600DA06E9 /* DateUtils.swift in Sources */,
 				254CECCE2C140C5900706852 /* MovieItemView.swift in Sources */,
 				254CECCA2C12BF2A00706852 /* CategoryAppBarView.swift in Sources */,
-				255C40042C1E701A00FB6674 /* Binding.swift in Sources */,
+				255C40042C1E701A00FB6674 /* Binding+Extensions.swift in Sources */,
 				251064552C1A9B420079CFCE /* CircularGradientProfileView.swift in Sources */,
 				254CECBC2C1166A000706852 /* MainTabBarItems.swift in Sources */,
 				254CECD62C141A0300706852 /* GridMoviesByCategoryView.swift in Sources */,

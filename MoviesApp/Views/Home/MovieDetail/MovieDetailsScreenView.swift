@@ -129,7 +129,7 @@ struct MovieDetailsScreenView: View {
         }
     }
     
-    /// Movie Summary: releaseDate, runtime and genres.
+    // Movie Summary: releaseDate, runtime and genres.
     private var movieSummary: some View {
         TextWithDotSeparatorView(text: viewModel.getMovieSummary())
             .padding(.top, 4)
@@ -139,6 +139,7 @@ struct MovieDetailsScreenView: View {
             .foregroundColor(Color.customColors.secondaryTextColor)
     }
     
+    // Play Video Button
     private var playMovieButton: some View {
         Label("PLAY", systemImage: "play.fill")
             .frame(maxWidth: .infinity)
@@ -151,6 +152,7 @@ struct MovieDetailsScreenView: View {
             .padding(.horizontal)
             .padding(.top)
             .onTapGesture {
+                viewModel.setSelectedVideo()
                 isPlayerPresented.toggle()
             }
     }
@@ -210,7 +212,11 @@ struct MovieDetailsScreenView: View {
                 )
                 
             case MovieDetailSegmentOptions.Clip.option:
-                MovieClipsSegmentContentView(videos: movie.videos)
+                MovieClipsSegmentContentView(
+                    videos: movie.videos) { video in
+                        viewModel.setSelectedVideo(video: video)
+                        isPlayerPresented.toggle()
+                    }
             default:
                 Text("No content available yet")
             }
