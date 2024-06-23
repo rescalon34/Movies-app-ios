@@ -14,13 +14,6 @@ struct GridMoviesByCategoryView: View {
     let movies: [Movie]
     let onMovieClicked: (Movie) -> Void
     
-    // MARK: - LazyVGrid properties
-    private let flexible = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10)
-    ]
-    
     // MARK: - Body
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,23 +26,25 @@ struct GridMoviesByCategoryView: View {
     
     // MARK: - Views
     private var gridMoviesContent: some View {
-        LazyVGrid(columns: flexible, spacing: 10) {
-            ForEach(movies) { movie in
-                MovieItemView(imageUrl: movie.imageUrl)
-                    .onTapGesture {
-                        onMovieClicked(movie)
-                    }
-            }
-        }
+        LazyVGridMoviesView(
+            movies: movies,
+            movieItemSize: CGSize(width: 110, height: 160),
+            lazyVGridColumns: Int(Constants.THREE),
+            lazyVGridSpacing: (Constants.TEN, Constants.TEN),
+            onMovieClicked: onMovieClicked
+        )
     }
 }
 
+// MARK: - Preview
 #Preview {
     BaseScreenView {
-        GridMoviesByCategoryView(
-            category: "Horror",
-            movies: PreviewDataProvider.instance.movies,
-            onMovieClicked: { movie in }
-        )
+        ScrollView {
+            GridMoviesByCategoryView(
+                category: "Horror",
+                movies: PreviewDataProvider.instance.movies,
+                onMovieClicked: { movie in }
+            )
+        }
     }
 }

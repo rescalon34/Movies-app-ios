@@ -75,13 +75,14 @@ struct VideoPreviewItemView: View {
 
 // MARK: - Preview
 #Preview {
-    let imageUrl = "L4DrolmDxmw".getYoutubeVideoPreviewUrl()
+    let video = PreviewDataProvider.instance.movie.videos?.first
+    let imageUrl = video?.key.getYoutubeVideoPreviewUrl() ?? ""
     let overview = "Wednesday, June 19, 2024-Teaser-US-en"
     
     return VideoPreviewItemView(
         imageUrl: imageUrl,
         title: "Inside Out",
-        overview: overview) {
-            
-        }
+        overview: overview,
+        onItemClick: { }
+    )
 }

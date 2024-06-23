@@ -11,6 +11,7 @@ struct MovieItemView: View {
     
     // MARK: - Properties
     let imageUrl: String
+    var movieItemSize: CGSize = CGSize(width: 110, height: 160)
     
     // MARK: Body
     var body: some View {
@@ -24,14 +25,14 @@ struct MovieItemView: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(minWidth: 110, maxWidth: .infinity, minHeight: 160, maxHeight: 160)
+                    .frame(minWidth: movieItemSize.width, maxWidth: .infinity, minHeight: movieItemSize.height, maxHeight: movieItemSize.height)
                     .clipped()
                     .cornerRadius(8)
                 
             } placeholder: {
                 Rectangle()
                     .fill(Color.customColors.backgroundColor)
-                    .frame(minWidth: 110, maxWidth: .infinity, minHeight: 160, maxHeight: 160)
+                    .frame(minWidth: movieItemSize.width, maxWidth: .infinity, minHeight: movieItemSize.height, maxHeight: movieItemSize.height)
                     .clipped()
                     .cornerRadius(8)
             }

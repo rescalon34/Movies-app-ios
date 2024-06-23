@@ -204,7 +204,7 @@ struct MovieDetailsScreenView: View {
             // selected segmented content.
             switch selectedSegment {
             case MovieDetailSegmentOptions.Detail.option:
-                MovieDetailsTabViewContentView(
+                MovieDetailsSegmentContentView(
                     movie: movie,
                     durationTime: viewModel.getDurationTime(),
                     releaseDate: viewModel.getReleaseDate(),
@@ -218,7 +218,12 @@ struct MovieDetailsScreenView: View {
                         isPlayerPresented.toggle()
                     }
             default:
-                Text("No content available yet")
+                SuggestedMoviesSegmentContentView(
+                    movies: PreviewDataProvider.instance.movies,
+                    onMovieClicked: { movie in
+                        
+                    }
+                )
             }
         }
         .padding()

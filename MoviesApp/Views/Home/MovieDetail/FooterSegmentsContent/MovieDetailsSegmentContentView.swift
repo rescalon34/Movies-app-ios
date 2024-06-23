@@ -8,17 +8,20 @@
 import SwiftUI
 
 /// ContainerView showing the details screen after tapping on the "Details" Segmented controller.
-struct MovieDetailsTabViewContentView: View {
+struct MovieDetailsSegmentContentView: View {
     
+    // MARK: - Properties
     let movie: Movie
     let durationTime: String
     let releaseDate: String
     let genres: String
     
+    // MARK: - Body
     var body: some View {
         movieDetails(movie: movie)
     }
     
+    // MARK: - Views
     /// View containing all details content,
     private func movieDetails(movie: Movie) -> some View {
         VStack(alignment: .leading) {
@@ -46,8 +49,9 @@ struct MovieDetailsTabViewContentView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
-    MovieDetailsTabViewContentView(
+    MovieDetailsSegmentContentView(
         movie: PreviewDataProvider.instance.movie,
         durationTime: PreviewDataProvider.instance.movie.runtime?.formatRuntime() ?? "",
         releaseDate: PreviewDataProvider.instance.movie.releaseDate?.formatReleaseDate() ?? "",
