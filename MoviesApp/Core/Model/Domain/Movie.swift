@@ -10,7 +10,7 @@ import Foundation
 struct Movie: Identifiable {
     let id: Int
     let title: String
-    let imageUrl: String
+    let imageUrl: String?
     let releaseDate: String?
     let runtime: Int?
     let overview: String

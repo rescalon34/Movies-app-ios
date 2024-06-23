@@ -10,7 +10,7 @@ import Foundation
 struct MovieResponse: Identifiable, Codable {
     let id: Int
     let title: String
-    let imageUrl: String
+    let imageUrl: String?
     let overview: String
     
     enum CodingKeys: String, CodingKey {

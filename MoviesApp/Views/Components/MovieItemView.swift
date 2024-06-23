@@ -10,7 +10,7 @@ import SwiftUI
 struct MovieItemView: View {
     
     // MARK: - Properties
-    let imageUrl: String
+    let imageUrl: String?
     var movieItemSize: CGSize = CGSize(width: 110, height: 160)
     
     // MARK: Body
@@ -21,7 +21,7 @@ struct MovieItemView: View {
     // MARK: - Views
     var imageContainer : some View {
         VStack {
-            AsyncImage(url: URL(string: imageUrl.getImagePosterPath())) { image in
+            AsyncImage(url: URL(string: imageUrl?.getImagePosterPath() ?? "")) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -41,5 +41,5 @@ struct MovieItemView: View {
 }
 
 #Preview {
-    MovieItemView(imageUrl: PreviewDataProvider.instance.movie.imageUrl)
+    MovieItemView(imageUrl: PreviewDataProvider.instance.movie.imageUrl ?? "")
 }

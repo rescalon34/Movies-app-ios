@@ -108,7 +108,7 @@ struct MovieDetailsScreenView: View {
     @ViewBuilder
     private func movieDetailsHeader(movie: Movie) -> some View {
         loadAsyncImage(
-            imageUrl: movie.imageUrl.getImagePosterPath(ORIGINAL_POSTER_WIDTH),
+            imageUrl: movie.imageUrl?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ?? "",
             contentMode: .fill,
             width: .infinity,
             height: 380
@@ -219,9 +219,9 @@ struct MovieDetailsScreenView: View {
                     }
             default:
                 SuggestedMoviesSegmentContentView(
-                    movies: PreviewDataProvider.instance.movies,
+                    movies: viewModel.suggestedMovies,
                     onMovieClicked: { movie in
-                        
+                        viewModel.getMovieDetails(movieId: movie.id)
                     }
                 )
             }

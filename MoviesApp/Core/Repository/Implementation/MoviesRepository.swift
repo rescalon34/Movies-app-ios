@@ -26,4 +26,8 @@ class MoviesRepository: MoviesRepositoryProtocol {
     func getMovieDetails(movieId: Int) -> AnyPublisher<Result<MovieDetailResponse, Error>, Never> {
         networkManager.requestPublisher(target: MoviesAPI.getMovieDetails(movieId: movieId))
     }
+    
+    func getSuggestedMovies(movieId: Int) -> AnyPublisher<Result<SuggestedMoviesDataResponse, Error>, Never> {
+        networkManager.requestPublisher(target: MoviesAPI.getSuggestedMovies(movieId: movieId))
+    }
 }

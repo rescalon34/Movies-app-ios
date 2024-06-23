@@ -12,10 +12,12 @@ class MovieDetailsViewModel: ObservableObject {
     
     // MARK: Networking properties
     private var moviesRepository: MoviesRepositoryProtocol
-    private var cancellable = Set<AnyCancellable>()
+    private var movieDetailsCancellable = Set<AnyCancellable>()
+    private var suggestedMoviesCancellable = Set<AnyCancellable>()
     
     // MARK: - Published properties
     @Published var movie: Movie? = .default
+    @Published var suggestedMovies: [Movie] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String = ""
     @Published private var selectedVideo: Video?
@@ -35,14 +37,31 @@ class MovieDetailsViewModel: ObservableObject {
                 case .success(let movieDetails):
                     self?.movie = movieDetails.toDomain()
                     self?.isLoading = false
-                    print("Movie details: \(movieDetails)")
+                    
+                    // get suggested movies after the movie details request.
+                    self?.getSuggestedMovies(movieId: movieId)
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
-                    print("errror getting movie details: \(error.localizedDescription)")
                     self?.isLoading = false
                 }
             }
-            .store(in: &cancellable)
+            .store(in: &movieDetailsCancellable)
+    }
+    
+    func getSuggestedMovies(movieId: Int) {
+        isLoading = true
+        moviesRepository.getSuggestedMovies(movieId: movieId)
+            .sink { [weak self] (result: Result<SuggestedMoviesDataResponse, Error>) in
+                switch result {
+                case .success(let movies):
+                    self?.isLoading = false
+                    self?.suggestedMovies = movies.results?.map { $0.toDomain() } ?? []
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                }
+            }
+            .store(in: &suggestedMoviesCancellable)
     }
     
     // MARK: - Functions
