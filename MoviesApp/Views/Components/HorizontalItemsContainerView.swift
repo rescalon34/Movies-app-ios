@@ -25,7 +25,8 @@ struct HorizontalItemsContainerView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(items) { item in
-                        MovieItemView(imageUrl: item.imageUrl)
+                        MovieItemView(
+                            imageUrl: item.imageUrl?.getImagePosterPath() ?? "")
                             .onTapGesture {
                                 onMovieClicked(item)
                             }
