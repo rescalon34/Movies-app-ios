@@ -16,7 +16,7 @@ struct TextWithDotSeparatorView: View {
         
         var attributedTextWithDotSeparator: AttributedString {
             var attributedText = AttributedString(text)
-            let delimiterKey = "-"
+            let delimiterKey = Constants.ASTERISK
             
             let attributedDot: AttributedString = {
                 var unicodeDotText = AttributedString("  ●  ")
@@ -37,6 +37,6 @@ struct TextWithDotSeparatorView: View {
 }
 
 #Preview {
-    TextWithDotSeparatorView(text: "2024 - 1h 22m - Action, Adventure, Crime, Triller, Comedy")
+    TextWithDotSeparatorView(text: "2024 * 1h 22m * Action, Adventure, Crime, Triller, Comedy")
         .multilineTextAlignment(.center)
 }

@@ -18,6 +18,7 @@ struct SuggestedMoviesSegmentContentView: View {
         LazyVGridMoviesView(
             movies: movies,
             movieItemSize: CGSize(width: 110, height: 250),
+            imageResolution: W500_POSTER_WIDTH,
             lazyVGridColumns: Int(Constants.TWO),
             lazyVGridSpacing: (Constants.TEN, Constants.TEN),
             onMovieClicked: onMovieClicked

@@ -109,7 +109,7 @@ class MovieDetailsViewModel: ObservableObject {
     }
     
     func getMovieSummary() -> String {
-        return getReleaseDate() + "-" + getDurationTime() + "-" + getMovieGenres()
+        return getReleaseDate() + Constants.ASTERISK + getDurationTime() + Constants.ASTERISK + getMovieGenres()
     }
     
     func getAllSegmentOptions() -> [String] {

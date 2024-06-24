@@ -19,7 +19,7 @@ struct MovieDetailsScreenView: View {
     @State private var contentOffset: CGFloat = 0
     @State private var showNavigationTitle = false
     @State private var isPlayerPresented = false
-    @State private var selectedSegment: String = MovieDetailSegmentOptions.Detail.option
+    @State private var selectedSegment: String = MovieDetailSegmentOptions.Suggested.option
     
     // MARK: - Body
     var body: some View {
@@ -242,5 +242,5 @@ struct MovieDetailsScreenView: View {
 
 // MARK: - Preview
 #Preview {
-    MovieDetailsScreenView(movieId: 1022789)
+    MovieDetailsScreenView(movieId: PreviewDataProvider.instance.movie.id)
 }

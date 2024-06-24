@@ -40,7 +40,9 @@ struct MovieClipsSegmentContentView: View {
         let countryCode = video.countryCode
         let language = video.language
         
-        let overview = publishedAt + DASH + type + DASH + countryCode + DASH + language
+        let delimiterKey = Constants.ASTERISK
+        
+        let overview = publishedAt + delimiterKey + type + delimiterKey + language + DASH + countryCode
         return overview
     }
 }

@@ -21,7 +21,7 @@ struct MovieItemView: View {
     // MARK: - Views
     var imageContainer : some View {
         VStack {
-            AsyncImage(url: URL(string: imageUrl?.getImagePosterPath() ?? "")) { image in
+            AsyncImage(url: URL(string: imageUrl ?? "")) { image in
                 image
                     .resizable()
                     .scaledToFill()

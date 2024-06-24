@@ -19,6 +19,7 @@ struct LazyVGridMoviesView: View {
     // MARK: - Properties
     let movies: [Movie]
     let movieItemSize: CGSize
+    var imageResolution: String = DEFAULT_POSTER_WIDTH
     let lazyVGridColumns: Int
     let lazyVGridSpacing: LazyVGridSpacing
     let onMovieClicked: (Movie) -> Void
@@ -36,7 +37,7 @@ struct LazyVGridMoviesView: View {
         ) {
             ForEach(movies) { movie in
                 MovieItemView(
-                    imageUrl: movie.imageUrl,
+                    imageUrl: movie.imageUrl?.getImagePosterPath(imageResolution) ?? "",
                     movieItemSize: movieItemSize
                 ).onTapGesture {
                     onMovieClicked(movie)

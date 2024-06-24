@@ -10,6 +10,7 @@ import UIKit
 
 /// Global constants file to avoid hardcoding values through the project.
 struct Constants {
+    static let ASTERISK = "*"
     static let MIN_APPBAR_OFFSET: CGFloat = -30
     static let MIN_APP_BAR_DETAILS_OFFSET: CGFloat = -365
     static let SCROLLVIEW_NAME = "scrollView"

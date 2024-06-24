@@ -45,13 +45,13 @@ struct VideoPreviewItemView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(title)
                         .font(.subheadline)
-                        .lineLimit(1)
+                        .lineLimit(Int(Constants.TWO))
                         .bold()
                     
                     TextWithDotSeparatorView(text: overview)
                         .foregroundStyle(Color.customColors.primaryClearTextColor)
                         .font(.caption2)
-                        .lineLimit(2)
+                        .lineLimit(Int(Constants.TWO))
                         .padding(.trailing)
                         .multilineTextAlignment(.leading)
                 }
@@ -77,7 +77,7 @@ struct VideoPreviewItemView: View {
 #Preview {
     let video = PreviewDataProvider.instance.movie.videos?.first
     let imageUrl = video?.key.getYoutubeVideoPreviewUrl() ?? ""
-    let overview = "Wednesday, June 19, 2024-Teaser-US-en"
+    let overview = "Wednesday, June 19, 2024*Teaser*en-US"
     
     return VideoPreviewItemView(
         imageUrl: imageUrl,
