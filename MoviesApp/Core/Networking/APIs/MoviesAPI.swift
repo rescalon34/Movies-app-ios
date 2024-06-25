@@ -14,6 +14,7 @@ import Moya
 ///
 enum MoviesAPI: TargetType {
     // Endpoints
+    case getMovieGenres
     case getMovies(type: String)
     case getMovieDetails(movieId: Int)
     case getSuggestedMovies(movieId: Int)
@@ -30,6 +31,8 @@ extension MoviesAPI {
     // path appended after the base URL, some endpoints contain dynamic values.
     var path: String {
         switch self {
+        case .getMovieGenres:
+            return "genre/movie/list"
         case .getMovies(type: let type):
             return "movie/\(type)"
         case .getMovieDetails(movieId: let movieId):
@@ -42,7 +45,8 @@ extension MoviesAPI {
     // group all api calls by its HTTP method (get, put, post, delete, etc).
     var method: Moya.Method {
         switch self {
-        case .getMovies,
+        case .getMovieGenres,
+                .getMovies,
                 .getMovieDetails,
                 .getSuggestedMovies:
             return .get
@@ -52,7 +56,9 @@ extension MoviesAPI {
     // Add endpoints required parameters to fetch the data from the API.
     var task: Moya.Task {
         switch self {
-        case .getMovies:
+        case .getMovieGenres,
+                .getMovies,
+                .getSuggestedMovies:
             return .requestParameters(
                 parameters: [API_KEY: API_KEY_VALUE],
                 encoding: URLEncoding.queryString
@@ -64,11 +70,6 @@ extension MoviesAPI {
                     "append_to_response": "videos",
                     "language": "en-US"
                 ],
-                encoding: URLEncoding.queryString
-            )
-        case .getSuggestedMovies:
-            return .requestParameters(
-                parameters: [API_KEY: API_KEY_VALUE],
                 encoding: URLEncoding.queryString
             )
         }

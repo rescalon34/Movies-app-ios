@@ -13,7 +13,6 @@ struct HomeScreenView: View {
     @StateObject var viewModel: HomeViewModel = .init()
     
     // MARK: - Properties
-    @State var selectedCategory: String = "Comedy"
     @State var selectedMovie: Movie? = nil
     @State private var showCategoryToolbarItem = false
     @State private var contentOffset: CGFloat = 0
@@ -33,14 +32,17 @@ struct HomeScreenView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar { homeToolbarContent }
                 .fullScreenCover(isPresented: $isPresented) {
-                    MovieFilterFullScreenView(selectedCategory: $selectedCategory)
+                    MovieFilterFullScreenView(
+                        genres: viewModel.genres,
+                        selectedGenre: $viewModel.selectedGenre
+                    )
                 }
                 .navigationDestination(isPresented: $selectedMovie.toBinding()) {
                     MovieDetailsScreenView(movieId: selectedMovie?.id)
                 }
             }
             .onAppear {
-                viewModel.getMovies(type: "popular")
+                viewModel.getMovieGenres()
             }
         }
     }
@@ -49,9 +51,9 @@ struct HomeScreenView: View {
     var homeAppBar : some View {
         CategoryAppBarView(
             toolbarTitle: "Movies",
-            selectedCategory: selectedCategory,
+            selectedCategory: viewModel.selectedGenre.name,
             onCategoryClick: {
-                print("selected category: \(selectedCategory)")
+                print("selected category: \(viewModel.selectedGenre)")
                 isPresented.toggle()
             }
         )
@@ -61,9 +63,9 @@ struct HomeScreenView: View {
     var homeToolbarContent: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             CategoryCapsuleView(
-                selectedCategory: selectedCategory,
+                selectedCategory: viewModel.selectedGenre.name,
                 onCategoryClick: {
-                    print("selected category: \(selectedCategory)")
+                    print("selected category: \(viewModel.selectedGenre)")
                     isPresented.toggle()
                 }
             )
@@ -80,14 +82,14 @@ struct HomeScreenView: View {
     
     @ViewBuilder
     var homeContent: some View {
-        if selectedCategory == "Featured" {
+        if viewModel.selectedGenre.name == LocalMovieGenres.Featured.rawValue {
             FeaturedMoviesView(
                 movies: viewModel.movies,
                 onMovieClicked: onMovieClicked
             )
         } else {
             GridMoviesByCategoryView(
-                category: selectedCategory,
+                category: viewModel.selectedGenre.name,
                 movies: viewModel.movies,
                 onMovieClicked: onMovieClicked
             )
@@ -114,7 +116,6 @@ struct HomeScreenView: View {
 // MARK: - Preview
 #Preview {
     HomeScreenView(
-        viewModel: HomeViewModel(),
-        selectedCategory: "Comedy"
+        viewModel: HomeViewModel()
     )
 }

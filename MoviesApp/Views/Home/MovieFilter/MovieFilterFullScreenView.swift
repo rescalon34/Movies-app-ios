@@ -11,9 +11,9 @@ struct MovieFilterFullScreenView: View {
     
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel: MovieFilterViewModel = MovieFilterViewModel()
     @State var rotationDegrees: CGFloat = Constants.FORTY_FIVE_DEGREES
-    @Binding var selectedCategory: String
+    let genres: [Genre]
+    @Binding var selectedGenre: Genre
     
     // MARK: - Body
     var body: some View {
@@ -37,10 +37,14 @@ struct MovieFilterFullScreenView: View {
             ScrollViewReader { proxy in
                 VStack(spacing: 40) {
                     extraScrollSpacer()
-                    ForEach(viewModel.movieFilters, id: \.self) { category in
-                        categoryItem(category: category)
+                    ForEach(genres) { genre in
+                        categoryItem(genre: genre.name)
                             .onAppear {
                                 scrollToSelectedCategory(proxy: proxy)
+                            }
+                            .onTapGesture {
+                                selectedGenre = genre
+                                onDismiss()
                             }
                     }
                     extraScrollSpacer()
@@ -52,19 +56,15 @@ struct MovieFilterFullScreenView: View {
     
     // MARK: View Functions
     @ViewBuilder
-    private func categoryItem(category: String) -> some View {
-        let isSelectedCategory = selectedCategory == category
+    private func categoryItem(genre: String) -> some View {
+        let isSelectedGenre = selectedGenre.name == genre
         
-        Text(category)
-            .id(category)
+        Text(genre)
+            .id(genre)
             .frame(maxWidth: .infinity)
             .foregroundColor(.white)
-            .font(isSelectedCategory ? .headline : .subheadline)
-            .fontWeight(isSelectedCategory ? .bold : .light)
-            .onTapGesture {
-                selectedCategory = category
-                onDismiss()
-            }
+            .font(isSelectedGenre ? .headline : .subheadline)
+            .fontWeight(isSelectedGenre ? .bold : .light)
     }
     
     /// This extra spacer gives a nice scrolling effect at the top and bottom
@@ -98,7 +98,7 @@ struct MovieFilterFullScreenView: View {
     
     private func scrollToSelectedCategory(proxy: ScrollViewProxy) {
         withAnimation(.easeInOut) {
-            proxy.scrollTo(selectedCategory, anchor: .center)
+            proxy.scrollTo(selectedGenre.name, anchor: .center)
         }
     }
 }
@@ -107,7 +107,8 @@ struct MovieFilterFullScreenView: View {
 #Preview {
     BaseScreenView {
         MovieFilterFullScreenView(
-            selectedCategory: .constant("Comedy")
+            genres: PreviewDataProvider.instance.genres,
+            selectedGenre: .constant(PreviewDataProvider.instance.genres[0])
         )
     }
 }
