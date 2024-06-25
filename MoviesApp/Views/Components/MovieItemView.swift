@@ -31,7 +31,7 @@ struct MovieItemView: View {
                 
             } placeholder: {
                 Rectangle()
-                    .fill(Color.customColors.backgroundColor)
+                    .fill(Color.customColors.categoryCapsuleColor)
                     .frame(minWidth: movieItemSize.width, maxWidth: .infinity, minHeight: movieItemSize.height, maxHeight: movieItemSize.height)
                     .clipped()
                     .cornerRadius(8)

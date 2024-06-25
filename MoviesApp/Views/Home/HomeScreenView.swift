@@ -22,11 +22,8 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationStack {
             BaseScreenView {
-                ObservableScrollView(contentOffset: $contentOffset) {
-                    VStack {
-                        homeAppBar
-                        homeContent
-                    }
+                VStack {
+                    mainContent
                 }
                 .onChange(of: viewModel.selectedGenre) { _ in viewModel.getMovies() }
                 .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
@@ -41,14 +38,29 @@ struct HomeScreenView: View {
                 .navigationDestination(isPresented: $selectedMovie.toBinding()) {
                     MovieDetailsScreenView(movieId: selectedMovie?.id)
                 }
-            }
-            .onAppear {
-                viewModel.getMovieGenres()
+                .onAppear {
+                    viewModel.getMovieGenres()
+                }
             }
         }
     }
     
     // MARK: - Views
+    
+    @ViewBuilder
+    var mainContent: some View {
+        if viewModel.isLoading {
+            ProgressView()
+        } else {
+            ObservableScrollView(contentOffset: $contentOffset) {
+                VStack {
+                    homeAppBar
+                    homeContent
+                }
+            }
+        }
+    }
+    
     var homeAppBar : some View {
         CategoryAppBarView(
             toolbarTitle: "Movies",

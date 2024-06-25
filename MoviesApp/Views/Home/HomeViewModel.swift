@@ -16,6 +16,7 @@ class HomeViewModel : ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     // MARK: - Published properties
+    @Published var isLoading: Bool = false
     @Published var movies: [Movie] = []
     @Published var genres: [Genre] = []
     @Published var selectedGenre: Genre = .default
@@ -27,6 +28,7 @@ class HomeViewModel : ObservableObject {
     
     // MARK: - Endpoint Functions
     func getMovieGenres() {
+        isLoading = true
         moviesRepository.getMovieGenres()
             .sink { [weak self] (result: Result<GenresDataResponse, Error>) in
                 switch result {
@@ -35,6 +37,7 @@ class HomeViewModel : ObservableObject {
                     self?.setupDefaultMovieGenre()
                     self?.getMovies()
                 case .failure(let error):
+                    self?.isLoading = false
                     print("error getting genres: \(error)")
                 }
             }
@@ -56,8 +59,10 @@ class HomeViewModel : ObservableObject {
             .sink { [weak self] (result: Result<MovieDataResponse, Error>) in
                 switch result {
                 case .success(let movieData):
+                    self?.isLoading = false
                     self?.movies = movieData.results.map { $0.toDomain() }
                 case .failure(let error):
+                    self?.isLoading = false
                     print("error: \(error)")
                 }
             }
