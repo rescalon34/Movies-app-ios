@@ -28,6 +28,7 @@ struct HomeScreenView: View {
                         homeContent
                     }
                 }
+                .onChange(of: viewModel.selectedGenre) { _ in viewModel.getMovies() }
                 .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar { homeToolbarContent }
@@ -53,7 +54,6 @@ struct HomeScreenView: View {
             toolbarTitle: "Movies",
             selectedCategory: viewModel.selectedGenre.name,
             onCategoryClick: {
-                print("selected category: \(viewModel.selectedGenre)")
                 isPresented.toggle()
             }
         )
@@ -65,7 +65,6 @@ struct HomeScreenView: View {
             CategoryCapsuleView(
                 selectedCategory: viewModel.selectedGenre.name,
                 onCategoryClick: {
-                    print("selected category: \(viewModel.selectedGenre)")
                     isPresented.toggle()
                 }
             )

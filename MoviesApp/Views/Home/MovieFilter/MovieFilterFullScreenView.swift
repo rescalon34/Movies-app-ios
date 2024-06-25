@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+/// This view displays a list of all movie genres, they are passed from the previous screen to avoid making the request
+/// in this screen.
+
+/// Note:
+///
+/// We could have used a `closure()` to update the selected category from the inner view
+/// until it reaches the parent view and then execute the desired logic.
+///
+/// However, to use a different approach, `@Binding` + onChange() were used to handle the same result.
+/// the parent view will observe any changes from the `selectedGenres` Binding variable using the onChange(of: ) callback once it receives a different selected genre.
 struct MovieFilterFullScreenView: View {
     
     // MARK: - Properties
@@ -97,8 +107,10 @@ struct MovieFilterFullScreenView: View {
     }
     
     private func scrollToSelectedCategory(proxy: ScrollViewProxy) {
-        withAnimation(.easeInOut) {
-            proxy.scrollTo(selectedGenre.name, anchor: .center)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut) {
+                proxy.scrollTo(selectedGenre.name, anchor: .center)
+            }
         }
     }
 }

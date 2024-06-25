@@ -43,12 +43,9 @@ class HomeViewModel : ObservableObject {
     
     // Decides which movie data to fetch based on the selected category.
     func getMovies() {
-        print("TELLSELECTED: \(selectedGenre)")
         if selectedGenre.name == LocalMovieGenres.Featured.rawValue {
-            print("TELLSELECTED: INSIDE IF")
             getFeaturedMovies(type: "popular")
         } else {
-            print("TELLSELECTED: INSIDE ELSE")
             getMoviesByGenre()
         }
     }
@@ -68,7 +65,8 @@ class HomeViewModel : ObservableObject {
     }
     
     func getMoviesByGenre() {
-        print("Get all movies by genres...")
+        // TODO, get all movies from the selected genre.
+        print("Get all movies by this genre: \(selectedGenre)")
     }
     
     // MARK: - View functions
