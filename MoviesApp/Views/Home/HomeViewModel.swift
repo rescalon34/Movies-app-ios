@@ -12,7 +12,6 @@ class HomeViewModel : ObservableObject {
     
     // MARK: Networking properties
     private var moviesRepository: MoviesRepositoryProtocol
-    private var genresCancellable = Set<AnyCancellable>()
     private var cancellable = Set<AnyCancellable>()
     
     // MARK: - Published properties
@@ -24,7 +23,9 @@ class HomeViewModel : ObservableObject {
     // MARK: - Initializer
     init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
         self.moviesRepository = moviesRepository
+        setupBindings()
     }
+    
     
     // MARK: - Endpoint Functions
     func getMovieGenres() {
@@ -41,7 +42,7 @@ class HomeViewModel : ObservableObject {
                     print("error getting genres: \(error)")
                 }
             }
-            .store(in: &genresCancellable)
+            .store(in: &cancellable)
     }
     
     // Decides which movie data to fetch based on the selected category.
@@ -78,5 +79,20 @@ class HomeViewModel : ObservableObject {
     /// Append the "Default Featured Genre" to the first position of the genre list.
     func setupDefaultMovieGenre() {
         genres.insert(Genre.default, at: 0)
+    }
+    
+    private func setupBindings() {
+        onSelectedGenreChange()
+    }
+    
+    func onSelectedGenreChange() {
+        $selectedGenre
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newGenre in
+                print("selectedGenre, genre: \(newGenre)")
+                self?.getMovies()
+            }
+            .store(in: &cancellable)
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct YouTubePlayerView: View {
     
     // MARK: - Properties
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismissView
     let title: String
     let videoKey: String?
     
@@ -32,7 +32,7 @@ struct YouTubePlayerView: View {
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button("Done") {
-                presentationMode.wrappedValue.dismiss()
+                dismissView()
             }
             .accentColor(.blue)
         }

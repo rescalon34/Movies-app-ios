@@ -21,11 +21,14 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String = ""
     @Published private var selectedVideo: Video?
+    @Published var selectedSegment: String = ""
+    @Published var isPlayerPresented = false
     
     // MARK: - Initializer
     init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
         self.moviesRepository = moviesRepository
         self.movie = movie
+        self.selectedSegment = MovieDetailSegmentOptions.suggested.rawValue
     }
     
     // MARK: API call functions
@@ -113,6 +116,6 @@ class MovieDetailsViewModel: ObservableObject {
     }
     
     func getAllSegmentOptions() -> [String] {
-        return MovieDetailSegmentOptions.allCases.map { $0.option }
+        return MovieDetailSegmentOptions.allCases.map { $0.rawValue }
     }
 }

@@ -25,7 +25,6 @@ struct HomeScreenView: View {
                 VStack {
                     mainContent
                 }
-                .onChange(of: viewModel.selectedGenre) { _ in viewModel.getMovies() }
                 .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar { homeToolbarContent }

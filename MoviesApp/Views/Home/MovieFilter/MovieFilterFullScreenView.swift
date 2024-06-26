@@ -20,7 +20,7 @@ import SwiftUI
 struct MovieFilterFullScreenView: View {
     
     // MARK: - Properties
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismissView
     @State var rotationDegrees: CGFloat = Constants.FORTY_FIVE_DEGREES
     let genres: [Genre]
     @Binding var selectedGenre: Genre
@@ -95,7 +95,7 @@ struct MovieFilterFullScreenView: View {
     private func onDismiss() {
         animateXMarkIcon(degrees: Constants.ZERO_DEGREES)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            presentationMode.wrappedValue.dismiss()
+            dismissView()
         }
     }
     
