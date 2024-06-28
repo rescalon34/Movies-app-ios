@@ -18,8 +18,6 @@ struct MovieDetailsScreenView: View {
     // MARK: - State properties
     @State private var contentOffset: CGFloat = 0
     @State private var showNavigationTitle = false
-    @State private var isPlayerPresented = false
-    @State private var selectedSegment: String = MovieDetailSegmentOptions.Suggested.option
     
     // MARK: - Body
     var body: some View {
@@ -33,7 +31,7 @@ struct MovieDetailsScreenView: View {
         .showToolbarBackground(isVisible: showNavigationTitle)
         .toolbar { movieDetailsToolbarContent }
         .onChange(of: contentOffset, perform: onMinHeaderAppBarOffsetReached)
-        .sheet(isPresented: $isPlayerPresented) {
+        .sheet(isPresented: $viewModel.isPlayerPresented) {
             YouTubePlayerView(
                 title: viewModel.getMovieTitle(),
                 videoKey: viewModel.getOfficialTrailerVideoKey()
@@ -153,7 +151,7 @@ struct MovieDetailsScreenView: View {
             .padding(.top)
             .onTapGesture {
                 viewModel.setSelectedVideo()
-                isPlayerPresented.toggle()
+                viewModel.isPlayerPresented.toggle()
             }
     }
     
@@ -186,7 +184,7 @@ struct MovieDetailsScreenView: View {
     private func segmentedDetailsFooterContent(movie: Movie) -> some View {
         VStack {
             // Segmented Picker content
-            Picker("", selection: $selectedSegment) {
+            Picker("", selection: $viewModel.selectedSegment) {
                 ForEach(viewModel.getAllSegmentOptions(), id: \.self) { segmentedOption in
                     Text(segmentedOption.uppercased())
                         .tag(segmentedOption)
@@ -202,8 +200,8 @@ struct MovieDetailsScreenView: View {
             
             
             // selected segmented content.
-            switch selectedSegment {
-            case MovieDetailSegmentOptions.Detail.option:
+            switch viewModel.selectedSegment {
+            case MovieDetailSegmentOptions.detail.rawValue:
                 MovieDetailsSegmentContentView(
                     movie: movie,
                     durationTime: viewModel.getDurationTime(),
@@ -211,11 +209,11 @@ struct MovieDetailsScreenView: View {
                     genres: viewModel.getMovieGenres()
                 )
                 
-            case MovieDetailSegmentOptions.Clip.option:
+            case MovieDetailSegmentOptions.clip.rawValue:
                 MovieClipsSegmentContentView(
                     videos: movie.videos) { video in
                         viewModel.setSelectedVideo(video: video)
-                        isPlayerPresented.toggle()
+                        viewModel.isPlayerPresented.toggle()
                     }
             default:
                 SuggestedMoviesSegmentContentView(

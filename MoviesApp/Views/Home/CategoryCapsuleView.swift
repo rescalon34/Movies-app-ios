@@ -17,16 +17,9 @@ struct CategoryCapsuleView: View {
     
     // MARK: - Properties
     
-    /// Note:
-    /// - This documentation explains the rationale behind using a click callback.
-    ///
-    /// We could have used a `@Binding` variable to update the selected category from the inner view
-    /// until it reaches the parent view hosting the `@State` variable.
-    ///
-    /// However, to demonstrate a different approach, we decided to use a click callback. This way,
-    /// the parent view will update the `@State` selectedCategory once it receives the `onCategoryClick` callback.
-    
-    /// - `@Binding var selectedCategory: String`
+    /// - Parameters:
+    ///   - selectedCategory: A read-only string passed from the parent with the selected Category from the movie filters screen.
+    ///   - onCategoryClick: Closure triggered after tapping on the genre item, so the parent view can execute the desired logic.
     let selectedCategory: String
     let onCategoryClick: () -> ()
     
