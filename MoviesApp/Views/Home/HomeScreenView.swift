@@ -37,9 +37,6 @@ struct HomeScreenView: View {
                 .navigationDestination(isPresented: $selectedMovie.toBinding()) {
                     MovieDetailsScreenView(movieId: selectedMovie?.id)
                 }
-                .onAppear {
-                    viewModel.getMovieGenres()
-                }
             }
         }
     }

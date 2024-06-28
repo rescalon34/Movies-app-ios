@@ -16,6 +16,7 @@ enum MoviesAPI: TargetType {
     // Endpoints
     case getMovieGenres
     case getMovies(type: String)
+    case getMoviesByGenre(genreId: Int)
     case getMovieDetails(movieId: Int)
     case getSuggestedMovies(movieId: Int)
 }
@@ -35,6 +36,8 @@ extension MoviesAPI {
             return "genre/movie/list"
         case .getMovies(type: let type):
             return "movie/\(type)"
+        case .getMoviesByGenre:
+            return "discover/movie"
         case .getMovieDetails(movieId: let movieId):
             return "movie/\(movieId)"
         case .getSuggestedMovies(movieId: let movieId):
@@ -47,6 +50,7 @@ extension MoviesAPI {
         switch self {
         case .getMovieGenres,
                 .getMovies,
+                .getMoviesByGenre,
                 .getMovieDetails,
                 .getSuggestedMovies:
             return .get
@@ -61,6 +65,14 @@ extension MoviesAPI {
                 .getSuggestedMovies:
             return .requestParameters(
                 parameters: [API_KEY: API_KEY_VALUE],
+                encoding: URLEncoding.queryString
+            )
+        case .getMoviesByGenre(genreId: let genreId):
+            return .requestParameters(
+                parameters: [
+                    API_KEY: API_KEY_VALUE,
+                    "with_genres": genreId
+                ],
                 encoding: URLEncoding.queryString
             )
         case .getMovieDetails:

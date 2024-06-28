@@ -14,6 +14,8 @@ protocol MoviesRepositoryProtocol {
     
     func getMovies(type: String) -> AnyPublisher<Result<MovieDataResponse, Error>, Never>
     
+    func getMoviesByGenre(genreId: Int) -> AnyPublisher<Result<MovieDataResponse, Error>, Never>
+    
     func getMovieDetails(movieId: Int) -> AnyPublisher<Result<MovieDetailResponse, Error>, Never>
     
     func getSuggestedMovies(movieId: Int) -> AnyPublisher<Result<SuggestedMoviesDataResponse, Error>, Never>

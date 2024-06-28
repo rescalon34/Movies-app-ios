@@ -30,6 +30,10 @@ class MoviesRepository: MoviesRepositoryProtocol {
         networkManager.requestPublisher(target: MoviesAPI.getMovies(type: type))
     }
     
+    func getMoviesByGenre(genreId: Int) -> AnyPublisher<Result<MovieDataResponse, Error>, Never> {
+        networkManager.requestPublisher(target: MoviesAPI.getMoviesByGenre(genreId: genreId))
+    }
+    
     func getMovieDetails(movieId: Int) -> AnyPublisher<Result<MovieDetailResponse, Error>, Never> {
         networkManager.requestPublisher(target: MoviesAPI.getMovieDetails(movieId: movieId))
     }
