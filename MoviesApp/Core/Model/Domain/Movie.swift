@@ -16,6 +16,7 @@ struct Movie: Identifiable {
     let overview: String
     let genres: [Genre]?
     let videos: [Video]?
+    let section: String?
     
     static var `default`: Self = .init(
         id: 0,
@@ -25,6 +26,7 @@ struct Movie: Identifiable {
         runtime: 0,
         overview: "",
         genres: [],
-        videos: []
+        videos: [],
+        section: nil
     )
 }

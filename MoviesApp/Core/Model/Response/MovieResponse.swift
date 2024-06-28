@@ -22,7 +22,7 @@ struct MovieResponse: Identifiable, Codable {
 }
 
 extension MovieResponse {
-    func toDomain() -> Movie {
+    func toDomain(section: String? = nil) -> Movie {
         Movie(
             id: self.id,
             title: self.title,
@@ -31,7 +31,8 @@ extension MovieResponse {
             runtime: nil,
             overview: self.overview,
             genres: nil,
-            videos: nil
+            videos: nil,
+            section: section
         )
     }
 }

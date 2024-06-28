@@ -41,7 +41,8 @@ extension MovieDetailResponse {
             genres: self.genres.map { $0.toDomain() },
             videos: self.videos.results.isEmpty ? nil : self.videos.results.map { video in
                 video.toDomain()
-            }
+            },
+            section: nil
         )
     }
 }

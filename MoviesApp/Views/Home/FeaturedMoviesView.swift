@@ -26,11 +26,10 @@ struct FeaturedMoviesView: View {
     
     // MARK: - Views
     var featuredMoviesContent: some View {
-        // TODO, should be iterated by category.
-        ForEach(0..<6) { item in
+        ForEach(FeaturedMoviesSections.allCases, id: \.self) { section in
             HorizontalItemsContainerView(
-                title: "Recently Added",
-                items: movies,
+                title: section.displayName,
+                items: movies.filter { $0.section == section.rawValue },
                 onMovieClicked: onMovieClicked
             )
         }
@@ -38,8 +37,13 @@ struct FeaturedMoviesView: View {
 }
 
 #Preview {
-    FeaturedMoviesView(
-        movies: PreviewDataProvider.instance.movies,
+    var movies:[Movie] = []
+    for section in FeaturedMoviesSections.allCases {
+        movies.append(contentsOf: PreviewDataProvider.instance.movies.filter { $0.section == section.rawValue })
+    }
+    
+    return FeaturedMoviesView(
+        movies: movies,
         onMovieClicked: { movie in }
     )
 }

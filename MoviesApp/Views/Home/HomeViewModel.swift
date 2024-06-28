@@ -16,6 +16,7 @@ class HomeViewModel : ObservableObject {
     
     // MARK: - Published properties
     @Published var isLoading: Bool = false
+    @Published var featuredMovies: [Movie] = []
     @Published var movies: [Movie] = []
     @Published var genres: [Genre] = []
     @Published var selectedGenre: Genre = .default
@@ -51,20 +52,37 @@ class HomeViewModel : ObservableObject {
     func getMovies() {
         isLoading = true
         if selectedGenre.name == LocalMovieGenres.Featured.rawValue {
-            getFeaturedMovies(type: "popular")
+            // for efficiently making parallel API Requests.
+            let dispatchGroup = DispatchGroup()
+            
+            // make multiple API request, based on each featured section.
+            for section in FeaturedMoviesSections.allCases {
+                dispatchGroup.enter()
+                getFeaturedMovies(type: section.rawValue) {
+                    // this will be executed after the network request finishes.
+                    dispatchGroup.leave()
+                }
+            }
+            
+            // Executed when all requests have completed.
+            dispatchGroup.notify(queue: .main) {
+                self.isLoading = false
+            }
+            
         } else {
             getMoviesByGenre()
         }
     }
     
-    // TODO, get this data only if the selected genre is "Featured"
-    func getFeaturedMovies(type: String) {
+    // Once the request has been loaded, the new list of movies will be appended to the main featuredMovies list,
+    // and each movie will belong to a `section` to display the content by this section on the horizontal view of items.
+    func getFeaturedMovies(type: String, completion: @escaping () -> Void) {
         moviesRepository.getMovies(type: type)
             .sink { [weak self] (result: Result<MovieDataResponse, Error>) in
+                defer { completion() } // defer {} ensures that completion gets called
                 switch result {
                 case .success(let movieData):
-                    self?.isLoading = false
-                    self?.movies = movieData.results.map { $0.toDomain() }
+                    self?.featuredMovies.append(contentsOf: movieData.results.map { $0.toDomain(section: type) })
                 case .failure(let error):
                     self?.isLoading = false
                     print("error: \(error)")
