@@ -24,6 +24,7 @@ struct HorizontalItemsContainerView: View {
                 .font(.subheadline)
                 .foregroundStyle(Color.customColors.secondaryTextColor)
                 .bold()
+                .padding(.horizontal)
             
             // Show the right movie item view scroll content depending on the display name.
             if title == FeaturedMoviesSections.nowPlaying.displayName {
@@ -50,6 +51,7 @@ struct HorizontalItemsContainerView: View {
                     }
                 }
             }
+            .padding(.horizontal)
         }
     }
     
@@ -65,6 +67,7 @@ struct HorizontalItemsContainerView: View {
                     }
                 }
             }
+            .padding(.horizontal)
         }
     }
     
@@ -88,7 +91,6 @@ struct HorizontalItemsContainerView: View {
                     items: PreviewDataProvider.instance.movies
                 ) { _ in }
             }
-            .padding()
         }
     }
 }
