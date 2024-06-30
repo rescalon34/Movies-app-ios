@@ -25,26 +25,70 @@ struct HorizontalItemsContainerView: View {
                 .foregroundStyle(Color.customColors.secondaryTextColor)
                 .bold()
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(items) { item in
-                        MovieItemView(
-                            imageUrl: item.imageUrl?.getImagePosterPath() ?? ""
-                        )
-                        .onTapGesture {
-                            onMovieClicked(item)
-                        }
+            // Show the right movie item view scroll content depending on the display name.
+            if title == FeaturedMoviesSections.nowPlaying.displayName {
+                nowPlayingHorizontalContent
+            } else {
+                otherSectionsHorizontalContent
+            }
+        }
+    }
+    
+    // MARK: - View functions
+    private var nowPlayingHorizontalContent: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 10) {
+                ForEach(items) { item in
+                    NowPlayingMovieItemView(
+                        title: item.title,
+                        imageUrl: item.imageUrl ?? "",
+                        releaseDate: getNowPlayingtMovieOverview(item)
+                    )
+                    .frame(width: 230)
+                    .onTapGesture {
+                        onMovieClicked(item)
                     }
                 }
             }
         }
     }
+    
+    private var otherSectionsHorizontalContent: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 10) {
+                ForEach(items) { item in
+                    MovieItemView(
+                        imageUrl: item.imageUrl?.getImagePosterPath() ?? ""
+                    )
+                    .onTapGesture {
+                        onMovieClicked(item)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func getNowPlayingtMovieOverview(_ movie: Movie) -> String {
+        let date = movie.releaseDate?.formatReleaseYearAndMonth() ?? ""        
+        return "Released on: \(date)"
+    }
 }
 
+// MARK: - Preview
 #Preview {
-    HorizontalItemsContainerView(
-        title: "Featured",
-        items: PreviewDataProvider.instance.movies) { Movie in
-            
+    BaseScreenView {
+        ScrollView {
+            VStack(spacing: 16) {
+                HorizontalItemsContainerView(
+                    title: "Now Playing",
+                    items: PreviewDataProvider.instance.movies
+                ) { _ in }
+                HorizontalItemsContainerView(
+                    title: "Top Rated",
+                    items: PreviewDataProvider.instance.movies
+                ) { _ in }
+            }
+            .padding()
         }
+    }
 }

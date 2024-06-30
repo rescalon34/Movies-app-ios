@@ -67,7 +67,8 @@ extension View {
         aspectRatio: CGFloat? = nil,
         contentMode: ContentMode = .fit,
         width: CGFloat = .infinity,
-        height: CGFloat = .infinity
+        height: CGFloat = .infinity,
+        placeholderBackground: Color = Color.customColors.backgroundColor
     ) -> some View {
         AsyncImage(url: URL(string: imageUrl)) { image in
             image
@@ -79,7 +80,7 @@ extension View {
                 .clipped()
         } placeholder: {
             Rectangle()
-                .fill(Color.customColors.backgroundColor)
+                .fill(placeholderBackground)
                 .aspectRatio(aspectRatio, contentMode: .fill)
                 .frame(width: width, height: height)
                 .clipped()
