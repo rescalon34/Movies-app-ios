@@ -19,17 +19,21 @@ struct HorizontalItemsContainerView: View {
     
     // MARK: - Body
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 6) {
             Text(title)
+                .font(.subheadline)
+                .foregroundStyle(Color.customColors.secondaryTextColor)
                 .bold()
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(items) { item in
                         MovieItemView(
-                            imageUrl: item.imageUrl?.getImagePosterPath() ?? "")
-                            .onTapGesture {
-                                onMovieClicked(item)
-                            }
+                            imageUrl: item.imageUrl?.getImagePosterPath() ?? ""
+                        )
+                        .onTapGesture {
+                            onMovieClicked(item)
+                        }
                     }
                 }
             }

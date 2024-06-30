@@ -72,7 +72,8 @@ class PreviewDataProvider {
                 countryCode: "US",
                 publishedAt: "2024-06-04T16:00:17.000Z"
             )
-        ]
+        ],
+        section: "popular"
     )
     
     let mockMovieDescription = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." + "\n\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
@@ -96,7 +97,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "now_playing"
         ),
         Movie(
             id: 2,
@@ -116,7 +118,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "now_playing"
         ),
         Movie(
             id: 3,
@@ -136,7 +139,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "top_rated"
         ),
         Movie(
             id: 4,
@@ -156,7 +160,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "top_rated"
         ),
         Movie(
             id: 5,
@@ -176,7 +181,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "upcoming"
         ),
         Movie(
             id: 6,
@@ -197,7 +203,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "upcoming"
         ),
         Movie(
             id: 7,
@@ -217,7 +224,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "upcoming"
         ),
         Movie(
             id: 8,
@@ -237,7 +245,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "popular"
         ),
         Movie(
             id: 9,
@@ -257,7 +266,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "popular"
         ),
         Movie(
             id: 10,
@@ -277,7 +287,8 @@ class PreviewDataProvider {
                     countryCode: "US",
                     publishedAt: "2024-06-04T16:00:17.000Z"
                 )
-            ]
+            ],
+            section: "popular"
         ),
     ]
     

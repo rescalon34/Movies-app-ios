@@ -18,6 +18,8 @@ struct GridMoviesByCategoryView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(category)
+                .font(.subheadline)
+                .foregroundStyle(Color.customColors.secondaryTextColor)
                 .bold()
             gridMoviesContent
         }

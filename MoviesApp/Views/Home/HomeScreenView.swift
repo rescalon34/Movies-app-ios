@@ -91,7 +91,7 @@ struct HomeScreenView: View {
     var homeContent: some View {
         if viewModel.selectedGenre.name == LocalMovieGenres.Featured.rawValue {
             FeaturedMoviesView(
-                movies: viewModel.movies,
+                movies: viewModel.featuredMovies,
                 onMovieClicked: onMovieClicked
             )
         } else {
