@@ -52,6 +52,8 @@ class HomeViewModel : ObservableObject {
     func getMovies() {
         isLoading = true
         if selectedGenre.name == LocalMovieGenres.Featured.rawValue {
+            featuredMovies.removeAll()
+            
             // for efficiently making parallel API Requests.
             let dispatchGroup = DispatchGroup()
             
