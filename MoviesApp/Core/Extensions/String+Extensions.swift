@@ -37,9 +37,11 @@ extension String {
     
     func formatReleaseYearAndMonth() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = MONTH_FORMAT
+        dateFormatter.dateFormat = YEAR_MONTH_DAY_FORMAT
         
         guard let date = dateFormatter.date(from: self) else { return "" }
+        
+        dateFormatter.dateFormat = MONTH_FORMAT
         let month = dateFormatter.string(from: date)
         
         let calendar = Calendar.current
