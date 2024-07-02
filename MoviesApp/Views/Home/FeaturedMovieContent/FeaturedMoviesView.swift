@@ -20,7 +20,6 @@ struct FeaturedMoviesView: View {
             VStack(spacing: 20) {
                 featuredMoviesContent
             }
-            .padding(.horizontal)
         }
     }
     

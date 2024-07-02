@@ -37,7 +37,7 @@ struct MainTabView: View {
         case .Search:
             SearchScreenView(screenTitle: "Search Screen")
         case .Watchlist:
-            SearchScreenView(screenTitle: "Watchlist Screen")
+            WatchlistMovieScreenView()
         case .Downloads:
             SearchScreenView(screenTitle: "Downloads Screen")
         case .Profile:

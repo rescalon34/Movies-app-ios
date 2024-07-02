@@ -12,6 +12,7 @@ class MovieDetailsViewModel: ObservableObject {
     
     // MARK: Networking properties
     private var moviesRepository: MoviesRepositoryProtocol
+    private var accountRepository: AccountRepositoryProtocol
     private var movieDetailsCancellable = Set<AnyCancellable>()
     private var suggestedMoviesCancellable = Set<AnyCancellable>()
     
@@ -23,10 +24,15 @@ class MovieDetailsViewModel: ObservableObject {
     @Published private var selectedVideo: Video?
     @Published var selectedSegment: String = ""
     @Published var isPlayerPresented = false
+    @Published var isMovieInWatchlist: Bool = false
     
     // MARK: - Initializer
-    init(moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager())) {
+    init(
+        moviesRepository: MoviesRepositoryProtocol = MoviesRepository(NetworkManager()),
+        accountRepository: AccountRepositoryProtocol = AccountRepository(NetworkManager())
+    ) {
         self.moviesRepository = moviesRepository
+        self.accountRepository = accountRepository
         self.movie = movie
         self.selectedSegment = MovieDetailSegmentOptions.suggested.rawValue
     }
@@ -65,6 +71,32 @@ class MovieDetailsViewModel: ObservableObject {
                 }
             }
             .store(in: &suggestedMoviesCancellable)
+    }
+    
+    // Add/Remove a movie from the watchlist depending on the `isMovieInWatchlist` flag.
+    func onAddMovieToWatchlist() {
+        isMovieInWatchlist.toggle()
+
+        let request = AddMovieToWatchlistRequest(
+            mediaType: "movie",
+            mediaId: movie?.id ?? 0,
+            watchlist: isMovieInWatchlist
+        )
+                
+        accountRepository.addMovieToWatchlist(
+            accountId: ACCOUNT_ID,
+            request: request
+        )
+        .sink { [weak self] (result: Result<AddMovieToWatchlistResponse, Error>) in
+            switch result {
+            case.success(let response):
+                print("Watchlist: successfully added to watchlist, response: \(response)")
+            case .failure(let error):
+                print("tellWatchlist: error, \(error.localizedDescription)")
+                self?.isMovieInWatchlist.toggle()
+            }
+        }
+        .store(in: &movieDetailsCancellable)
     }
     
     // MARK: - Functions

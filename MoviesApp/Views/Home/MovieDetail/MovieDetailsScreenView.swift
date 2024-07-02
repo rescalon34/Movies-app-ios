@@ -14,6 +14,7 @@ struct MovieDetailsScreenView: View {
     
     // MARK: - Properties
     let movieId: Int?
+    var isAddedToWatchlist: Bool = false
     
     // MARK: - State properties
     @State private var contentOffset: CGFloat = 0
@@ -40,6 +41,7 @@ struct MovieDetailsScreenView: View {
         .onAppear {
             guard let id = movieId else { return }
             viewModel.getMovieDetails(movieId: id)
+            viewModel.isMovieInWatchlist = isAddedToWatchlist
         }
     }
     
@@ -158,12 +160,24 @@ struct MovieDetailsScreenView: View {
     // This view hosts the Horizontal action buttons and movie overview.
     @ViewBuilder
     private func movieDetailsOverview(movie: Movie) -> some View {
+        
+        // Watchlist icon properties
+        let isAddedToWatchlist = viewModel.isMovieInWatchlist
+        let watchlistIcon = !isAddedToWatchlist ? "plus.circle" : "checkmark.circle.fill"
+        let watchlistIconColor: Color? = isAddedToWatchlist ? .pink.opacity(0.9) : nil
+        
+        // Horizontal icons
         HStack(spacing: 0) {
             VerticalButtonWithTextView(
-                icon: "plus.circle",
+                icon: watchlistIcon,
+                iconForegroundColor: watchlistIconColor,
                 text: "Watchlist",
-                onButtonClick: {}
+                shouldAnimate: isAddedToWatchlist,
+                onButtonClick: {
+                    viewModel.onAddMovieToWatchlist()
+                }
             )
+            
             VerticalButtonWithTextView(
                 icon: "arrow.down.to.line.circle.fill",
                 text: "Download",

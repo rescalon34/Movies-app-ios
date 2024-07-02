@@ -35,6 +35,21 @@ extension String {
         return "\(year)"
     }
     
+    func formatReleaseYearAndMonth() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = YEAR_MONTH_DAY_FORMAT
+        
+        guard let date = dateFormatter.date(from: self) else { return "" }
+        
+        dateFormatter.dateFormat = MONTH_FORMAT
+        let month = dateFormatter.string(from: date)
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        
+        return "\(month) \(year)"
+    }
+    
     func formatPublishedAtDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = ISO_8601_DATE_FORMAT

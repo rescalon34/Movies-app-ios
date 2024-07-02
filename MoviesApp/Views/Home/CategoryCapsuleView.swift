@@ -39,7 +39,7 @@ struct CategoryCapsuleView: View {
         .padding(.vertical, 8)
         .background(
             Capsule()
-                .fill(Color.customColors.categoryCapsuleColor)
+                .fill(Color.customColors.categoryCapsuleLigthColor)
         )
         .onTapGesture {
             onCategoryClick()
