@@ -61,6 +61,7 @@ class PreviewDataProvider {
         releaseDate: "2024-06-11",
         runtime: 115,
         overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+        belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
         genres: [Genre(id: 0, name: "Action"), Genre(id: 1, name: "Comedy")],
         videos: [
             Video(
@@ -86,6 +87,7 @@ class PreviewDataProvider {
             releaseDate: "1975-09-27",
             runtime: 115,
             overview: "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -107,6 +109,7 @@ class PreviewDataProvider {
             releaseDate: "1975-09-27",
             runtime: 115,
             overview: "In the near future, a group of war journalists attempt to survive while reporting the truth as the United States stands on the brink of civil war.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -128,6 +131,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Following their explosive showdown, Godzilla and Kong must reunite against a colossal undiscovered threat hidden within our world, challenging their very existence – and our own.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -149,6 +153,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -170,6 +175,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "When a group of friends recklessly violate the sacred rule of Tarot readings, they unknowingly unleash an unspeakable evil trapped within the cursed cards. One by one, they come face to face with fate and end up in a race against death.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -192,6 +198,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Fresh off an almost career-ending accident, stuntman Colt Seavers has to track down a missing movie star, solve a conspiracy and try to win back the love of his life while still doing his day job.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -213,6 +220,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -234,6 +242,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "When a young American woman is sent to Rome to begin a life of service to the church, she encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy that hopes to bring about the birth of evil incarnate.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -255,6 +264,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "In postwar Japan, Godzilla brings new devastation to an already scorched landscape. With no military intervention or government help in sight, the survivors must join together in the face of despair and fight back against an unrelenting horror.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(
@@ -276,6 +286,7 @@ class PreviewDataProvider {
             releaseDate: "2023",
             runtime: 115,
             overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+            belongsToCollection: BelongsToCollection(backdropPath: "https://media.themoviedb.org/t/p/original/t7bhjraXuN4hd3yZVBVVhP3BdX0.jpg"),
             genres: [Genre(id: 0, name: "Action")],
             videos: [
                 Video(

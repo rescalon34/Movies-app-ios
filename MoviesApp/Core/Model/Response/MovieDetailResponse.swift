@@ -14,6 +14,7 @@ struct MovieDetailResponse: Identifiable, Codable {
     let overview: String
     let releaseDate: String
     let runtime: Int
+    let belongsToColleciton: BelongsToCollectionResponse?
     let genres: [GenreResponse]
     let videos: VideoDataResponse
     
@@ -24,6 +25,7 @@ struct MovieDetailResponse: Identifiable, Codable {
         case releaseDate = "release_date"
         case runtime
         case overview
+        case belongsToColleciton = "belongs_to_collection"
         case genres
         case videos = "videos"
     }
@@ -38,6 +40,7 @@ extension MovieDetailResponse {
             releaseDate: self.releaseDate,
             runtime: self.runtime,
             overview: self.overview,
+            belongsToCollection: self.belongsToColleciton?.toDomain(),
             genres: self.genres.map { $0.toDomain() },
             videos: self.videos.results.isEmpty ? nil : self.videos.results.map { video in
                 video.toDomain()

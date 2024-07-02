@@ -81,6 +81,8 @@
 		25E2D69E2C33817F00B53051 /* AddMovieToWatchlistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D69D2C33817F00B53051 /* AddMovieToWatchlistResponse.swift */; };
 		25E2D6A02C33BE7600B53051 /* AccountStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D69F2C33BE7600B53051 /* AccountStatusResponse.swift */; };
 		25E2D6A22C33BEBC00B53051 /* AccountStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D6A12C33BEBC00B53051 /* AccountStatus.swift */; };
+		25E2D6A72C34B4F900B53051 /* BelongsToCollectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D6A62C34B4F900B53051 /* BelongsToCollectionResponse.swift */; };
+		25E2D6A92C34B55900B53051 /* BelongsToCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D6A82C34B55900B53051 /* BelongsToCollection.swift */; };
 		25EB56BA2C23C93100DA06E9 /* VideoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56B92C23C93100DA06E9 /* VideoType.swift */; };
 		25EB56BC2C23D0E600DA06E9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */; };
 		25EB56BE2C23DC8E00DA06E9 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */; };
@@ -186,6 +188,8 @@
 		25E2D69D2C33817F00B53051 /* AddMovieToWatchlistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToWatchlistResponse.swift; sourceTree = "<group>"; };
 		25E2D69F2C33BE7600B53051 /* AccountStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatusResponse.swift; sourceTree = "<group>"; };
 		25E2D6A12C33BEBC00B53051 /* AccountStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatus.swift; sourceTree = "<group>"; };
+		25E2D6A62C34B4F900B53051 /* BelongsToCollectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelongsToCollectionResponse.swift; sourceTree = "<group>"; };
+		25E2D6A82C34B55900B53051 /* BelongsToCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelongsToCollection.swift; sourceTree = "<group>"; };
 		25EB56B92C23C93100DA06E9 /* VideoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoType.swift; sourceTree = "<group>"; };
 		25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
@@ -517,6 +521,8 @@
 				25E2D6922C32573E00B53051 /* WatchlistMoviesDataResponse.swift */,
 				25E2D69D2C33817F00B53051 /* AddMovieToWatchlistResponse.swift */,
 				25E2D69F2C33BE7600B53051 /* AccountStatusResponse.swift */,
+				25E2D6A62C34B4F900B53051 /* BelongsToCollectionResponse.swift */,
+				25E2D6A82C34B55900B53051 /* BelongsToCollection.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				255C401C2C20D82100FB6674 /* MoviesAPI.swift in Sources */,
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
 				25E2D69A2C32590600B53051 /* WatchlistMovieViewModel.swift in Sources */,
+				25E2D6A72C34B4F900B53051 /* BelongsToCollectionResponse.swift in Sources */,
 				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
 				25E2D6872C2E5F8200B53051 /* FeaturedMoviesSections.swift in Sources */,
 				256C9A902C27C03C00B8D898 /* LazyVGridMoviesView.swift in Sources */,
@@ -792,6 +799,7 @@
 				25D905892C2A546200E7932A /* GenresDataResponse.swift in Sources */,
 				25EB56CC2C252DEF00DA06E9 /* MovieClipsSegmentContentView.swift in Sources */,
 				254CECC12C1175D400706852 /* Color.swift in Sources */,
+				25E2D6A92C34B55900B53051 /* BelongsToCollection.swift in Sources */,
 				255C40382C2283F700FB6674 /* Video.swift in Sources */,
 				25E2D68F2C32548B00B53051 /* AccountAPI.swift in Sources */,
 			);

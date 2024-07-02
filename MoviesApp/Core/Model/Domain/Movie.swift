@@ -14,6 +14,7 @@ struct Movie: Identifiable {
     let releaseDate: String?
     let runtime: Int?
     let overview: String
+    let belongsToCollection: BelongsToCollection?
     let genres: [Genre]?
     let videos: [Video]?
     let section: String?
@@ -25,6 +26,7 @@ struct Movie: Identifiable {
         releaseDate: "",
         runtime: 0,
         overview: "",
+        belongsToCollection: BelongsToCollection(backdropPath: "mDMCET9Ens5ANvZAWRpluBsMAtS.jpg"),
         genres: [],
         videos: [],
         section: nil
