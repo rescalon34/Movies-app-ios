@@ -10,6 +10,10 @@ import Foundation
 let BASE_URL = "https://api.themoviedb.org/3/"
 let API_KEY = "api_key"
 let API_KEY_VALUE = ""
+let BEARER = "Bearer"
+let ACCESS_TOKEN = ""
+let ACCOUNT_ID = 0
+let AUTHORIZATION = "Authorization"
 
 // Image
 let BASE_IMAGE_URL = "https://image.tmdb.org/t/p/"
