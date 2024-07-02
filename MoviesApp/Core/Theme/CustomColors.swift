@@ -18,5 +18,6 @@ struct CustomColors {
     let primaryClearTextColor = Color("PrimaryClearTextColor")
     let secondaryTextColor = Color("SecondaryTextColor")
     let categoryCapsuleColor = Color("CategoryCapsuleColor")
+    let categoryCapsuleLigthColor = Color("CategoryCapsuleLigthColor")
     let dismissViewIconColor = Color("DismissViewIconColor")
 }

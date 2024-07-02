@@ -73,7 +73,7 @@ struct HorizontalItemsContainerView: View {
     
     private func getNowPlayingtMovieOverview(_ movie: Movie) -> String {
         let date = movie.releaseDate?.formatReleaseYearAndMonth() ?? ""        
-        return "Released on: \(date)"
+        return "Release date: \(date)"
     }
 }
 
