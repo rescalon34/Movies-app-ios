@@ -31,7 +31,7 @@ struct WatchlistMovieScreenView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar { watchlistToolbarContent }
                     .navigationDestination(isPresented: $selectedMovie.toBinding()) {
-                        MovieDetailsScreenView(movieId: selectedMovie?.id)
+                        MovieDetailsScreenView(movieId: selectedMovie?.id, isAddedToWatchlist: true)
                     }
                 }
             }

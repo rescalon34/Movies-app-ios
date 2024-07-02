@@ -21,4 +21,13 @@ class AccountRepository: AccountRepositoryProtocol {
     func getWatchlistMovies(accountId: Int) -> AnyPublisher<Result<WatchlistMoviesDataResponse, Error>, Never> {
         return networkManager.requestPublisher(target: AccountAPI.getWatchlistMovies(accountId: accountId))
     }
+    
+    func addMovieToWatchlist(accountId: Int, request: AddMovieToWatchlistRequest) -> AnyPublisher<Result<AddMovieToWatchlistResponse, Error>, Never> {
+        networkManager.requestPublisher(
+            target: AccountAPI.addMovieToWatchlist(
+                accountId: accountId,
+                request: request
+            )
+        )
+    }
 }

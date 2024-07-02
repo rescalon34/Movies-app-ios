@@ -12,6 +12,7 @@ enum AccountAPI: TargetType {
     
     // Endpoints
     case getWatchlistMovies(accountId: Int)
+    case addMovieToWatchlist(accountId: Int, request: AddMovieToWatchlistRequest)
 }
 
 extension AccountAPI {
@@ -24,6 +25,8 @@ extension AccountAPI {
         switch self {
         case .getWatchlistMovies(accountId: let accountId):
             return "account/\(accountId)/watchlist/movies"
+        case .addMovieToWatchlist(accountId: let accountId):
+            return "account/\(accountId)/watchlist"
         }
     }
     
@@ -31,6 +34,9 @@ extension AccountAPI {
         switch self {
         case .getWatchlistMovies:
             return .get
+            
+        case .addMovieToWatchlist:
+            return .post
         }
     }
     
@@ -38,9 +44,11 @@ extension AccountAPI {
         switch self {
         case .getWatchlistMovies:
             return .requestParameters(
-                parameters: ["": ""],
+                parameters: [:],
                 encoding: URLEncoding.queryString
             )
+        case .addMovieToWatchlist(_, let request):
+            return .requestJSONEncodable(request)
         }
     }
     
