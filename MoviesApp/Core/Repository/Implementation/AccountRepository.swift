@@ -18,6 +18,10 @@ class AccountRepository: AccountRepositoryProtocol {
         self.networkManager = networkManager
     }
     
+    func getAccountState(movieId: Int) -> AnyPublisher<Result<AccountStatusResponse, Error>, Never> {
+        networkManager.requestPublisher(target: AccountAPI.getAccountState(movieId: movieId))
+    }
+    
     func getWatchlistMovies(accountId: Int) -> AnyPublisher<Result<WatchlistMoviesDataResponse, Error>, Never> {
         return networkManager.requestPublisher(target: AccountAPI.getWatchlistMovies(accountId: accountId))
     }

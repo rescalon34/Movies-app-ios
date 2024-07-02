@@ -42,6 +42,7 @@ struct MovieDetailsScreenView: View {
             guard let id = movieId else { return }
             viewModel.getMovieDetails(movieId: id)
             viewModel.isMovieInWatchlist = isAddedToWatchlist
+            viewModel.getAccountStatus(movieId: id)
         }
         .onDisappear {
             // send the isMovieInWatchlist back to the watchlist screen
