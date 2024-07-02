@@ -49,6 +49,7 @@ class MovieDetailsViewModel: ObservableObject {
                     
                     // get suggested movies after the movie details request.
                     self?.getSuggestedMovies(movieId: movieId)
+                    
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                     self?.isLoading = false
@@ -57,6 +58,29 @@ class MovieDetailsViewModel: ObservableObject {
             .store(in: &movieDetailsCancellable)
     }
     
+    /// Get the status of the movie (isFavorite, isWatchlist, etc) only if the flag isMovieInWatchlist is false.
+    /// It means, that we should check fot the status when the details screen gets open from a different screen
+    /// than the "Watchlist screen".
+    func getAccountStatus(movieId: Int) {
+        guard !isMovieInWatchlist else { return }
+        
+        isLoading = true
+        accountRepository.getAccountState(movieId: movieId)
+            .sink { [weak self] (result: Result<AccountStatusResponse, Error>) in
+                switch result {
+                case .success(let accountStatus):
+                    self?.isLoading = false
+                    print("tellmeAccountStatus: \(accountStatus)")
+                    self?.isMovieInWatchlist = accountStatus.toDomain().watchlist
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                }
+            }
+            .store(in: &suggestedMoviesCancellable)
+    }
+    
+    /// Request suggested movies based on the MovieId, this content will appear below the movie details.
     func getSuggestedMovies(movieId: Int) {
         isLoading = true
         moviesRepository.getSuggestedMovies(movieId: movieId)
@@ -76,13 +100,13 @@ class MovieDetailsViewModel: ObservableObject {
     // Add/Remove a movie from the watchlist depending on the `isMovieInWatchlist` flag.
     func onAddMovieToWatchlist() {
         isMovieInWatchlist.toggle()
-
+        
         let request = AddMovieToWatchlistRequest(
             mediaType: "movie",
             mediaId: movie?.id ?? 0,
             watchlist: isMovieInWatchlist
         )
-                
+        
         accountRepository.addMovieToWatchlist(
             accountId: ACCOUNT_ID,
             request: request

@@ -79,6 +79,8 @@
 		25E2D69A2C32590600B53051 /* WatchlistMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D6992C32590600B53051 /* WatchlistMovieViewModel.swift */; };
 		25E2D69C2C337E1600B53051 /* AddMovieToWatchlistRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D69B2C337E1600B53051 /* AddMovieToWatchlistRequest.swift */; };
 		25E2D69E2C33817F00B53051 /* AddMovieToWatchlistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D69D2C33817F00B53051 /* AddMovieToWatchlistResponse.swift */; };
+		25E2D6A02C33BE7600B53051 /* AccountStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D69F2C33BE7600B53051 /* AccountStatusResponse.swift */; };
+		25E2D6A22C33BEBC00B53051 /* AccountStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2D6A12C33BEBC00B53051 /* AccountStatus.swift */; };
 		25EB56BA2C23C93100DA06E9 /* VideoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56B92C23C93100DA06E9 /* VideoType.swift */; };
 		25EB56BC2C23D0E600DA06E9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */; };
 		25EB56BE2C23DC8E00DA06E9 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */; };
@@ -182,6 +184,8 @@
 		25E2D6992C32590600B53051 /* WatchlistMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistMovieViewModel.swift; sourceTree = "<group>"; };
 		25E2D69B2C337E1600B53051 /* AddMovieToWatchlistRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToWatchlistRequest.swift; sourceTree = "<group>"; };
 		25E2D69D2C33817F00B53051 /* AddMovieToWatchlistResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieToWatchlistResponse.swift; sourceTree = "<group>"; };
+		25E2D69F2C33BE7600B53051 /* AccountStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatusResponse.swift; sourceTree = "<group>"; };
+		25E2D6A12C33BEBC00B53051 /* AccountStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatus.swift; sourceTree = "<group>"; };
 		25EB56B92C23C93100DA06E9 /* VideoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoType.swift; sourceTree = "<group>"; };
 		25EB56BB2C23D0E500DA06E9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		25EB56BD2C23DC8E00DA06E9 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 				255C40342C22803600FB6674 /* Movie.swift */,
 				255C40372C2283F700FB6674 /* Video.swift */,
 				25EB56C12C23E18C00DA06E9 /* Genre.swift */,
+				25E2D6A12C33BEBC00B53051 /* AccountStatus.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				25D905882C2A546200E7932A /* GenresDataResponse.swift */,
 				25E2D6922C32573E00B53051 /* WatchlistMoviesDataResponse.swift */,
 				25E2D69D2C33817F00B53051 /* AddMovieToWatchlistResponse.swift */,
+				25E2D69F2C33BE7600B53051 /* AccountStatusResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -749,6 +755,7 @@
 				256C9A8E2C27B87700B8D898 /* SuggestedMoviesSegmentContentView.swift in Sources */,
 				25EB56C22C23E18C00DA06E9 /* Genre.swift in Sources */,
 				254CECED2C1810F100706852 /* BackgroundBlurView.swift in Sources */,
+				25E2D6A02C33BE7600B53051 /* AccountStatusResponse.swift in Sources */,
 				254CECBA2C11664300706852 /* MainTabView.swift in Sources */,
 				255C402B2C2138B700FB6674 /* MoviesRepositoryProtocol.swift in Sources */,
 				254CECB72C11659600706852 /* ProfileScreenView.swift in Sources */,
@@ -763,6 +770,7 @@
 				255C40302C2262FF00FB6674 /* MovieDetailsViewModel.swift in Sources */,
 				255C40352C22803600FB6674 /* Movie.swift in Sources */,
 				25E2D69E2C33817F00B53051 /* AddMovieToWatchlistResponse.swift in Sources */,
+				25E2D6A22C33BEBC00B53051 /* AccountStatus.swift in Sources */,
 				255C400E2C1F5B1600FB6674 /* VerticalButtonWithTextView.swift in Sources */,
 				255C402E2C22610B00FB6674 /* VideoResponse.swift in Sources */,
 				255C5F322C267AAB0024A39A /* VideoPreviewItemView.swift in Sources */,

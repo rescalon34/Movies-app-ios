@@ -11,6 +11,7 @@ import Moya
 enum AccountAPI: TargetType {
     
     // Endpoints
+    case getAccountState(movieId: Int)
     case getWatchlistMovies(accountId: Int)
     case addMovieToWatchlist(accountId: Int, request: AddMovieToWatchlistRequest)
 }
@@ -23,6 +24,8 @@ extension AccountAPI {
     
     var path: String {
         switch self {
+        case .getAccountState(movieId: let movieId):
+            return "movie/\(movieId)/account_states"
         case .getWatchlistMovies(accountId: let accountId):
             return "account/\(accountId)/watchlist/movies"
         case .addMovieToWatchlist(accountId: let accountId):
@@ -32,7 +35,8 @@ extension AccountAPI {
     
     var method: Moya.Method {
         switch self {
-        case .getWatchlistMovies:
+        case .getAccountState,
+                .getWatchlistMovies:
             return .get
             
         case .addMovieToWatchlist:
@@ -42,7 +46,8 @@ extension AccountAPI {
     
     var task: Moya.Task {
         switch self {
-        case .getWatchlistMovies:
+        case .getAccountState,
+                .getWatchlistMovies:
             return .requestParameters(
                 parameters: [:],
                 encoding: URLEncoding.queryString

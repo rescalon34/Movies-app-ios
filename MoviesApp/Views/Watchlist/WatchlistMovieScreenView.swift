@@ -21,19 +21,16 @@ struct WatchlistMovieScreenView: View {
     var body: some View {
         NavigationStack {
             BaseScreenView {
-                ObservableScrollView(contentOffset: $contentOffset) {
-                    VStack(alignment: .leading) {
-                        watchlistAppBar
-                        watchlistMoviesContent
-                            .padding(.horizontal)
-                    }
-                    .onChange(of: contentOffset, perform: onPrincipalToolbarItemVisibility)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar { watchlistToolbarContent }
-                    .navigationDestination(isPresented: $selectedMovie.toBinding()) {
-                        MovieDetailsScreenView(movieId: selectedMovie?.id, isAddedToWatchlist: true)
-                    }
-                }
+                watchlistMainContent
+            }
+            .onChange(of: contentOffset, perform: onPrincipalToolbarItemVisibility)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { watchlistToolbarContent }
+            .navigationDestination(isPresented: $selectedMovie.toBinding()) {
+                MovieDetailsScreenView(
+                    movieId: selectedMovie?.id,
+                    isAddedToWatchlist: $viewModel.isAddedToWatchlist
+                )
             }
         }
     }
@@ -56,7 +53,7 @@ struct WatchlistMovieScreenView: View {
             CategoryCapsuleView(
                 selectedCategory: "Last Added",
                 onCategoryClick: {
-                    // TODO: 
+                    // TODO:
                     //isPresented.toggle()
                 }
             )
@@ -66,8 +63,24 @@ struct WatchlistMovieScreenView: View {
     }
     
     // MARK: - Views
+    var watchlistMainContent: some View {
+        VStack {
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                ObservableScrollView(contentOffset: $contentOffset) {
+                    VStack(alignment: .leading) {
+                        watchlistAppBar
+                        watchlistScrollableContent
+                            .padding(.horizontal)
+                    }
+                }
+            }
+        }
+    }
+    
     @ViewBuilder
-    var watchlistMoviesContent: some View {
+    var watchlistScrollableContent: some View {
         Text("My movies")
             .font(.subheadline)
             .foregroundStyle(Color.customColors.secondaryTextColor)

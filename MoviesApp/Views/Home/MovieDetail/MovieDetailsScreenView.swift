@@ -14,7 +14,7 @@ struct MovieDetailsScreenView: View {
     
     // MARK: - Properties
     let movieId: Int?
-    var isAddedToWatchlist: Bool = false
+    @Binding var isAddedToWatchlist: Bool
     
     // MARK: - State properties
     @State private var contentOffset: CGFloat = 0
@@ -42,6 +42,11 @@ struct MovieDetailsScreenView: View {
             guard let id = movieId else { return }
             viewModel.getMovieDetails(movieId: id)
             viewModel.isMovieInWatchlist = isAddedToWatchlist
+            viewModel.getAccountStatus(movieId: id)
+        }
+        .onDisappear {
+            // send the isMovieInWatchlist back to the watchlist screen
+            isAddedToWatchlist = viewModel.isMovieInWatchlist
         }
     }
     
@@ -254,5 +259,8 @@ struct MovieDetailsScreenView: View {
 
 // MARK: - Preview
 #Preview {
-    MovieDetailsScreenView(movieId: PreviewDataProvider.instance.movie.id)
+    MovieDetailsScreenView(
+        movieId: PreviewDataProvider.instance.movie.id,
+        isAddedToWatchlist: .constant(false)
+    )
 }
