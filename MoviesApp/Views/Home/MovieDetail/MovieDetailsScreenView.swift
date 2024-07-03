@@ -244,7 +244,7 @@ struct MovieDetailsScreenView: View {
                         viewModel.getMovieDetails(movieId: movie.id)
                         
                         // request accountState again to see if the selected movie is in watchlist.
-                        viewModel.isMovieInWatchlist = isAddedToWatchlist
+                        viewModel.isMovieInWatchlist = false
                         viewModel.getAccountStatus(movieId: movie.id)
                     }
                 )
