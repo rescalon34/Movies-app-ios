@@ -59,7 +59,6 @@ struct WatchlistMovieScreenView: View {
             )
             .opacity(showPrincipalToolbarItem ? 1 : 0)
         }
-        
     }
     
     // MARK: - Views
