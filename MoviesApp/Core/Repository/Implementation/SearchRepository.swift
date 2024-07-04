@@ -21,4 +21,8 @@ class SearchRepository: SearchRepositoryProtocol {
     func getTrendingMovies(timeWindow: String) -> AnyPublisher<Result<MovieDataResponse, Error>, Never> {
         networkManager.requestPublisher(target: SearchAPI.getTrendingMovies(timeWindow: timeWindow))
     }
+    
+    func getCollection(keyword: String) -> AnyPublisher<Result<CollectionDataResponse, Error>, Never> {
+        networkManager.requestPublisher(target: SearchAPI.getCollection(keyword: keyword))
+    }
 }

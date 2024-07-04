@@ -10,6 +10,7 @@ import Moya
 
 enum SearchAPI: TargetType {
     case getTrendingMovies(timeWindow: String)
+    case getCollection(keyword: String)
 }
 
 extension SearchAPI {
@@ -22,12 +23,15 @@ extension SearchAPI {
         switch self {
         case .getTrendingMovies(timeWindow: let timeWindow):
             return "trending/movie/\(timeWindow)"
+        case .getCollection:
+            return "search/collection"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getTrendingMovies:
+        case .getTrendingMovies,
+                .getCollection:
             return .get
         }
     }
@@ -37,6 +41,11 @@ extension SearchAPI {
         case .getTrendingMovies:
             return .requestParameters(
                 parameters: [:],
+                encoding: URLEncoding.queryString
+            )
+        case .getCollection(keyword: let keyword):
+            return .requestParameters(
+                parameters: ["query" : keyword],
                 encoding: URLEncoding.queryString
             )
         }

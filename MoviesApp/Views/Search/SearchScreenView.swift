@@ -34,19 +34,22 @@ struct SearchScreenView: View {
     }
     
     // MARK: - Views
-    var mainSearchContent: some View {
+    private var mainSearchContent: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 trendingMoviesHorizontalViewContent
+                collectionsContent
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         // this padding `> 1` will avoid the scrollable content appear behind the translucient toolbar
         // and it will keep pinned the `searchable` modifier.
         .padding(.top, 1)
+        .padding(.bottom, 50)
+        .scrollIndicators(.hidden)
     }
     
-    var trendingMoviesHorizontalViewContent: some View {
+    private var trendingMoviesHorizontalViewContent: some View {
         ScrollView(showsIndicators: false) {
             HorizontalItemsContainerView(
                 title: "Trending Movies",
@@ -55,6 +58,31 @@ struct SearchScreenView: View {
                     
                 }
             )
+        }
+    }
+    
+    private var collectionsContent: some View {
+        VStack(alignment: .leading) {
+            Text("Collections")
+                .font(.subheadline)
+                .foregroundStyle(Color.customColors.secondaryTextColor)
+                .bold()
+            
+            gridCollectionsContent
+        }
+        .padding()
+    }
+    
+    private var gridCollectionsContent: some View {
+        LazyVGrid(
+            columns: getFlexibleGridColumns(Int(Constants.THREE), Constants.TEN),
+            spacing: Constants.TEN
+        ) {
+            ForEach(viewModel.collections) { collection in
+                MovieItemView(
+                    imageUrl: collection.posterPath?.getImagePosterPath() ?? ""
+                )
+            }
         }
     }
 }
