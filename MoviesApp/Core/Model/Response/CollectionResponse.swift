@@ -27,7 +27,8 @@ extension CollectionResponse {
             id: self.id,
             backdropPath: self.backdropPath,
             name: self.name,
-            posterPath: self.posterPath
+            posterPath: self.posterPath,
+            logo: nil
         )
     }
 }

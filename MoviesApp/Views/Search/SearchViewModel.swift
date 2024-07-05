@@ -18,6 +18,7 @@ class SearchViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var trendingMovies: [Movie] = []
     @Published var collections: [Collection] = []
+    @Published var collectionTitle: String = ""
     
     // MARK: - Initializer
     init(searchRepository: SearchRepositoryProtocol = SearchRepository(NetworkManager())) {
@@ -52,6 +53,7 @@ class SearchViewModel: ObservableObject {
                 case .success(let collection):
                     self?.isLoading = false
                     self?.collections = collection.results?.map { $0.toDomain() } ?? []
+                    self?.collectionTitle = keyword
                     print("tellCollection: collection: \(String(describing: collection.results))")
                 case .failure(let error):
                     self?.isLoading = false
@@ -59,5 +61,11 @@ class SearchViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellable)
+    }
+    
+    // MARK: - View functions
+    func getCollectionsTitle() -> String {
+        let title = collectionTitle == "Collections" ? "Collections" : "Collections * \(collectionTitle)"
+        return title
     }
 }

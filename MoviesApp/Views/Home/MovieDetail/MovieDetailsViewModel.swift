@@ -90,6 +90,7 @@ class MovieDetailsViewModel: ObservableObject {
                     self?.isLoading = false
                     self?.suggestedMovies = movies.results?.map { $0.toDomain() } ?? []
                 case .failure(let error):
+                    print("error getting suggested movies: \(error.localizedDescription)")
                     self?.errorMessage = error.localizedDescription
                     self?.isLoading = false
                 }

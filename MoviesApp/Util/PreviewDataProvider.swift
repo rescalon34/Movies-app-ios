@@ -323,4 +323,12 @@ class PreviewDataProvider {
             colors: [.yellow, .blue.opacity(0.5), .black]
         )
     ]
+    
+    let collection = Collection(
+        id: 10,
+        backdropPath: "/d8duYyyC9J5T825Hg7grmaabfxQ.jpg",
+        name: "Star Wars Collection",
+        posterPath: "/r8Ph5MYXL04Qzu4QBbq2KjqwtkQ.jpg",
+        logo: "/hRYATYBMw0MGoVtl4EEsxzg87Kn.png"
+    )
 }

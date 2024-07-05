@@ -15,6 +15,8 @@ struct SearchScreenView: View {
     // MARK: - Properties
     let screenTitle: String
     @State var searchKeyword: String = ""
+    @State var selectedMovie: Movie? = nil
+    @State var selectedCollection: Collection? = nil
     
     // MARK: - Body
     var body: some View {
@@ -27,10 +29,13 @@ struct SearchScreenView: View {
             .searchable(text: $searchKeyword)
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
-            
+            .navigationDestination(isPresented: $selectedMovie.toBinding()) {
+                MovieDetailsScreenView(movieId: selectedMovie?.id, isAddedToWatchlist: .constant(false))
+            }
+            .navigationDestination(isPresented: $selectedCollection.toBinding()) {
+                SearchCollectionDetailView(collection: selectedCollection)
+            }
         }
-        .background(Color.blue)
-        .tint(.blue)
     }
     
     // MARK: - Views
@@ -45,7 +50,6 @@ struct SearchScreenView: View {
         // this padding `> 1` will avoid the scrollable content appear behind the translucient toolbar
         // and it will keep pinned the `searchable` modifier.
         .padding(.top, 1)
-        .padding(.bottom, 50)
         .scrollIndicators(.hidden)
     }
     
@@ -55,15 +59,16 @@ struct SearchScreenView: View {
                 title: "Trending Movies",
                 items: viewModel.trendingMovies,
                 onMovieClicked: { movie in
-                    
+                    selectedMovie = movie
                 }
             )
         }
     }
     
+    @ViewBuilder
     private var collectionsContent: some View {
         VStack(alignment: .leading) {
-            Text("Collections")
+            TextWithDotSeparatorView(text: viewModel.getCollectionsTitle())
                 .font(.subheadline)
                 .foregroundStyle(Color.customColors.secondaryTextColor)
                 .bold()
@@ -71,6 +76,7 @@ struct SearchScreenView: View {
             gridCollectionsContent
         }
         .padding()
+        .padding(.bottom, 50)
     }
     
     private var gridCollectionsContent: some View {
@@ -82,6 +88,9 @@ struct SearchScreenView: View {
                 MovieItemView(
                     imageUrl: collection.posterPath?.getImagePosterPath() ?? ""
                 )
+                .onTapGesture {
+                    selectedCollection = collection
+                }
             }
         }
     }
