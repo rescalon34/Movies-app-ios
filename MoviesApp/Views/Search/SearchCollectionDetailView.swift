@@ -162,7 +162,7 @@ struct SearchCollectionDetailView: View {
             viewModel.mainLogoOpacity = value < -Constants.TWENTY ? decreaseOpacity(value, Constants.TWENTY) : Constants.ONE
             viewModel.logoPositionOffset = value < -Constants.TEN ? -(value + Constants.ONE) * Constants.ONE : 0
             
-            viewModel.overlayOpacity = value < -100 ? increaseOpacity(value, 0.1, 0.8) : 0
+            viewModel.overlayOpacity = value < -Constants.ONE_HUNDREAD ? increaseOpacity(value, 0.1, 0.8) : 0
         }
     }
 }

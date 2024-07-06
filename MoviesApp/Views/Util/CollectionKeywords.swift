@@ -18,8 +18,7 @@ enum CollectionKeywords: String, CaseIterable {
     case documentary = "Documentary"
     
     static func getRandomKeyword() -> String {
-//        CollectionKeywords.allCases.randomElement()?.rawValue ?? ""
-        CollectionKeywords.starwars.rawValue
+        CollectionKeywords.allCases.randomElement()?.rawValue ?? ""
     }
     
     static func getLogoByCollection(collectionName: String) -> String {

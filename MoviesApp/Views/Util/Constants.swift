@@ -29,4 +29,5 @@ struct Constants {
     static let TEN: CGFloat = 10
     static let TWENTY: CGFloat = 20
     static let TWENTY_FIVE: CGFloat = 25
+    static let ONE_HUNDREAD: CGFloat = 100
 }
