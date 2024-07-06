@@ -19,6 +19,7 @@ class SearchViewModel: ObservableObject {
     @Published var trendingMovies: [Movie] = []
     @Published var collections: [Collection] = []
     @Published var collectionTitle: String = ""
+    @Published var mainCollectionLogo: String = ""
     
     // MARK: - Initializer
     init(searchRepository: SearchRepositoryProtocol = SearchRepository(NetworkManager())) {
@@ -54,6 +55,7 @@ class SearchViewModel: ObservableObject {
                     self?.isLoading = false
                     self?.collections = collection.results?.map { $0.toDomain() } ?? []
                     self?.collectionTitle = keyword
+                    self?.mainCollectionLogo = CollectionKeywords.getLogoByCollection(collectionName: keyword)
                     print("tellCollection: collection: \(String(describing: collection.results))")
                 case .failure(let error):
                     self?.isLoading = false

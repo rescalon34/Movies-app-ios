@@ -33,7 +33,10 @@ struct SearchScreenView: View {
                 MovieDetailsScreenView(movieId: selectedMovie?.id, isAddedToWatchlist: .constant(false))
             }
             .navigationDestination(isPresented: $selectedCollection.toBinding()) {
-                SearchCollectionDetailView(collection: selectedCollection)
+                SearchCollectionDetailView(
+                    collection: selectedCollection, 
+                    mainLogoUrl: viewModel.mainCollectionLogo
+                )
             }
         }
     }

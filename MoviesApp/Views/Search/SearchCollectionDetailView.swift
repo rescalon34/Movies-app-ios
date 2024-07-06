@@ -14,12 +14,15 @@ struct SearchCollectionDetailView: View {
     
     // MARK: - Properties
     let collection: Collection?
+    let mainLogoUrl: String
     
     // MARK: - State properties
     @State private var contentOffset: CGFloat = 0
+    @State var selectedMovie: Movie? = nil
     
-    init(collection: Collection?) {
+    init(collection: Collection?, mainLogoUrl: String) {
         self.collection = collection
+        self.mainLogoUrl = mainLogoUrl
         _viewModel = StateObject(wrappedValue: SearchCollectionDetailViewModel(collection: collection))
     }
     
@@ -40,6 +43,9 @@ struct SearchCollectionDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .showToolbarBackground(isVisible: viewModel.showToolbarBackground)
         .onChange(of: contentOffset, perform: onScrollViewContentOffsetChange)
+        .navigationDestination(isPresented: $selectedMovie.toBinding()) {
+            MovieDetailsScreenView(movieId: selectedMovie?.id, isAddedToWatchlist: .constant(false))
+        }
     }
     
     // MARK: - Toolbar
@@ -60,7 +66,7 @@ struct SearchCollectionDetailView: View {
     // MARK: Views
     var topAppbarCollectionLogo: some View {
         loadAsyncImage(
-            imageUrl: collection?.logo?.getImagePosterPath() ?? "",
+            imageUrl: mainLogoUrl.getImagePosterPath(),
             width: 60,
             height: 60,
             placeholderBackground: Color.clear
@@ -99,11 +105,12 @@ struct SearchCollectionDetailView: View {
     
     func mainCollectionLogo(geometry: GeometryProxy) -> some View {
         loadAsyncImage(
-            imageUrl: collection?.logo?.getImagePosterPath() ?? "",
+            imageUrl: mainLogoUrl.getImagePosterPath(),
             width: .infinity,
             height: 100,
             placeholderBackground: Color.clear
         )
+        .padding(.horizontal)
         .scaleEffect(viewModel.mainLogoScale)
         .opacity(viewModel.mainLogoOpacity)
         .position(x: geometry.size.width / 2, y: geometry.size.height / 2 - viewModel.logoPositionOffset)
@@ -134,8 +141,9 @@ struct SearchCollectionDetailView: View {
                     movies: viewModel.movies,
                     movieItemSize: CGSize(width: 110, height: 150),
                     lazyVGridColumns: 3,
-                    lazyVGridSpacing: (Constants.TEN, Constants.TEN)
-                ) { _ in }
+                    lazyVGridSpacing: (Constants.TEN, Constants.TEN)) { movie in
+                        selectedMovie = movie
+                    }
                 
             } else {
                 ContentNotAvailableView(title: collection?.name ?? "")
@@ -163,7 +171,8 @@ struct SearchCollectionDetailView: View {
 #Preview {
     NavigationStack {
         SearchCollectionDetailView(
-            collection: PreviewDataProvider.instance.collection
+            collection: PreviewDataProvider.instance.collection,
+            mainLogoUrl: "/uBz2Dj3sUFQQJrX9njI9MgEwvd8.png"
         )
     }
 }

@@ -32,8 +32,7 @@ extension CollectionResponse {
             posterPath: self.posterPath,
             movies: self.movies.map { movieResponse in
                 movieResponse.map { $0.toDomain() }
-            },
-            logo: "/hRYATYBMw0MGoVtl4EEsxzg87Kn.png"
+            }
         )
     }
 }

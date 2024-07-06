@@ -18,6 +18,7 @@ class SearchCollectionDetailViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var movies: [Movie] = []
     @Published var mainPosterImage: String = ""
+    @Published var mainLogoUrl: String = ""
     
     // MARK: - Animation properties
     @Published var showToolbarBackground = false

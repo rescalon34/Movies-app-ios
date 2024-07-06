@@ -13,5 +13,4 @@ struct Collection: Identifiable {
     let name: String?
     let posterPath: String?
     let movies: [Movie]?
-    let logo: String?
 }
