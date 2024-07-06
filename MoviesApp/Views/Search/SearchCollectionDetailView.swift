@@ -10,13 +10,18 @@ import SwiftUI
 struct SearchCollectionDetailView: View {
     
     // MARK: - ViewModel
-    @StateObject var viewModel: SearchCollectionDetailViewModel = .init()
+    @StateObject var viewModel: SearchCollectionDetailViewModel
     
     // MARK: - Properties
     let collection: Collection?
     
     // MARK: - State properties
     @State private var contentOffset: CGFloat = 0
+    
+    init(collection: Collection?) {
+        self.collection = collection
+        _viewModel = StateObject(wrappedValue: SearchCollectionDetailViewModel(collection: collection))
+    }
     
     // MARK: - Body
     var body: some View {
@@ -57,7 +62,8 @@ struct SearchCollectionDetailView: View {
         loadAsyncImage(
             imageUrl: collection?.logo?.getImagePosterPath() ?? "",
             width: 60,
-            height: 60
+            height: 60,
+            placeholderBackground: Color.clear
         )
         .opacity(viewModel.toolbarLogoOpacity)
     }
@@ -65,16 +71,20 @@ struct SearchCollectionDetailView: View {
     func mainPosterImage(_ geometry: GeometryProxy) -> some View {
         VStack(spacing: 0) {
             loadAsyncImage(
-                imageUrl: collection?.backdropPath?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ?? "",
+                imageUrl: viewModel.mainPosterImage.getImagePosterPath(ORIGINAL_POSTER_WIDTH),
                 contentMode: .fill,
                 width: geometry.size.width,
                 height: geometry.size.height / 1.5,
                 placeholderBackground: Color.customColors.categoryCapsuleColor
             )
+            .fadedScrollViewMask()
             .fadedBottomViewMask(
                 startPoint: .bottom,
                 endPoint: .center
             )
+            .overlay {
+                Color.black.opacity(viewModel.overlayOpacity)
+            }
             
             Spacer()
                 .frame(maxWidth: .infinity)
@@ -91,33 +101,47 @@ struct SearchCollectionDetailView: View {
         loadAsyncImage(
             imageUrl: collection?.logo?.getImagePosterPath() ?? "",
             width: .infinity,
-            height: 100
+            height: 100,
+            placeholderBackground: Color.clear
         )
         .scaleEffect(viewModel.mainLogoScale)
         .opacity(viewModel.mainLogoOpacity)
-        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+        .position(x: geometry.size.width / 2, y: geometry.size.height / 2 - viewModel.logoPositionOffset)
     }
     
     func scrollableCollectionContent(geometry: GeometryProxy) -> some View {
         ObservableScrollView(contentOffset: $contentOffset) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
+                moviesContent
+            }
+            .padding(.horizontal)
+            .padding(.top, geometry.size.height / 1.6)
+            .padding(.bottom)
+        }
+        .scrollIndicators(.hidden)
+    }
+    
+    var moviesContent: some View {
+        VStack {
+            if !viewModel.movies.isEmpty {
                 Text(collection?.name ?? "")
                     .font(.subheadline)
                     .foregroundStyle(Color.customColors.secondaryTextColor)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .bold()
                 
-                // TODO: Show proper collection list
                 LazyVGridMoviesView(
-                    movies: PreviewDataProvider.instance.movies,
+                    movies: viewModel.movies,
                     movieItemSize: CGSize(width: 110, height: 150),
                     lazyVGridColumns: 3,
                     lazyVGridSpacing: (Constants.TEN, Constants.TEN)
                 ) { _ in }
+                
+            } else {
+                ContentNotAvailableView(title: collection?.name ?? "")
             }
-            .padding(.horizontal)
-            .padding(.top, geometry.size.height / 1.7)
         }
-        .scrollIndicators(.hidden)
+        .frame(maxWidth: .infinity)
     }
     
     // MARK: View functions
@@ -125,9 +149,12 @@ struct SearchCollectionDetailView: View {
         print("tellContentOffset: \(value)")
         withAnimation(.easeInOut) {
             viewModel.showToolbarBackground = value < Constants.MIN_SEARCH_APP_BAR_OFFSET
-            viewModel.toolbarLogoOpacity = value < -Constants.TWENTY_FIVE ? increaseOpacity(value, Constants.TWENTY_FIVE): 0
+            viewModel.toolbarLogoOpacity = value < -Constants.TWENTY ? increaseOpacity(value, Constants.TWENTY): 0
             viewModel.mainLogoScale = value < -Constants.TWENTY ? scaleUp(value, Constants.TWENTY) : Constants.ONE
             viewModel.mainLogoOpacity = value < -Constants.TWENTY ? decreaseOpacity(value, Constants.TWENTY) : Constants.ONE
+            viewModel.logoPositionOffset = value < -Constants.TEN ? -(value + Constants.ONE) * Constants.ONE : 0
+            
+            viewModel.overlayOpacity = value < -100 ? increaseOpacity(value, 0.1, 0.8) : 0
         }
     }
 }

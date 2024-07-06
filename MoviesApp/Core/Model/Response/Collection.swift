@@ -12,5 +12,6 @@ struct Collection: Identifiable {
     let backdropPath: String?
     let name: String?
     let posterPath: String?
+    let movies: [Movie]?
     let logo: String?
 }

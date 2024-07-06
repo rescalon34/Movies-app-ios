@@ -126,15 +126,14 @@ extension View {
     /// Gradually increase opacity
     /// - Param absoluteValue: the given value collected from the scrollView Reader.
     ///
-    func increaseOpacity(_ absoluteValue: CGFloat, _ increasingValue: CGFloat) -> CGFloat {
-        return min(1.0, (abs(absoluteValue + increasingValue) / increasingValue))
+    func increaseOpacity(_ absoluteValue: CGFloat, _ increasingValue: CGFloat, _ minOpacity: CGFloat = 1.0) -> CGFloat {
+        return min(minOpacity, (abs(absoluteValue + increasingValue) / increasingValue))
     }
     
     /// Gradually decrease opacity
     /// - Param absoluteValue: the given value collected from the scrollView Reader.
     /// 
     func decreaseOpacity(_ absoluteValue: CGFloat, _ decreasingValue: CGFloat) -> CGFloat {
-//        max(0.0, 1.0 - (abs(value + 20) / 20))
         return max(0.0, 1.0 - (abs(absoluteValue + decreasingValue) / decreasingValue))
     }
 }

@@ -25,4 +25,8 @@ class SearchRepository: SearchRepositoryProtocol {
     func getCollection(keyword: String) -> AnyPublisher<Result<CollectionDataResponse, Error>, Never> {
         networkManager.requestPublisher(target: SearchAPI.getCollection(keyword: keyword))
     }
+    
+    func getCollectionDetails(collectionId: Int) -> AnyPublisher<Result<CollectionResponse, Error>, Never> {
+        networkManager.requestPublisher(target: SearchAPI.getCollectionDetails(collectionId: collectionId))
+    }
 }

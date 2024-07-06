@@ -12,12 +12,14 @@ struct CollectionResponse: Codable {
     let backdropPath: String?
     let name: String?
     let posterPath: String?
+    let movies: [MovieResponse]?
     
     enum CodingKeys:String, CodingKey {
         case id
         case backdropPath = "backdrop_path"
         case name
         case posterPath = "poster_path"
+        case movies = "parts"
     }
 }
 
@@ -28,7 +30,10 @@ extension CollectionResponse {
             backdropPath: self.backdropPath,
             name: self.name,
             posterPath: self.posterPath,
-            logo: nil
+            movies: self.movies.map { movieResponse in
+                movieResponse.map { $0.toDomain() }
+            },
+            logo: "/hRYATYBMw0MGoVtl4EEsxzg87Kn.png"
         )
     }
 }

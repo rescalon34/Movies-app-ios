@@ -13,7 +13,7 @@ struct Constants {
     static let ASTERISK = "*"
     static let MIN_APPBAR_OFFSET: CGFloat = -30
     static let MIN_APP_BAR_DETAILS_OFFSET: CGFloat = -365
-    static let MIN_SEARCH_APP_BAR_OFFSET: CGFloat = -400
+    static let MIN_SEARCH_APP_BAR_OFFSET: CGFloat = -450
     static let SCROLLVIEW_NAME = "scrollView"
     static let INITIAL_X_MARK_ANIMATION = 45
     static let FORTY_FIVE_DEGREES: CGFloat = 45

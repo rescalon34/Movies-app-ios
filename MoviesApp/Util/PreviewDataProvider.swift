@@ -329,6 +329,7 @@ class PreviewDataProvider {
         backdropPath: "/d8duYyyC9J5T825Hg7grmaabfxQ.jpg",
         name: "Star Wars Collection",
         posterPath: "/r8Ph5MYXL04Qzu4QBbq2KjqwtkQ.jpg",
+        movies: nil,
         logo: "/hRYATYBMw0MGoVtl4EEsxzg87Kn.png"
     )
 }
