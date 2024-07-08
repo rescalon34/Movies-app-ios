@@ -13,6 +13,7 @@ struct MovieResponse: Identifiable, Codable {
     let imageUrl: String?
     let releaseDate: String
     let overview: String
+    let originalLanguage: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -20,6 +21,7 @@ struct MovieResponse: Identifiable, Codable {
         case imageUrl = "poster_path"
         case releaseDate = "release_date"
         case overview
+        case originalLanguage = "original_language"
     }
 }
 
@@ -35,7 +37,8 @@ extension MovieResponse {
             belongsToCollection: nil,
             genres: nil,
             videos: nil,
-            section: section
+            section: section,
+            originalLanguage: self.originalLanguage
         )
     }
 }

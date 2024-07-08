@@ -18,6 +18,7 @@ struct Constants {
     static let INITIAL_X_MARK_ANIMATION = 45
     static let FORTY_FIVE_DEGREES: CGFloat = 45
     static let ZERO_DEGREES: CGFloat = 0
+    static let HALF_SECOND: Int = 500
     static let MINUS_NINETY_DEGREES: CGFloat = -90
     
     // Values

@@ -23,7 +23,7 @@ struct MovieClipsSegmentContentView: View {
     private var videoClipsContent: some View {
         if let videos = videos, !videos.isEmpty {
             ForEach(videos) { video in
-                VideoPreviewItemView(
+                MoviePreviewItemView(
                     imageUrl: video.key.getYoutubeVideoPreviewUrl(),
                     title: video.name,
                     overview: getVideoOverview(video: video),

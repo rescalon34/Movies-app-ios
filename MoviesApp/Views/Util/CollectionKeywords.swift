@@ -22,7 +22,7 @@ enum CollectionKeywords: String, CaseIterable {
     }
     
     static func getLogoByCollection(collectionName: String) -> String {
-        let logo = switch collectionName {
+        return switch collectionName {
         case CollectionKeywords.starwars.rawValue: "/hRYATYBMw0MGoVtl4EEsxzg87Kn.png"
         case CollectionKeywords.horror.rawValue: "/1GEdwlz6EGCVmAvXBF36OB7bMo7.png"
         case CollectionKeywords.comedy.rawValue: "/akjwGHYHzLyHoBXRoIUdZdUyVSi.png"
@@ -32,6 +32,5 @@ enum CollectionKeywords: String, CaseIterable {
         case CollectionKeywords.documentary.rawValue: "/uBz2Dj3sUFQQJrX9njI9MgEwvd8.png"
         default: "/kyE83l2648IXArRQOOQJlirQ76b.png"
         }
-        return logo
     }
 }

@@ -15,4 +15,6 @@ protocol SearchRepositoryProtocol {
     func getCollection(keyword: String) -> AnyPublisher<Result<CollectionDataResponse, Error>, Never>
     
     func getCollectionDetails(collectionId: Int) -> AnyPublisher<Result<CollectionResponse, Error>, Never>
+    
+    func searchMovie(keyword: String) -> AnyPublisher<Result<MovieDataResponse, Error>, Never>
 }

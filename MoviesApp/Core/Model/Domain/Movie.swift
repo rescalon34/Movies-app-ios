@@ -18,6 +18,7 @@ struct Movie: Identifiable {
     let genres: [Genre]?
     let videos: [Video]?
     let section: String?
+    let originalLanguage: String?
     
     static var `default`: Self = .init(
         id: 0,
@@ -29,6 +30,7 @@ struct Movie: Identifiable {
         belongsToCollection: BelongsToCollection(backdropPath: "mDMCET9Ens5ANvZAWRpluBsMAtS.jpg"),
         genres: [],
         videos: [],
-        section: nil
+        section: nil,
+        originalLanguage: nil
     )
 }

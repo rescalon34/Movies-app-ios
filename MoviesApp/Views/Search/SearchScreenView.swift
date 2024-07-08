@@ -11,10 +11,10 @@ struct SearchScreenView: View {
     
     // MARK: - ViewModel
     @StateObject var viewModel: SearchViewModel = .init()
+    @FocusState private var isSearchFieldFocused: Bool
     
     // MARK: - Properties
     let screenTitle: String
-    @State var searchKeyword: String = ""
     @State var selectedMovie: Movie? = nil
     @State var selectedCollection: Collection? = nil
     
@@ -23,10 +23,16 @@ struct SearchScreenView: View {
         NavigationStack {
             BaseScreenView {
                 VStack {
-                    mainSearchContent
+                    if isSearchFieldFocused {
+                        SearchByKeywordResultsView(
+                            moviesByKeyword: viewModel.moviesByKeyword,
+                            searchResultStatus: viewModel.searchResultStatus
+                        )
+                    } else {
+                        mainSearchContent
+                    }
                 }
             }
-            .searchable(text: $searchKeyword)
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(isPresented: $selectedMovie.toBinding()) {
@@ -39,6 +45,8 @@ struct SearchScreenView: View {
                 )
             }
         }
+        .searchable(text: $viewModel.searchKeyword)
+        .focused($isSearchFieldFocused)
     }
     
     // MARK: - Views

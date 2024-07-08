@@ -12,6 +12,7 @@ enum SearchAPI: TargetType {
     case getTrendingMovies(timeWindow: String)
     case getCollection(keyword: String)
     case getCollectionDetails(collectionId: Int)
+    case searchMovie(keyword: String)
 }
 
 extension SearchAPI {
@@ -28,6 +29,8 @@ extension SearchAPI {
             return "search/collection"
         case .getCollectionDetails(collectionId: let collectionId):
             return "collection/\(collectionId)"
+        case .searchMovie:
+            return "search/movie"
         }
     }
     
@@ -35,7 +38,8 @@ extension SearchAPI {
         switch self {
         case .getTrendingMovies,
                 .getCollection,
-                .getCollectionDetails:
+                .getCollectionDetails,
+                .searchMovie:
             return .get
         }
     }
@@ -48,7 +52,8 @@ extension SearchAPI {
                 parameters: [:],
                 encoding: URLEncoding.queryString
             )
-        case .getCollection(keyword: let keyword):
+        case .getCollection(keyword: let keyword),
+                .searchMovie(keyword: let keyword):
             return .requestParameters(
                 parameters: ["query" : keyword],
                 encoding: URLEncoding.queryString
