@@ -51,6 +51,8 @@ struct SearchScreenView: View {
                     searchSuggestions: viewModel.searchSuggestions,
                     onItemClick: { movie in
                         selectedMovie = movie
+                        print("tellMovie, clicked movie: \(movie)")
+                        print("tellMovie, selected movie: \(String(describing: selectedMovie))")
                     },
                     onSuggestionClick: { suggestion in
                         viewModel.searchKeyword = suggestion
@@ -126,7 +128,5 @@ struct SearchScreenView: View {
 
 // MARK: - Preview
 #Preview {
-    BaseScreenView {
-        SearchScreenView(screenTitle: "")
-    }
+    SearchScreenView(screenTitle: "")
 }

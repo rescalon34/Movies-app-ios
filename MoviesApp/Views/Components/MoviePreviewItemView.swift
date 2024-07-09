@@ -27,7 +27,7 @@ struct MoviePreviewItemView: View {
     // MARK: Views
     private var videoItem: some View {
         VStack(alignment: .leading) {
-            HStack() {
+            HStack {
                 loadAsyncImage(
                     imageUrl: imageUrl,
                     aspectRatio: 2.5,
@@ -40,6 +40,7 @@ struct MoviePreviewItemView: View {
                     if isVideoPreview { playOverlayIcon }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .contentShape(Rectangle()) // represents the tappable area
                 .onTapGesture {
                     onItemClick()
                 }
@@ -57,6 +58,7 @@ struct MoviePreviewItemView: View {
                         .padding(.trailing)
                         .multilineTextAlignment(.leading)
                 }
+                .contentShape(Rectangle()) // represents the tappable area
                 .onTapGesture {
                     // allowing tapping the whole item when is not video preview.
                     if !isVideoPreview { onItemClick() }

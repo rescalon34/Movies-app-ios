@@ -144,7 +144,6 @@ struct SearchCollectionDetailView: View {
                     lazyVGridSpacing: (Constants.TEN, Constants.TEN)) { movie in
                         selectedMovie = movie
                     }
-                
             } else {
                 ContentNotAvailableView()
             }
@@ -172,7 +171,7 @@ struct SearchCollectionDetailView: View {
     NavigationStack {
         SearchCollectionDetailView(
             collection: PreviewDataProvider.instance.collection,
-            mainLogoUrl: "/uBz2Dj3sUFQQJrX9njI9MgEwvd8.png"
+            mainLogoUrl: CollectionKeywords.getLogoByCollection(collectionName: CollectionKeywords.starwars.rawValue)
         )
     }
 }

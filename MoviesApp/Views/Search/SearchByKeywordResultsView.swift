@@ -38,32 +38,37 @@ struct SearchByKeywordResultsView: View {
     }
     
     // MARK: - main screen content
-    @ViewBuilder
     private var movieResultsContent: some View {
-        Text("Results")
-            .font(.subheadline)
-            .foregroundStyle(Color.customColors.secondaryTextColor)
-            .bold()
-            .padding(.horizontal)
-        
-        ScrollView {
-            ForEach(moviesByKeyword) { movie in
-                MoviePreviewItemView(
-                    imageUrl: movie.imageUrl?.getImagePosterPath() ?? "",
-                    title: movie.title,
-                    overview: getOverview(movie: movie),
-                    isVideoPreview: false,
-                    onItemClick: {
-                        onItemClick(movie)
-                    }
-                )
+        VStack(alignment: .leading) {
+            Text("Results")
+                .font(.subheadline)
+                .foregroundStyle(Color.customColors.secondaryTextColor)
+                .padding(.horizontal)
+                .bold()
+            
+            ScrollView {
+                ForEach(moviesByKeyword) { movie in
+                    MoviePreviewItemView(
+                        imageUrl: movie.imageUrl?.getImagePosterPath() ?? "",
+                        title: movie.title,
+                        overview: getOverview(movie: movie),
+                        isVideoPreview: false,
+                        onItemClick: {
+                            onItemClick(movie)
+                        }
+                    )
+                    .padding(.horizontal)
+                }
             }
+            .scrollIndicators(.hidden)
         }
+        .padding(.bottom, 50)
     }
     
     @ViewBuilder
     private var searchSuggestionsContent: some View {
         Text("Suggestions:")
+            .font(.subheadline)
             .foregroundStyle(Color.customColors.secondaryTextColor)
             .padding(.horizontal)
             .bold()
