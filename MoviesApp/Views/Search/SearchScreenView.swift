@@ -21,17 +21,8 @@ struct SearchScreenView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            BaseScreenView {
-                VStack {
-                    if isSearchFieldFocused {
-                        SearchByKeywordResultsView(
-                            moviesByKeyword: viewModel.moviesByKeyword,
-                            searchResultStatus: viewModel.searchResultStatus
-                        )
-                    } else {
-                        mainSearchContent
-                    }
-                }
+            BaseScreenView(isLoading: viewModel.isLoading) {
+                searchScreenContent
             }
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
@@ -40,7 +31,7 @@ struct SearchScreenView: View {
             }
             .navigationDestination(isPresented: $selectedCollection.toBinding()) {
                 SearchCollectionDetailView(
-                    collection: selectedCollection, 
+                    collection: selectedCollection,
                     mainLogoUrl: viewModel.mainCollectionLogo
                 )
             }
@@ -50,7 +41,28 @@ struct SearchScreenView: View {
     }
     
     // MARK: - Views
-    private var mainSearchContent: some View {
+    private var searchScreenContent: some View {
+        VStack {
+            if showSearchByKeywordsView() {
+                SearchByKeywordResultsView(
+                    keyword: viewModel.searchKeyword,
+                    moviesByKeyword: viewModel.moviesByKeyword,
+                    searchResultStatus: viewModel.searchResultStatus,
+                    searchSuggestions: viewModel.searchSuggestions,
+                    onItemClick: { movie in
+                        selectedMovie = movie
+                    },
+                    onSuggestionClick: { suggestion in
+                        viewModel.searchKeyword = suggestion
+                    }
+                )
+            } else {
+                trendingAndCollectionsContent
+            }
+        }
+    }
+    
+    private var trendingAndCollectionsContent: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 trendingMoviesHorizontalViewContent
@@ -105,9 +117,16 @@ struct SearchScreenView: View {
             }
         }
     }
+    
+    // MARK: - Functions
+    func showSearchByKeywordsView() -> Bool {
+        isSearchFieldFocused || !viewModel.searchKeyword.isEmpty
+    }
 }
 
 // MARK: - Preview
 #Preview {
-    SearchScreenView(screenTitle: "")
+    BaseScreenView {
+        SearchScreenView(screenTitle: "")
+    }
 }

@@ -10,20 +10,27 @@ import SwiftUI
 struct SearchByKeywordResultsView: View {
     
     // MARK: - Properties
+    let keyword: String
     let moviesByKeyword: [Movie]
     let searchResultStatus: SearchResultStatus
+    let searchSuggestions: [String]
+    let onItemClick: (Movie) -> ()
+    let onSuggestionClick: (String) -> ()
     
     // MARK: - Body
     var body: some View {
         BaseScreenView {
             VStack(alignment: .leading) {
                 if !moviesByKeyword.isEmpty {
-                    moviesContent
+                    movieResultsContent
                 } else {
                     if searchResultStatus == .NOT_STARTED {
-                        Text("Search for any movie!")
+                        searchSuggestionsContent
                     } else {
-                        ContentNotAvailableView(title: "test")
+                        ContentNotAvailableView(
+                            title: "Oops! no results for \(keyword)",
+                            description: "There is no result that matches your search. Please with a different keyword."
+                        )
                     }
                 }
             }
@@ -32,7 +39,7 @@ struct SearchByKeywordResultsView: View {
     
     // MARK: - main screen content
     @ViewBuilder
-    private var moviesContent: some View {
+    private var movieResultsContent: some View {
         Text("Results")
             .font(.subheadline)
             .foregroundStyle(Color.customColors.secondaryTextColor)
@@ -46,10 +53,31 @@ struct SearchByKeywordResultsView: View {
                     title: movie.title,
                     overview: getOverview(movie: movie),
                     isVideoPreview: false,
-                    onItemClick: {  }
+                    onItemClick: {
+                        onItemClick(movie)
+                    }
                 )
             }
         }
+    }
+    
+    @ViewBuilder
+    private var searchSuggestionsContent: some View {
+        Text("Suggestions:")
+            .foregroundStyle(Color.customColors.secondaryTextColor)
+            .padding(.horizontal)
+            .bold()
+        
+        List(searchSuggestions, id: \.self) { suggestion in
+            Text(suggestion)
+                .padding(.vertical, 4)
+                .listRowBackground(Color.clear)
+                .onTapGesture {
+                    onSuggestionClick(suggestion)
+                }
+        }
+        .background(Color.customColors.backgroundColor)
+        .listStyle(.plain)
     }
     
     // MARK: Functions
@@ -65,7 +93,11 @@ struct SearchByKeywordResultsView: View {
 // MARK: - Preview
 #Preview {
     SearchByKeywordResultsView(
+        keyword: "Inside out",
         moviesByKeyword: PreviewDataProvider.instance.movies,
-        searchResultStatus: .NOT_STARTED
+        searchResultStatus: .NOT_STARTED,
+        searchSuggestions: PreviewDataProvider.instance.movies.map { $0.title },
+        onItemClick: { _ in },
+        onSuggestionClick: { _ in }
     )
 }

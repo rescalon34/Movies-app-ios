@@ -19,6 +19,7 @@ class SearchViewModel: ObservableObject {
     @Published var trendingMovies: [Movie] = []
     @Published var moviesByKeyword: [Movie] = []
     @Published var collections: [Collection] = []
+    @Published var searchSuggestions: [String] = []
     @Published var collectionTitle: String = ""
     @Published var mainCollectionLogo: String = ""
     @Published var searchKeyword: String = ""
@@ -29,6 +30,7 @@ class SearchViewModel: ObservableObject {
         self.searchRepository = searchRepository
         
         getTrendingMovies()
+        getSuggestions()
         getCollections(keyword: CollectionKeywords.getRandomKeyword())
         setupBindings()
     }
@@ -52,6 +54,11 @@ class SearchViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellable)
+    }
+    
+    func getSuggestions() {
+        // TODO, should come from an API
+        searchSuggestions = PreviewDataProvider.instance.movies.map { $0.title }
     }
     
     private func getCollections(keyword: String) {

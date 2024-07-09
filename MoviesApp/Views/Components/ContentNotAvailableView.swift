@@ -9,14 +9,21 @@ import SwiftUI
 
 struct ContentNotAvailableView: View {
     
-    let title: String
+    let title: String?
+    let description: String?
+    
+    init(title: String? = nil, description: String? = nil) {
+        self.title = title
+        self.description = description
+    }
     
     var body: some View {
         VStack(spacing: 8) {
-            Text("Content not available")
+            Text(title ?? "Content not available")
                 .font(.callout)
+                .multilineTextAlignment(.center)
                 .bold()
-            Text("There is no \(title) content currently available. Plsase check back soon.")
+            Text(description ?? "This content is not yet available. Please check back soon")
                 .font(.footnote)
                 .foregroundStyle(Color.customColors.primaryClearTextColor)
                 .multilineTextAlignment(.center)
@@ -26,5 +33,5 @@ struct ContentNotAvailableView: View {
 }
 
 #Preview {
-    ContentNotAvailableView(title: "Inside Out")
+    ContentNotAvailableView(title: nil, description: nil)
 }

@@ -146,7 +146,7 @@ struct SearchCollectionDetailView: View {
                     }
                 
             } else {
-                ContentNotAvailableView(title: collection?.name ?? "")
+                ContentNotAvailableView()
             }
         }
         .frame(maxWidth: .infinity)
