@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		251064552C1A9B420079CFCE /* CircularGradientProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251064542C1A9B420079CFCE /* CircularGradientProfileView.swift */; };
+		2528B35A2C3CF30E00F7E9CA /* FeatureComingSoonScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528B3592C3CF30E00F7E9CA /* FeatureComingSoonScreenView.swift */; };
 		2535B83D2C18CE7C005BBA39 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */; };
 		254CEC812C115B8900706852 /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CEC802C115B8900706852 /* MoviesApp.swift */; };
 		254CEC832C115B8900706852 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254CEC822C115B8900706852 /* ContentView.swift */; };
@@ -128,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		251064542C1A9B420079CFCE /* CircularGradientProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGradientProfileView.swift; sourceTree = "<group>"; };
+		2528B3592C3CF30E00F7E9CA /* FeatureComingSoonScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureComingSoonScreenView.swift; sourceTree = "<group>"; };
 		2535B83C2C18CE7C005BBA39 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		254CEC7D2C115B8900706852 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		254CEC802C115B8900706852 /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2528B3582C3CF30100F7E9CA /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				2528B3592C3CF30E00F7E9CA /* FeatureComingSoonScreenView.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		254CEC742C115B8900706852 = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +339,7 @@
 		254CECB02C11634800706852 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2528B3582C3CF30100F7E9CA /* Generic */,
 				254CECC62C11844600706852 /* Components */,
 				25E2D6962C32588D00B53051 /* Watchlist */,
 				255C400F2C1FBD6000FB6674 /* Player */,
@@ -845,6 +856,7 @@
 				254CEC812C115B8900706852 /* MoviesApp.swift in Sources */,
 				25E2D69A2C32590600B53051 /* WatchlistMovieViewModel.swift in Sources */,
 				25E2D6A72C34B4F900B53051 /* BelongsToCollectionResponse.swift in Sources */,
+				2528B35A2C3CF30E00F7E9CA /* FeatureComingSoonScreenView.swift in Sources */,
 				254CECC32C1175E700706852 /* CustomColors.swift in Sources */,
 				25A7727D2C38F56500984599 /* ContentNotAvailableView.swift in Sources */,
 				25E2D6872C2E5F8200B53051 /* FeaturedMoviesSections.swift in Sources */,

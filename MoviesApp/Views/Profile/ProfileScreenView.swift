@@ -66,16 +66,16 @@ struct ProfileScreenView: View {
     @ViewBuilder
     private var makeProfileOptions: some View {
         List {
-            CustomNavigationLink(destination: Text("App Settings Screen")) {
+            CustomNavigationLink(destination: FeatureComingSoonScreenView()) {
                 makeProfileOptionItem(option: "App Settings")
             }
-            CustomNavigationLink(destination: Text("Account Screen")) {
+            CustomNavigationLink(destination: FeatureComingSoonScreenView()) {
                 makeProfileOptionItem(option: "Account Policy")
             }
-            CustomNavigationLink(destination: Text("Privacy Policy Screen")) {
+            CustomNavigationLink(destination: FeatureComingSoonScreenView()) {
                 makeProfileOptionItem(option: "Privacy Policy")
             }
-            CustomNavigationLink(destination: Text("Credits")) {
+            CustomNavigationLink(destination: FeatureComingSoonScreenView()) {
                 makeProfileOptionItem(option: "Credits")
             }
             makeProfileOptionItem(option: "Log Out")
