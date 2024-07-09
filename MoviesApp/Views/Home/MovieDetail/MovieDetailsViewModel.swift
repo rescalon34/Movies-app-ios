@@ -175,4 +175,11 @@ class MovieDetailsViewModel: ObservableObject {
     func getAllSegmentOptions() -> [String] {
         return MovieDetailSegmentOptions.allCases.map { $0.rawValue }
     }
+    
+    func getHeaderImageUrl() -> String {
+        guard let movie = movie else { return "" }
+        
+        return movie.imageUrl?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ??
+        movie.belongsToCollection?.backdropPath?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ?? ""
+    }
 }
