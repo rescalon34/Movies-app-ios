@@ -57,6 +57,10 @@ struct MoviePreviewItemView: View {
                         .padding(.trailing)
                         .multilineTextAlignment(.leading)
                 }
+                .onTapGesture {
+                    // allowing tapping the whole item when is not video preview.
+                    if !isVideoPreview { onItemClick() }
+                }
                 Spacer()
             }
         }
