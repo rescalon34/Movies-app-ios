@@ -11,21 +11,21 @@ import SwiftUI
 /// background color for all screens.
 struct BaseScreenView<Content: View>: View {
     
+    var isLoading: Bool = false
     let content: () -> Content
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.customColors.backgroundColor
-                    .ignoresSafeArea()
-                content()
-            }
+        ZStack {
+            Color.customColors.backgroundColor
+                .ignoresSafeArea()
+            content()
+            if isLoading { ProgressView() }
         }
     }
 }
 
 #Preview {
-    BaseScreenView {
+    BaseScreenView(isLoading: true) {
         Text("Base screen")
     }
 }

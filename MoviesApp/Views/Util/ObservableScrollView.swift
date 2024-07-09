@@ -34,6 +34,7 @@ struct ObservableScrollView<Content: View>: View {
                             )
                     }
                 }
+                .padding(.bottom, 50)
         }
         .coordinateSpace(name: Constants.SCROLLVIEW_NAME)
         .onPreferenceChange(ContentOffsetKey.self) { value in

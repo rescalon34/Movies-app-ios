@@ -10,39 +10,58 @@ import SwiftUI
 struct HomeScreenView: View {
     
     // MARK: - ViewModel
-    var viewModel: HomeViewModel = HomeViewModel()
+    @StateObject var viewModel: HomeViewModel = .init()
     
     // MARK: - Properties
-    @State var selectedCategory: String = "Comedy"
+    @State var selectedMovie: Movie? = nil
     @State private var showCategoryToolbarItem = false
     @State private var contentOffset: CGFloat = 0
     @State private var isPresented = false
     
     // MARK: - Body
     var body: some View {
-        BaseScreenView {
+        NavigationStack {
+            BaseScreenView {
+                VStack {
+                    mainContent
+                }
+                .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar { homeToolbarContent }
+                .fullScreenCover(isPresented: $isPresented) {
+                    MovieFilterFullScreenView(
+                        genres: viewModel.genres,
+                        selectedGenre: $viewModel.selectedGenre
+                    )
+                }
+                .navigationDestination(isPresented: $selectedMovie.toBinding()) {
+                    MovieDetailsScreenView(movieId: selectedMovie?.id, isAddedToWatchlist: .constant(false))
+                }
+            }
+        }
+    }
+    
+    // MARK: - Views
+    
+    @ViewBuilder
+    var mainContent: some View {
+        if viewModel.isLoading {
+            ProgressView()
+        } else {
             ObservableScrollView(contentOffset: $contentOffset) {
                 VStack {
                     homeAppBar
                     homeContent
                 }
             }
-            .onChange(of: contentOffset, perform: onCategoryToolbarItemVisibility)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { homeToolbarContent }
-            .fullScreenCover(isPresented: $isPresented) {
-                MovieFilterFullScreenView(selectedCategory: $selectedCategory)
-            }
         }
     }
     
-    // MARK: - Views
     var homeAppBar : some View {
         CategoryAppBarView(
             toolbarTitle: "Movies",
-            selectedCategory: selectedCategory,
+            selectedCategory: viewModel.selectedGenre.name,
             onCategoryClick: {
-                print("selected category: \(selectedCategory)")
                 isPresented.toggle()
             }
         )
@@ -52,9 +71,8 @@ struct HomeScreenView: View {
     var homeToolbarContent: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             CategoryCapsuleView(
-                selectedCategory: selectedCategory,
+                selectedCategory: viewModel.selectedGenre.name,
                 onCategoryClick: {
-                    print("selected category: \(selectedCategory)")
                     isPresented.toggle()
                 }
             )
@@ -71,12 +89,16 @@ struct HomeScreenView: View {
     
     @ViewBuilder
     var homeContent: some View {
-        if selectedCategory == "Featured" {
-            FeaturedMoviesView(movies: viewModel.movies)
+        if viewModel.selectedGenre.name == LocalMovieGenres.Featured.rawValue {
+            FeaturedMoviesView(
+                movies: viewModel.featuredMovies,
+                onMovieClicked: onMovieClicked
+            )
         } else {
             GridMoviesByCategoryView(
-                category: selectedCategory,
-                movies: viewModel.movies
+                category: viewModel.selectedGenre.name,
+                movies: viewModel.movies,
+                onMovieClicked: onMovieClicked
             )
             .padding(.vertical)
         }
@@ -89,14 +111,18 @@ struct HomeScreenView: View {
             showCategoryToolbarItem = value < Constants.MIN_APPBAR_OFFSET
         }
     }
+    
+    /// Update the selectedMovie variable after tapping on it, so we can navigate
+    /// to the Movie details screen and pass the selected movie item.
+    private func onMovieClicked(movie: Movie) {
+        print("selectedMovie: \(movie)")
+        selectedMovie = movie
+    }
 }
 
 // MARK: - Preview
 #Preview {
-    NavigationStack {
-        HomeScreenView(
-            viewModel: HomeViewModel(),
-            selectedCategory: "Comedy"
-        )
-    }
+    HomeScreenView(
+        viewModel: HomeViewModel()
+    )
 }
