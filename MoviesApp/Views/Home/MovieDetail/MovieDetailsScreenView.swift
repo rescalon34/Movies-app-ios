@@ -112,11 +112,8 @@ struct MovieDetailsScreenView: View {
     // Header Image, title and small overview.
     @ViewBuilder
     private func movieDetailsHeader(movie: Movie) -> some View {
-        let headerImage = movie.belongsToCollection?.backdropPath?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ??
-        movie.imageUrl?.getImagePosterPath(ORIGINAL_POSTER_WIDTH)
-        
         loadAsyncImage(
-            imageUrl: headerImage ?? "",
+            imageUrl: viewModel.getHeaderImageUrl(),
             contentMode: .fill,
             width: UIScreen.main.bounds.width,
             height: 380

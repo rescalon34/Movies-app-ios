@@ -10,12 +10,13 @@ import SwiftUI
 /// Reusable VideoPreview Cell, it receives an image, title and overview as string values.
 /// - Parameter onItemClick: a callback closure to be invoked whenever a video thumbnail gets clicked.
 ///
-struct VideoPreviewItemView: View {
+struct MoviePreviewItemView: View {
     
     // MARK: - Properties
     let imageUrl: String
     let title: String
     let overview: String
+    var isVideoPreview: Bool = true
     let onItemClick: () -> ()
     
     // MARK: - Body
@@ -26,18 +27,20 @@ struct VideoPreviewItemView: View {
     // MARK: Views
     private var videoItem: some View {
         VStack(alignment: .leading) {
-            HStack() {
+            HStack {
                 loadAsyncImage(
                     imageUrl: imageUrl,
                     aspectRatio: 2.5,
                     contentMode: .fill,
                     width: 125,
-                    height: 70
+                    height: 70,
+                    placeholderBackground: Color.customColors.categoryCapsuleColor
                 )
                 .overlay(alignment: .bottomLeading) {
-                    playOverlayIcon
+                    if isVideoPreview { playOverlayIcon }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .contentShape(Rectangle()) // represents the tappable area
                 .onTapGesture {
                     onItemClick()
                 }
@@ -54,6 +57,11 @@ struct VideoPreviewItemView: View {
                         .lineLimit(Int(Constants.TWO))
                         .padding(.trailing)
                         .multilineTextAlignment(.leading)
+                }
+                .contentShape(Rectangle()) // represents the tappable area
+                .onTapGesture {
+                    // allowing tapping the whole item when is not video preview.
+                    if !isVideoPreview { onItemClick() }
                 }
                 Spacer()
             }
@@ -79,7 +87,7 @@ struct VideoPreviewItemView: View {
     let imageUrl = video?.key.getYoutubeVideoPreviewUrl() ?? ""
     let overview = "Wednesday, June 19, 2024*Teaser*en-US"
     
-    return VideoPreviewItemView(
+    return MoviePreviewItemView(
         imageUrl: imageUrl,
         title: "Inside Out",
         overview: overview,

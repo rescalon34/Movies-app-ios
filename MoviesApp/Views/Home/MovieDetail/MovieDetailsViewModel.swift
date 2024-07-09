@@ -90,6 +90,7 @@ class MovieDetailsViewModel: ObservableObject {
                     self?.isLoading = false
                     self?.suggestedMovies = movies.results?.map { $0.toDomain() } ?? []
                 case .failure(let error):
+                    print("error getting suggested movies: \(error.localizedDescription)")
                     self?.errorMessage = error.localizedDescription
                     self?.isLoading = false
                 }
@@ -173,5 +174,12 @@ class MovieDetailsViewModel: ObservableObject {
     
     func getAllSegmentOptions() -> [String] {
         return MovieDetailSegmentOptions.allCases.map { $0.rawValue }
+    }
+    
+    func getHeaderImageUrl() -> String {
+        guard let movie = movie else { return "" }
+        
+        return movie.imageUrl?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ??
+        movie.belongsToCollection?.backdropPath?.getImagePosterPath(ORIGINAL_POSTER_WIDTH) ?? ""
     }
 }

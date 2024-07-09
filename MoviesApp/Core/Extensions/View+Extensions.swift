@@ -29,6 +29,24 @@ extension View {
         )
     }
     
+    func fadedBottomViewMask(
+        repeating: Int = Int(Constants.THREE),
+        startPoint: UnitPoint = .top,
+        endPoint: UnitPoint = .bottom
+    ) -> some View {
+        mask(
+            LinearGradient(
+                colors: [
+                    .clear,
+                    .primary,
+                    .primary,
+                    .primary,
+                ],
+                startPoint: startPoint, endPoint: endPoint
+            )
+        )
+    }
+    
     @ViewBuilder
     func showToolbarBackground(isVisible: Bool) -> some View {
         toolbarBackground(isVisible ? .visible : .hidden, for: .navigationBar)
@@ -97,4 +115,25 @@ extension View {
     
     /// represents the horizontal and vertical spaces of a LazyVGrid
     typealias LazyVGridSpacing = (horizontal: CGFloat, vertical: CGFloat)
+    
+    /// Scale up gradually
+    /// - Param absoluteValue: the given value collected from the scrollView Reader.
+    ///
+    func scaleUp(_ absoluteValue: CGFloat, _ increasingValue: CGFloat) -> CGFloat {
+        return max(0.5, 1.0 - (abs(absoluteValue + increasingValue) / increasingValue))
+    }
+    
+    /// Gradually increase opacity
+    /// - Param absoluteValue: the given value collected from the scrollView Reader.
+    ///
+    func increaseOpacity(_ absoluteValue: CGFloat, _ increasingValue: CGFloat, _ minOpacity: CGFloat = 1.0) -> CGFloat {
+        return min(minOpacity, (abs(absoluteValue + increasingValue) / increasingValue))
+    }
+    
+    /// Gradually decrease opacity
+    /// - Param absoluteValue: the given value collected from the scrollView Reader.
+    /// 
+    func decreaseOpacity(_ absoluteValue: CGFloat, _ decreasingValue: CGFloat) -> CGFloat {
+        return max(0.0, 1.0 - (abs(absoluteValue + decreasingValue) / decreasingValue))
+    }
 }

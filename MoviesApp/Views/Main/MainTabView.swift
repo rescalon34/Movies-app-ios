@@ -39,7 +39,7 @@ struct MainTabView: View {
         case .Watchlist:
             WatchlistMovieScreenView()
         case .Downloads:
-            SearchScreenView(screenTitle: "Downloads Screen")
+            FeatureComingSoonScreenView()
         case .Profile:
             ProfileScreenView()
         }

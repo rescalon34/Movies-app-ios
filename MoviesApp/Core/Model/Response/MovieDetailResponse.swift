@@ -45,7 +45,8 @@ extension MovieDetailResponse {
             videos: self.videos.results.isEmpty ? nil : self.videos.results.map { video in
                 video.toDomain()
             },
-            section: nil
+            section: nil,
+            originalLanguage: nil
         )
     }
 }
