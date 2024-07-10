@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieDetailResponse: Identifiable, Codable {
+struct MovieDetailResponse: Codable {
     let id: Int
     let title: String
     let imageUrl: String
