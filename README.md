@@ -18,7 +18,6 @@ The **MoviesApp**! project is a basic iOS app developed using SwiftUI. It aims t
 - Show suggestions and results of a movie searched by the gived keyword.
 - Display a Watchlist movies and the ability to add/remove a movie from the watchlist.
 - A profile screen that only shows static content.
-- Save a planet in the local FileManager.
 
 ## Technical overview.
 This project is built using some native frameworks like combine, swiftUI and Moya to fetch data from the network API. 
